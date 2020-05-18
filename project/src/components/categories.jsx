@@ -7,9 +7,12 @@ const Categories = (props) => {
         <li>
           <h4>Hälsa</h4>
         </li>
+        
         <li>
           <h4>Svenska</h4>
         </li>
+       
+
         <li>
           <h4>SO</h4>
         </li>

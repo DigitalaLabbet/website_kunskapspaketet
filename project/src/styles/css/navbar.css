@@ -1,0 +1,73 @@
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navbar {
+        background: #314f6f;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .navbar-brand {
+        background-color: teal;
+    }
+
+    .navbar-collapse {}
+
+    .nav-link,
+    .navbar-brand {
+        color: white;
+        cursor: pointer;
+        text-transform: capitalize;
+        position: relative;
+
+    }
+
+    .nav-item {
+        margin-right: 1em;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        text-transform: capitalize;
+        color: white;
+
+
+    }
+
+    .nav-item:hover {
+        cursor: pointer;
+    }
+
+    .nav-item:active {
+        color: red;
+    }
+
+    .navbar-collapse {
+        justify-content: flex-end;
+    }
+
+    .welcome h6 {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    @media (max-width: 575.98px) {
+        .navbar-collapse {
+            display: none;
+        }
+    }
+
+
+    @media (max-width: 767.98px) {
+        .navbar-collapse {
+            display: none;
+        }
+    }
+
+
+    @media (min-width: 991.98px) {
+        .navbar {
+            display: flex;
+        }
+    }

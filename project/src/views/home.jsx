@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Categories from "../components/categories";
 import Mobile from "../components/navbar_mb";
+import Navbar from "../components/navbar_sc";
 
 
 export default class Main extends Component {
@@ -12,13 +13,15 @@ export default class Main extends Component {
     };
   }
 
- 
+
   render() {
     return (
       <div className="container-fluid public-container">
-        <div className="welcome">
-          <h6 className="text-white pb-5 pt-4">Välkommen {this.state.user},</h6>
-        </div>
+
+
+        {/*  --------------Navbar------------------- */}
+
+        <Navbar user={this.state.user} />
         <Categories />
         <div className="row instructions">
           <div className="col-md-10 mx-auto content">
