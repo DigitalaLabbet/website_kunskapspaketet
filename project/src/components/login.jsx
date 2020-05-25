@@ -8,8 +8,8 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
     this.state = {
-      email: 'test@test.com',
-      password: 'Test123!',
+      email: '',
+      password: '',
     };
   }
 
