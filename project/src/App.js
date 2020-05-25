@@ -1,35 +1,30 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 /* thired part packages */
 
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 /* our components */
-import "./styles/css/main.css";
-import "./styles/css/home.css";
+import './styles/css/main.css';
+import './styles/css/home.css';
 
 import Main from './views/main';
-import Home from "./views/home";
-import Categories_list from "./views/categoriesList";
-import Lecture from "./views/lecture";
-import fire from './config/Fire';
+import Home from './views/home';
+import Categories_list from './views/categoriesList';
+import Lecture from './views/lecture';
+import { withFirebase } from './firebase';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
-    }
+      user: {},
+    };
   }
 
   componentDidMount() {
-    this.authListener();
-  }
-
-  authListener() {
-    fire.auth().onAuthStateChanged((user) => {
+    // check if user is signed in
+    this.props.firebase.auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
       } else {
@@ -54,4 +49,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withFirebase(App);

@@ -1,37 +1,48 @@
-import React, { Component } from "react";
-import fire from "../config/Fire";
+import React, { Component } from 'react';
+import { withFirebase } from '../firebase';
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
     this.state = {
-      email: '',
-      password: ''
-    }
+      email: 'test@test.com',
+      password: 'Test123!',
+    };
   }
 
+  _isMounted = false;
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
   login(e) {
     e.preventDefault();
-    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
-    }).catch((error) => {
-      console.log(error);
+    const { email, password } = this.state;
+    this.props.firebase.doSignInWithEmailAndPassword(email, password).catch((err) => {
+      console.log('doSignInWithEmailAndPassword - err: ', err);
     });
   }
 
   signup(e) {
     e.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-    .catch((error) => {
-      console.log(error);
-    })
+    const { email, password } = this.state;
+    this.props.firebase.doCreateUserWithEmailAndPassword(email, password).catch((err) => {
+      console.log('doCreateUserWithEmailAndPassword - err: ', err);
+    });
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    if (this._isMounted) {
+      this.setState({ [e.target.name]: e.target.value });
+    }
+  }
+
+  componentWillUnmount() {
+    console.log('login UNMOUNTED');
+    this._isMounted = false;
   }
 
   render() {
@@ -61,13 +72,17 @@ class Login extends Component {
                 placeholder="Lösenord"
               />
             </div>
-            <button type="submit" onClick={this.login} className="btn btn-primary" name="values">Logga in</button>
-            <button onClick={this.signup} className="btn btn-success" name="values">Registrera</button>
+            <button type="submit" onClick={this.login} className="btn btn-primary" name="values">
+              Logga in
+            </button>
+            <button onClick={this.signup} className="btn btn-success" name="values">
+              Registrera
+            </button>
           </form>
         </div>
       </div>
     );
   }
-};
+}
 
-export default Login;
+export default withFirebase(Login);
