@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withFirebase } from '../firebase';
+import { firebaseConnect } from 'react-redux-firebase';
 
 class Login extends Component {
   constructor(props) {
@@ -13,36 +13,28 @@ class Login extends Component {
     };
   }
 
-  _isMounted = false;
-
-  componentDidMount() {
-    this._isMounted = true;
-  }
   login(e) {
     e.preventDefault();
-    const { email, password } = this.state;
-    this.props.firebase.doSignInWithEmailAndPassword(email, password).catch((err) => {
+    this.props.firebase.login(this.state).catch((err) => {
       console.log('doSignInWithEmailAndPassword - err: ', err);
     });
   }
 
   signup(e) {
     e.preventDefault();
-    const { email, password } = this.state;
-    this.props.firebase.doCreateUserWithEmailAndPassword(email, password).catch((err) => {
+    const profile = {
+      email: this.state.email,
+      phoneNumber: '',
+      name: '',
+      role: 'student',
+    };
+    this.props.firebase.createUser(this.state, profile).catch((err) => {
       console.log('doCreateUserWithEmailAndPassword - err: ', err);
     });
   }
 
   handleChange(e) {
-    if (this._isMounted) {
-      this.setState({ [e.target.name]: e.target.value });
-    }
-  }
-
-  componentWillUnmount() {
-    console.log('login UNMOUNTED');
-    this._isMounted = false;
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -85,4 +77,4 @@ class Login extends Component {
   }
 }
 
-export default withFirebase(Login);
+export default firebaseConnect()(Login);
