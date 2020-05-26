@@ -62,19 +62,12 @@ export default class Admin extends Component {
                 </tr>
               </thead>
               <tbody>
-<<<<<<< HEAD
               {
                 this.state.users.map(user => 
                   <tr>
                   <td>{user.role}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-=======
-                <tr>
-                  <td>lärare</td>
-                  <td>Petter</td>
-                  <td>petter@gmail.com</td>
->>>>>>> 53bdf997b17743fb116002ac03246c939a143ebd
                   <td>
                         <button className="btn btn-danger btn-sm">
                           <i class="fa fa-eraser" aria-hidden="true"></i>
