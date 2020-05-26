@@ -51,7 +51,7 @@ class Login extends Component {
                 className="form-control"
                 name="email"
                 placeholder="E-post"
-              />
+              />  
             </div>
             <div className="form-group">
               <input

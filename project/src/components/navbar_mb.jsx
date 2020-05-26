@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Mobile_navbar = (props) => {
   return (
     <div className="mobile-navbar">
+
       <ul>
         <li>
           <i className="fa fa-sign-out fa-lg" aria-hidden="true"></i>
@@ -19,6 +20,7 @@ const Mobile_navbar = (props) => {
           <i className="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
         </li>
       </ul>
+
     </div>
   );
 };

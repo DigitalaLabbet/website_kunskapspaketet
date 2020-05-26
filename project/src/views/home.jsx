@@ -14,6 +14,10 @@ class Home extends Component {
       user: null,
     };
   }
+  componentDidMount() {
+    console.log(this.props.user);
+    
+  }
 
   logout() {
     this.props.firebase.logout();
