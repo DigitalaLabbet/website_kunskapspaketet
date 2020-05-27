@@ -2,73 +2,35 @@
 /*    home     */
 /*-------------*/
 .categories ul {
-    margin: 0;
-    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    padding: 0;
+    row-gap: 10px;
+    column-gap: 10px;
+    margin: 0 10px;
 }
 
 .categories ul li {
-    color: white;
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-    background-color: teal;
-    border-radius: 10px;
+    padding: 40px 0;
     text-align: center;
-    padding-top: 60px;
+    color: #ffffff;
     cursor: pointer;
+    border-radius: 3px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.categories ul li:nth-child(1) {
-    background-color: #e92d2d;
+.categories ul li:hover {
+    transform: scale(1.05);
 }
 
-.categories ul li:nth-child(2) {
-    background-color: #569be5;
+.categories ul li h4 {
+    margin: 0;
 }
 
-.categories ul li:nth-child(3) {
-    background-color: #efe818;
-}
-
-.categories ul li:nth-child(4) {
-    background-color: #86c793;
-}
-
-.categories ul li:nth-child(5) {
-    background-color: #c49e33;
-}
-
-.categories ul li:nth-child(6) {
-    background-color: #8c939a;
-}
-
-@media only screen and (min-width: 500px) {
-    @keyframes background-color {
-        0% {
-            transform: scale(1, 1);
-        }
-        50% {
-            transform: scale(1.4, 1.4);
-        }
-        100% {
-            transform: scale(1.2, 1.2);
-        }
-    }
-
-    .categories ul li:hover {
-        animation: background-color 2s ease-in-out;
-        animation-iteration-count: unset;
-    }
-}
 /*----------------*/
 /* mobile Navbar  */
 /*----------------*/
-
 .mobile-navbar {
     background-color: #314f6f;
     width: 100%;

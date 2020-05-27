@@ -9,39 +9,52 @@ import { compose } from 'redux';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.logout = this.logout.bind(this);
     this.state = {
       user: null,
+      lectures: [],
     };
+    this.loaded = false;
   }
 
-  logout() {
-    this.props.firebase.logout();
+  componentDidMount() {
+    this.props.firestore
+      .collection('lectures')
+      .get()
+      .then((snapshot) => {
+        const lectures = snapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        });
+        this.setState({ lectures });
+        this.loaded = true;
+      });
   }
 
   render() {
     const profile = this.props.profile;
+    const lectures = this.state.lectures;
+
     return (
       <div className="container-fluid public-container">
-        <div className="welcome">
-          <h6 className="text-white pb-5 pt-4">Välkommen {profile.name ? profile.name : profile.email}</h6>
-          <button onClick={this.logout} className="btn btn-danger">
-            Logga ut
-          </button>
-        </div>
-        <Categories />
-        <div className="row instructions">
-          <div className="col-md-10 mx-auto pb-5 content">
-            <h5>instruktioner om hur eleverna kan använda kategorierna</h5>
-            <hr />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id recusandae commodi dolorem aperiam quibusdam,
-              itaque temporibus nobis, praesentium, corrupti officiis debitis unde voluptate quaerat veritatis. Sed
-              officiis nihil ipsum vitae!
-            </p>
-          </div>
-        </div>
-        <Navbar />
+        {lectures.length > 0 && (
+          <>
+            <div className="welcome">
+              <h6 className="text-white pb-5 pt-4">Välkommen {profile.name ? profile.name : profile.email}</h6>
+            </div>
+            <Categories lectures={this.state.lectures} />
+            <div className="row instructions">
+              <div className="col-md-10 mx-auto pb-5 content">
+                <h5>instruktioner om hur eleverna kan använda kategorierna</h5>
+                <hr />
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Id recusandae commodi dolorem aperiam
+                  quibusdam, itaque temporibus nobis, praesentium, corrupti officiis debitis unde voluptate quaerat
+                  veritatis. Sed officiis nihil ipsum vitae!
+                </p>
+              </div>
+            </div>
+            <Navbar role={profile.role} />
+          </>
+        )}
       </div>
     );
   }

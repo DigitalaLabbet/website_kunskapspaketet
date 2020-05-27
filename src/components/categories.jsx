@@ -1,27 +1,14 @@
-import React from "react";
+import React from 'react';
 
-const Categories = (props) => {
+const Categories = ({ lectures }) => {
   return (
     <div className="categories">
       <ul>
-        <li>
-          <h4>Hälsa</h4>
-        </li>
-        <li>
-          <h4>Svenska</h4>
-        </li>
-        <li>
-          <h4>SO</h4>
-        </li>
-        <li>
-          <h4>Arbetsfråga</h4>
-        </li>
-        <li>
-          <h4>utbildning</h4>
-        </li>
-        <li>
-          <h4>Annat</h4>
-        </li>
+        {lectures.map((lecture) => (
+          <li key={lecture.id} style={{ background: lecture.color }}>
+            <h4>{lecture.name}</h4>
+          </li>
+        ))}
       </ul>
     </div>
   );
