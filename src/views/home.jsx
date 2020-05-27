@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Categories from '../components/categories';
-import Mobile from '../components/navbar_mb';
+import Navbar from '../components/navbar';
 import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -41,7 +41,7 @@ class Home extends Component {
             </p>
           </div>
         </div>
-        <Mobile />
+        <Navbar />
       </div>
     );
   }

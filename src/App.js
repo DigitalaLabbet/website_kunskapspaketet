@@ -27,11 +27,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('prop: ', this.props);
     this.props.firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
       } else {
-        this.isAuthenticated = false;
         this.setState({ user: null });
       }
     });
@@ -57,17 +57,9 @@ class App extends Component {
 const enhance = compose(
   firebaseConnect(),
   firestoreConnect(),
-  connect(
-    (state) => (
-      ({ firebase: { auth, profile } }) => ({
-        auth,
-        profile,
-      }),
-      {
-        profile: state.firebase.profile,
-      }
-    )
-  )
+  connect((state) => ({
+    profile: state.firebase.profile,
+  }))
 );
 
 export default enhance(App);

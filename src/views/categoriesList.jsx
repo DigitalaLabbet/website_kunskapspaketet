@@ -1,14 +1,7 @@
-import React, { Component } from "react";
-import Mobile from "../components/navbar_mb";
+import React, { Component } from 'react';
+import Navbar from '../components/navbar';
 
 export default class Categories_list extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: "Petter ",
-    };
-  }
-
   render() {
     return (
       <div className="container-fluid public-container">
@@ -34,7 +27,7 @@ export default class Categories_list extends Component {
             <li>förläsning 9</li>
           </ul>
         </div>
-        <Mobile />
+        <Navbar />
       </div>
     );
   }
