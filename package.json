@@ -1,6 +1,6 @@
 {
   "name": "kunskapspaketet",
-  "homepage": "https://digitalalabbet.github.io/website_kunskapspaketet",
+  "homepage": "https://digitalalabbet.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
