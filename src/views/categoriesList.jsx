@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from '../components/navbar';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
-export default class Categories_list extends Component {
+class CategoriesList extends Component {
   render() {
     return (
       <div className="container-fluid public-container">
@@ -32,3 +34,11 @@ export default class Categories_list extends Component {
     );
   }
 }
+
+const enhance = compose(
+  connect((state) => ({
+    profile: state.firebase.profile,
+  }))
+);
+
+export default enhance(CategoriesList);

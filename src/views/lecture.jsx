@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+
 import Navbar from '../components/navbar';
 
-export default class Main extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: 'Petter ',
-    };
-  }
-
+class Lecture extends Component {
   render() {
+    const profile = this.props.profile;
+
     return (
       <div className="container-fluid public-container">
         <div className="lecture py-5">
@@ -47,8 +45,16 @@ export default class Main extends Component {
             </div>
           </div>
         </div>
-        <Navbar />
+        <Navbar role={profile.role} />
       </div>
     );
   }
 }
+
+const enhance = compose(
+  connect((state) => ({
+    profile: state.firebase.profile,
+  }))
+);
+
+export default enhance(Lecture);
