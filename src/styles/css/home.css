@@ -20,6 +20,10 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.categories ul li a {
+    color: inherit;
+}
+
 .categories ul li:hover {
     transform: scale(1.05);
 }
@@ -88,7 +92,6 @@
         background-image: url("../images/header_wrapper_mobile.png");
         background-size: 100% 300px;
         background-repeat: no-repeat;
-        background-attachment: fixed;
         padding: 0;
     }
     .mobile-navbar ul {
