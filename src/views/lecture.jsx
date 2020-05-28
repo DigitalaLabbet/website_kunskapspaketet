@@ -22,6 +22,10 @@ class Lecture extends Component {
       .then((snapshot) => {
         const lecture = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() };
         this.setState({ lecture });
+      })
+      .catch((err) => {
+        console.error('Couldnt get lecture with name:', lectureName, 'err:', err);
+        this.props.history.push('/');
       });
   }
   render() {
