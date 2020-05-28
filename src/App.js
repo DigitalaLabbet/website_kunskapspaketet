@@ -15,7 +15,6 @@ import './styles/css/home.css';
 import Landing from './views/landing';
 import Home from './views/home';
 import Admin from './views/admin';
-import Chat from './views/chat';
 import Settings from './views/settings';
 import Categories_list from './views/categoriesList';
 import Lecture from './views/lecture';
@@ -45,10 +44,9 @@ class App extends Component {
         {isLoaded(profile) && (
           <HashRouter>
             <Route path="/" exact component={profile.email ? Home : Landing} />
-            <Route path="/chat" component={profile.email ? Chat : Landing} />
             <Route path="/settings" component={profile.email ? Settings : Landing} />
             <Route path="/category_list" component={profile.email ? Categories_list : Landing} />
-            <Route path="/lecture" component={profile.email ? Lecture : Landing} />
+            <Route path="/lecture/:lectureName" component={profile.email ? Lecture : Landing} />
             <Route path="/admin" component={profile.email ? Admin : Landing} />
           </HashRouter>
         )}

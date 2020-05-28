@@ -13,9 +13,6 @@ const navbar = ({ role }) => {
           <i className="fa fa-users-cog"></i>
         </NavLink>
       )}
-      <NavLink exact={true} activeClassName="active" to="/chat">
-        <i className="fa fa-comment fa-lg"></i>
-      </NavLink>
       <NavLink exact={true} activeClassName="active" to="/settings">
         <i className="fa fa-user-circle fa-lg"></i>
       </NavLink>
