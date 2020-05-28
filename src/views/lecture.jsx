@@ -1,50 +1,51 @@
 import React, { Component } from 'react';
 
+import { firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import Navbar from '../components/navbar';
 
 class Lecture extends Component {
+  constructor() {
+    super();
+    this.state = {
+      lecture: null,
+    };
+  }
+  componentDidMount() {
+    const lectureName = this.props.match.params.lectureName;
+    this.props.firestore
+      .collection('lectures')
+      .where('name', '==', lectureName)
+      .get()
+      .then((snapshot) => {
+        const lecture = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() };
+        this.setState({ lecture });
+      });
+  }
   render() {
     const profile = this.props.profile;
+    const lecture = this.state.lecture;
 
     return (
       <div className="container-fluid public-container">
-        <div className="lecture py-5">
-          <div className="d-flex justify-content-center">
-            <iframe title="vidoe" width="800px" height="350px" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-          </div>
+        {lecture && (
+          <>
+            <div className="lecture py-5">
+              <div className="d-flex justify-content-center">
+                <iframe title="vidoe" width="800px" height="350px" src={lecture.videoUrl}></iframe>
+              </div>
 
-          <div className="theory row mt-5">
-            <div className="col-md-10 mx-auto content p-3">
-              <h4>Title </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam quasi est distinctio consequuntur
-                hic explicabo ducimus natus cumque, repellendus cum fuga modi minima iure quaerat suscipit, obcaecati
-                dolores amet? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam quasi est distinctio
-                consequuntur hic explicabo ducimus natus cumque, repellendus cum fuga modi minima iure quaerat suscipit,
-                obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam quasi est
-                distinctio consequuntur hic explicabo ducimus natus cumque, repellendus cum fuga modi minima iure
-                quaerat suscipit, obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Quidem, nam quasi est distinctio consequuntur hic explicabo ducimus natus cumque, repellendus cum fuga
-                modi minima iure quaerat suscipit, obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Quidem, nam quasi est distinctio consequuntur hic explicabo ducimus natus cumque,
-                repellendus cum fuga modi minima iure quaerat suscipit, obcaecati dolores amet?end minima iure quaerat
-                suscipit, obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam
-                quasi est distinctio consequuntur hic explicabo ducimus natus cumque, repellendus cum fuga modi minima
-                iure quaerat suscipit, obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Quidem, nam quasi est distinctio consequuntur hic explicabo ducimus natus cumque, repellendus cum fuga
-                modi minima iure quaerat suscipit, obcaecati dolores amet?end minima iure quaerat suscipit, obcaecati
-                dolores amet? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam quasi est distinctio
-                consequuntur hic explicabo ducimus natus cumque, repellendus cum fuga modi minima iure quaerat suscipit,
-                obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam quasi est
-                distinctio consequuntur hic explicabo ducimus natus cumque, repellendus cum fuga modi minima iure
-                quaerat suscipit, obcaecati dolores amet?end
-              </p>
+              <div className="theory row mt-5">
+                <div className="col-md-10 mx-auto content p-3">
+                  <h4>{lecture.name}</h4>
+                  <p>{lecture.information}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
         <Navbar role={profile.role} />
       </div>
     );
@@ -52,6 +53,7 @@ class Lecture extends Component {
 }
 
 const enhance = compose(
+  firestoreConnect(),
   connect((state) => ({
     profile: state.firebase.profile,
   }))

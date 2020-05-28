@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Categories = ({ lectures }) => {
   return (
@@ -6,7 +7,9 @@ const Categories = ({ lectures }) => {
       <ul>
         {lectures.map((lecture) => (
           <li key={lecture.id} style={{ background: lecture.color }}>
-            <h4>{lecture.name}</h4>
+            <Link to={'/lecture/' + lecture.name}>
+              <h4>{lecture.name}</h4>
+            </Link>
           </li>
         ))}
       </ul>

@@ -52,9 +52,9 @@ class Home extends Component {
                 </p>
               </div>
             </div>
-            <Navbar role={profile.role} />
           </>
         )}
+        <Navbar role={profile.role} />
       </div>
     );
   }

@@ -1,6 +1,5 @@
 .container-fluid {
     width: 100%;
-
 }
 
 .container-fluid .banner {
@@ -12,8 +11,7 @@
     flex-wrap: wrap;
 }
 
-.container-fluid .banner .banner-content h5,
-p {
+.container-fluid .banner .banner-content h5 {
     text-align: center;
 }
 
@@ -60,7 +58,7 @@ p {
 .login-form form input {
     width: 100%;
     margin: 10px 5px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 13px;
 }
 
@@ -69,16 +67,15 @@ p {
     width: 150px;
 }
 
-
 @media only screen and (max-width: 500px) {
     /*-------------*/
     /*    main     */
     /*-------------*/
 
-    .main-container{
+    .main-container {
         width: 100%;
         height: auto;
-        background-image: url('../images/header_wrapper_mobile.png');
+        background-image: url("../images/header_wrapper_mobile.png");
         background-size: 500px;
         background-repeat: no-repeat;
         padding: 0;
@@ -144,77 +141,73 @@ p {
         max-width: 300px;
         margin: 10px 5px;
     }
-
-
 }
 
-    /*--------------------*/
-    /*    lecture list     */
-    /*---------------------*/
+/*--------------------*/
+/*    lecture list     */
+/*---------------------*/
 
-    .lecture_list {
-        width: 100%;
-        height: auto;
-    }
+.lecture_list {
+    width: 100%;
+    height: auto;
+}
 
+.lecture_list ul {
+    max-width: 800px;
+    height: auto;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lecture_list ul li {
+    background-color: #569be5;
+    width: 100%;
+    height: 100px;
+    margin: 10px;
+    text-align: center;
+    padding-top: 35px;
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
     .lecture_list ul {
         max-width: 800px;
         height: auto;
         margin: 0;
-        padding: 10px;
+        padding: 100px 10px;
         list-style: none;
         margin: 0 auto;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
+}
 
-    .lecture_list ul li{
-        background-color: #569BE5;
-        width: 100%;
-        height: 100px;
-        margin: 10px;
-        text-align: center;
-        padding-top: 35px;
-        font-size: 25px;
-        font-family: 'Montserrat', sans-serif;
-        color: white;
-        font-weight: 800;
-        cursor: pointer;
-    }
+/*--------------------*/
+/*    lecture        */
+/*---------------------*/
 
-    @media only screen and (max-width: 500px) {
-        .lecture_list ul {
-            max-width: 800px;
-            height: auto;
-            margin: 0;
-            padding: 100px 10px;
-            list-style: none;
-            margin: 0 auto;
+.public-container .lecture {
+    width: 100%;
+    height: auto;
+    padding-bottom: 100px;
+}
+.public-container .lecture .theory {
+    margin: 0;
+}
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-        }
-    }
-
-    
-    /*--------------------*/
-    /*    lecture        */
-    /*---------------------*/
-
-    .public-container .lecture {
-       width: 100%;
-       height: auto;
-       padding-bottom: 100px;
-    }
-    .public-container .lecture .theory{
-        margin: 0;
-     }
-
-     .public-container .lecture .theory .content{
-        padding: 0;
-     }
+.public-container .lecture .theory .content {
+    padding: 0;
+}
