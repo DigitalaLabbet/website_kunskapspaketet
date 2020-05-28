@@ -2,10 +2,16 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+const checkLectureActive = (match, location) => {
+  if (!location) return false;
+  const { pathname } = location;
+  return pathname === '/' || pathname.startsWith('/lecture');
+};
+
 const navbar = ({ role }) => {
   return (
     <div className="mobile-navbar">
-      <NavLink exact={true} activeClassName="active" to="/">
+      <NavLink exact={true} activeClassName="active" to="/" isActive={checkLectureActive}>
         <i className="fa fa-home fa-lg"></i>
       </NavLink>
       {role === 'teacher' && (
