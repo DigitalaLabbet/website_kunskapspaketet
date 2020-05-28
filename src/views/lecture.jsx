@@ -4,46 +4,23 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+import Topbar from '../components/topbar';
 import Navbar from '../components/navbar';
 
 class Lecture extends Component {
-  constructor() {
-    super();
-    this.state = {
-      lecture: null,
-    };
-  }
-  componentDidMount() {
-    const lectureName = this.props.match.params.lectureName;
-    this.props.firestore
-      .collection('lectures')
-      .where('name', '==', lectureName)
-      .get()
-      .then((snapshot) => {
-        const lecture = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() };
-        this.setState({ lecture });
-      })
-      .catch((err) => {
-        console.error('Couldnt get lecture with name:', lectureName, 'err:', err);
-        this.props.history.push('/');
-      });
-  }
   render() {
     const profile = this.props.profile;
-    const lecture = this.state.lecture;
+    const lecture = this.props.currentLecture;
 
     return (
-      <div className="container-fluid public-container">
+      <div>
         {lecture && (
           <>
-            <div className="lecture py-5">
-              <div className="d-flex justify-content-center">
-                <iframe title="vidoe" width="800px" height="350px" src={lecture.videoUrl}></iframe>
-              </div>
-
-              <div className="theory row mt-5">
-                <div className="col-md-10 mx-auto content p-3">
-                  <h4>{lecture.name}</h4>
+            <Topbar name={lecture.name} backLink="/" color={lecture.color} />
+            <div className="container mb-navbar">
+              <div className="lecture">
+                <iframe title="vidoe" width="100%" height="250px" src={lecture.videoUrl}></iframe>
+                <div>
                   <p>{lecture.information}</p>
                 </div>
               </div>
@@ -57,9 +34,16 @@ class Lecture extends Component {
 }
 
 const enhance = compose(
-  firestoreConnect(),
+  firestoreConnect((props) => [
+    {
+      collection: 'lectures',
+      where: ['name', '==', props.match.params.lectureName],
+      storeAs: 'currentLecture',
+    },
+  ]),
   connect((state) => ({
     profile: state.firebase.profile,
+    currentLecture: state.firestore.ordered.currentLecture && state.firestore.ordered.currentLecture[0],
   }))
 );
 

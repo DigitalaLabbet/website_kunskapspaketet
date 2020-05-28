@@ -7,40 +7,20 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null,
-      lectures: [],
-    };
-    this.loaded = false;
-  }
-
-  componentDidMount() {
-    this.props.firestore
-      .collection('lectures')
-      .get()
-      .then((snapshot) => {
-        const lectures = snapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
-        this.setState({ lectures });
-        this.loaded = true;
-      });
-  }
-
   render() {
-    const profile = this.props.profile;
-    const lectures = this.state.lectures;
+    const { profile } = this.props;
+    const { lectures } = this.props;
 
     return (
-      <div className="container-fluid public-container">
-        {lectures.length > 0 && (
-          <>
+      <div>
+        {lectures && lectures.length > 0 && (
+          <div className="container-fluid public-container">
             <div className="welcome">
-              <h6 className="text-white pb-5 pt-4">Välkommen {profile.name ? profile.name : profile.email}</h6>
+              <h6 className="text-white text-center pb-3 pt-3">
+                Välkommen {profile.name ? profile.name : profile.email}
+              </h6>
             </div>
-            <Categories lectures={this.state.lectures} />
+            <Categories lectures={lectures} />
             <div className="row instructions">
               <div className="col-md-10 mx-auto pb-5 content">
                 <h5>instruktioner om hur eleverna kan använda kategorierna</h5>
@@ -52,7 +32,7 @@ class Home extends Component {
                 </p>
               </div>
             </div>
-          </>
+          </div>
         )}
         <Navbar role={profile.role} />
       </div>
@@ -61,9 +41,10 @@ class Home extends Component {
 }
 const enhance = compose(
   firebaseConnect(),
-  firestoreConnect(),
+  firestoreConnect(() => ['lectures']),
   connect((state) => ({
     profile: state.firebase.profile,
+    lectures: state.firestore.ordered.lectures,
   }))
 );
 
