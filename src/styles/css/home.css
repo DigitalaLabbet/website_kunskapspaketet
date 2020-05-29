@@ -48,11 +48,18 @@
 
 .topbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-.topbar i {
+.topbar .back-button {
+    left: 0;
+    color: #ffffff;
+}
+
+.topbar .info-button {
+    right: 0;
+    background: inherit;
+    border: 0;
     color: #ffffff;
 }
 
