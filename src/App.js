@@ -7,8 +7,10 @@ import { Route, HashRouter } from 'react-router-dom';
 import { isLoaded, firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { ToastContainer, Slide } from 'react-toastify';
 
 /* our components */
+import 'react-toastify/dist/ReactToastify.css';
 import './styles/css/main.css';
 import './styles/css/home.css';
 
@@ -41,6 +43,18 @@ class App extends Component {
     const profile = this.props.profile;
     return (
       <div className="app">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          pauseOnHover
+          closeButton={false}
+          transition={Slide}
+        />
         {isLoaded(profile) && (
           <HashRouter>
             <Route path="/" exact component={profile.email ? Home : Landing} />
