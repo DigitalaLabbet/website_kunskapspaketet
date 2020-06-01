@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import RegisterForm from '../components/RegisterForm';
 import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+// import { TablePagination } from 'react-pagination-table';
+import '../styles/css/admin.css';
+import UserTable from '../components/userTable';
+import LectureTable from '../components/lectureTable';
+import Navbar_mb from '../components/navbar_mb';
+import { connect } from 'react-redux';
 
 class Admin extends Component {
   constructor(props) {
@@ -10,7 +16,7 @@ class Admin extends Component {
 
     this.state = {
       users: [],
-      lectures: [],
+      lectures: []
     };
   }
 
@@ -18,116 +24,66 @@ class Admin extends Component {
     this.props.firestore
       .collection('users')
       .get()
-      .then((snapshot) => {
-        const users = snapshot.docs.map((doc) => {
+      .then(snapshot => {
+        const users = snapshot.docs.map(doc => {
           return { id: doc.id, ...doc.data() };
         });
         this.setState({ users });
       });
-      this.props.firestore
+
+    this.props.firestore
       .collection('lectures')
       .get()
-      .then((snapshot) => {
-        const lectures = snapshot.docs.map((doc) => {
+      .then(snapshot => {
+        const lectures = snapshot.docs.map(doc => {
           return { id: doc.id, ...doc.data() };
         });
         this.setState({ lectures });
       });
   }
 
-
   render() {
-    let { users, lectures } = this.state
-    
+    const { profile } = this.props;
+
     return (
-      <div className="container">
-        <header>
-          <ul>
-            <li>lärare: jens</li>
-            <li>email: jens@gmail.com</li>
-          </ul>
+      <div className="container admin">
+        <header className="adminHeader">
+          <nav>
+            <h6>Adminstration</h6>
+            <ul>
+              <li>användare:  {profile.name}</li>
+              <li><i class="fa fa-cog fa-2x" aria-hidden="true"></i></li>
+            </ul>
+          </nav>
+
+          <div className="edit">
+            <ul>
+              <li>
+                <button className="btn btn-primary " data-toggle="modal" data-target="#adduser"><i className="fa fa-plus fa-lg mr-2" aria-hidden="true"></i> Elev</button> 
+              </li>
+              <li>
+              <button className="btn btn-info"  data-toggle="modal" data-target="#lecture"><i className="fa fa-plus fa-lg mr-2" aria-hidden="true"></i> Föreläsning</button> 
+              </li>
+            </ul>
+          </div>
         </header>
         <main>
-          <div className="student mt-5">
-            <div className="w-100">
-              <h5 className="text-center">användare tabell</h5>
-            </div>
-            <table className="table table-sm">
-              <thead className="bg-Secondary">
-                <tr>
-                  <th scope="col">roll</th>
-                  <th scope="col">Namn</th>
-                  <th scope="col">e-post</th>
-                  <th scope="col">
-                    <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#adduser">
-                      <i className="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.role}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.phoneNumber}</td>
-                    <td>
-                      <button className="btn btn-danger btn-sm">
-                        <i className="fa fa-eraser" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {
-            lectures.map((lecture) => (
-              <div className="lecture mt-5" id={lecture.name}  key={lecture.id}>
-              <div className="w-100" style={{backgroundColor: lecture.color}}>
-                <h5 className="text-center">{lecture.name}</h5>
-              </div>
-              <table className="table table-sm">
-                <thead className="bg-Secondary">
-                  <tr>
-                    <th scope="col">kategori</th>
-                    <th scope="col">video</th>
-                    <th scope="col">info</th>
-                    <th scope="col">
-                      <button className="btn btn-primary btn-sm" data-toggle="modal" data-target="#lecture">
-                        <i className="fa fa-plus" aria-hidden="true"></i>
-                      </button>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    
-                  }
-                  <tr>
-                    <td>hälsa</td>
-                    <td>https://getbootstra.....</td>
-                    <td>Lorem ipsum dolor, sit amet....</td>
-                    <td>
-                      <button className="btn btn-danger mr-1 btn-sm">
-                        <i className="fa fa-eraser" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            ))
-          }
-       
+          <UserTable users={this.state.users} />
+          <LectureTable lectures={this.state.lectures} />
         </main>
         <RegisterForm />
+        <Navbar_mb />
       </div>
     );
   }
 }
 
-const enhance = compose(firebaseConnect(), firestoreConnect());
+const enhance = compose(
+  firebaseConnect(),
+  firestoreConnect(),
+  connect(state => ({
+    profile: state.firebase.profile
+  }))
+);
 
 export default enhance(Admin);

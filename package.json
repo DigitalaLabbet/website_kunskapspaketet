@@ -11,7 +11,9 @@
     "gh-pages": "^2.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-data-table-component": "^6.9.3",
     "react-dom": "^16.13.1",
+    "react-pagination-table": "^2.0.2",
     "react-redux": "^7.2.0",
     "react-redux-firebase": "^3.4.0",
     "react-router-dom": "^5.2.0",
@@ -19,7 +21,8 @@
     "react-video-tag": "0.0.10",
     "redux": "^4.0.5",
     "redux-firestore": "^0.13.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
