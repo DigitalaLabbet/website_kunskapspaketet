@@ -7,7 +7,7 @@ const Categories = ({ lectures }) => {
       <ul>
         {lectures.map((lecture) => (
           <li key={lecture.id} style={{ background: lecture.color }}>
-            <Link to={'/lecture/' + lecture.name}>
+            <Link to={'/lecture/' + lecture.id}>
               <h4>{lecture.name}</h4>
             </Link>
           </li>

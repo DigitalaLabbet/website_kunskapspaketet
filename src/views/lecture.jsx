@@ -6,11 +6,11 @@ import { compose } from 'redux';
 
 import Topbar from '../components/topbar';
 import Navbar from '../components/navbar';
+import QuizModal from '../components/quiz-modal';
 
 class Lecture extends Component {
   render() {
-    const profile = this.props.profile;
-    const lecture = this.props.currentLecture;
+    const { profile, lecture, quizzes } = this.props;
 
     return (
       <div>
@@ -24,6 +24,7 @@ class Lecture extends Component {
                   <p>{lecture.information}</p>
                 </div>
               </div>
+              {quizzes && quizzes.map((quiz) => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
             </div>
           </>
         )}
@@ -37,13 +38,20 @@ const enhance = compose(
   firestoreConnect((props) => [
     {
       collection: 'lectures',
-      where: ['name', '==', props.match.params.lectureName],
-      storeAs: 'currentLecture',
+      doc: props.match.params.lectureName.toLowerCase(),
+      storeAs: 'lecture',
+    },
+    {
+      collection: 'lectures',
+      doc: props.match.params.lectureName.toLowerCase(),
+      subcollections: [{ collection: 'quiz' }],
+      storeAs: 'quizzes',
     },
   ]),
   connect((state) => ({
     profile: state.firebase.profile,
-    currentLecture: state.firestore.ordered.currentLecture && state.firestore.ordered.currentLecture[0],
+    lecture: state.firestore.ordered.lecture && state.firestore.ordered.lecture[0],
+    quizzes: state.firestore.ordered.quizzes,
   }))
 );
 
