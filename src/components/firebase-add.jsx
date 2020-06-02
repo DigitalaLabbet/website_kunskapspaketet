@@ -38,7 +38,13 @@ class FirebaseAdd extends Component {
   }
 
   render() {
-    return <button onClick={this.addLectures}>ADD EVERYTHING database</button>;
+    return (
+      <div className="text-center py-2">
+        <button className="btn btn-success" onClick={this.addLectures}>
+          Add lecture data to firestore
+        </button>
+      </div>
+    );
   }
 }
 const enhance = compose(firebaseConnect(), firestoreConnect());

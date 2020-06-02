@@ -1,7 +1,7 @@
 [
   {
     "documentId": "sprakframjande-insatser",
-    "color": "#8c939a",
+    "color": "#ed8936",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Språkfrämjande insatser",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -66,7 +66,7 @@
   },
   {
     "documentId": "arbetsmarknad",
-    "color": "#86c793",
+    "color": "#ecc94b",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Arbetsmarknad",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -160,7 +160,7 @@
   },
   {
     "documentId": "studier",
-    "color": "#efe818",
+    "color": "#c49e33",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Studier",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -250,7 +250,7 @@
   },
   {
     "documentId": "halsa",
-    "color": "#e92d2d",
+    "color": "#48bb78",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Hälsa",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -330,7 +330,7 @@
   },
   {
     "documentId": "covid-19",
-    "color": "#569be5",
+    "color": "#f56565",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Covid-19",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -430,7 +430,7 @@
   },
   {
     "documentId": "jamstalldhet",
-    "color": "#c49e33",
+    "color": "#4299e1",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Jämställdhet",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -530,7 +530,7 @@
   },
   {
     "documentId": "samhallsinformation",
-    "color": "#c49e33",
+    "color": "#9f7aea",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Samhällsinformation",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -591,7 +591,7 @@
   },
   {
     "documentId": "viktig-myndighetsinformation",
-    "color": "#c49e33",
+    "color": "#C0C0C0",
     "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
     "name": "Viktig myndighetsinformation",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",

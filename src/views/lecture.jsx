@@ -23,8 +23,8 @@ class Lecture extends Component {
                 <div>
                   <p>{lecture.information}</p>
                 </div>
+                {quizzes && quizzes.map((quiz) => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
               </div>
-              {quizzes && quizzes.map((quiz) => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
             </div>
           </>
         )}

@@ -40,7 +40,7 @@ class quizModal extends Component {
     };
 
     return (
-      <div>
+      <div className="text-center">
         <button className="btn btn-success" onClick={this.handleShow}>
           Start quiz
         </button>
@@ -50,7 +50,9 @@ class quizModal extends Component {
             <Quiz quiz={quiz} locale={this.quizLocale} onComplete={onCompleteAction} />
           </Modal.Body>
           <Modal.Footer>
-            <button onClick={this.handleClose}>CLOSE</button>
+            <button className="btn btn-sm btn-danger" onClick={this.handleClose}>
+              <i className="fa fa-times"></i>
+            </button>
           </Modal.Footer>
         </Modal>
       </div>
