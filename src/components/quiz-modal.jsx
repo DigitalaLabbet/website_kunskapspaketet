@@ -34,9 +34,11 @@ class quizModal extends Component {
 
     const onCompleteAction = (obj) => {
       console.log('complete: ', obj);
-      const { firestore, userUid, lectureId } = this.props;
+      const { firestore, userUid, lectureId, quiz } = this.props;
 
-      firestore.collection('users').doc(userUid).collection(lectureId).doc(quiz.id).set(obj);
+      const data = Object.assign({}, { ...obj, quizTitle: quiz.quizTitle });
+
+      firestore.collection('users').doc(userUid).collection(lectureId).doc(quiz.id).set(data);
     };
 
     return (
