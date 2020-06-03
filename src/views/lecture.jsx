@@ -1,68 +1,58 @@
-import React, { Component } from "react";
-// import { videoTagString, VideoTag } from 'react-video-tag'
+import React, { Component } from 'react';
 
-import Mobile from "../components/navbar_mb";
+import { firestoreConnect } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
-export default class Main extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: "Petter ",
-    };
-  }
+import Topbar from '../components/topbar';
+import Navbar from '../components/navbar';
+import QuizModal from '../components/quiz-modal';
 
+class Lecture extends Component {
   render() {
-    return (
-      <div className="container-fluid public-container">
-        <div className="lecture py-5">
-          <div className="d-flex justify-content-center">
-            <iframe title="vidoe" width="800px" height="350px" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-          </div>
+    const { profile, lecture, quizzes } = this.props;
 
-          <div className="theory row mt-5">
-            <div className="col-md-10 mx-auto content p-3">
-              <h4>Title </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Quidem, nam quasi est distinctio consequuntur hic explicabo
-                ducimus natus cumque, repellendus cum fuga modi minima iure
-                quaerat suscipit, obcaecati dolores amet? Lorem ipsum dolor sit
-                amet, consectetur adipisicing elit. Quidem, nam quasi est
-                distinctio consequuntur hic explicabo ducimus natus cumque,
-                repellendus cum fuga modi minima iure quaerat suscipit,
-                obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Quidem, nam quasi est distinctio consequuntur
-                hic explicabo ducimus natus cumque, repellendus cum fuga modi
-                minima iure quaerat suscipit, obcaecati dolores amet? Lorem
-                ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam
-                quasi est distinctio consequuntur hic explicabo ducimus natus
-                cumque, repellendus cum fuga modi minima iure quaerat suscipit,
-                obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Quidem, nam quasi est distinctio consequuntur
-                hic explicabo ducimus natus cumque, repellendus cum fuga modi
-                minima iure quaerat suscipit, obcaecati dolores amet?end
-                minima iure quaerat suscipit, obcaecati dolores amet? Lorem
-                ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam
-                quasi est distinctio consequuntur hic explicabo ducimus natus
-                cumque, repellendus cum fuga modi minima iure quaerat suscipit,
-                obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Quidem, nam quasi est distinctio consequuntur
-                hic explicabo ducimus natus cumque, repellendus cum fuga modi
-                minima iure quaerat suscipit, obcaecati dolores amet?end
-                minima iure quaerat suscipit, obcaecati dolores amet? Lorem
-                ipsum dolor sit amet, consectetur adipisicing elit. Quidem, nam
-                quasi est distinctio consequuntur hic explicabo ducimus natus
-                cumque, repellendus cum fuga modi minima iure quaerat suscipit,
-                obcaecati dolores amet? Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Quidem, nam quasi est distinctio consequuntur
-                hic explicabo ducimus natus cumque, repellendus cum fuga modi
-                minima iure quaerat suscipit, obcaecati dolores amet?end
-              </p>
+    return (
+      <div>
+        {lecture && (
+          <>
+            <Topbar name={lecture.name} backLink="/" color={lecture.color} />
+            <div className="container mb-navbar">
+              <div className="lecture">
+                <iframe title="vidoe" width="100%" height="250px" src={lecture.videoUrl}></iframe>
+                <div>
+                  <p>{lecture.information}</p>
+                </div>
+                {quizzes && quizzes.map((quiz) => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
+              </div>
             </div>
-          </div>
-        </div>
-        <Mobile />
+          </>
+        )}
+        <Navbar role={profile.role} />
       </div>
     );
   }
 }
+
+const enhance = compose(
+  firestoreConnect((props) => [
+    {
+      collection: 'lectures',
+      doc: props.match.params.lectureName.toLowerCase(),
+      storeAs: 'lecture',
+    },
+    {
+      collection: 'lectures',
+      doc: props.match.params.lectureName.toLowerCase(),
+      subcollections: [{ collection: 'quiz' }],
+      storeAs: 'quizzes',
+    },
+  ]),
+  connect((state) => ({
+    profile: state.firebase.profile,
+    lecture: state.firestore.ordered.lecture && state.firestore.ordered.lecture[0],
+    quizzes: state.firestore.ordered.quizzes,
+  }))
+);
+
+export default enhance(Lecture);

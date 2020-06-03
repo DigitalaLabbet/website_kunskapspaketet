@@ -1,28 +1,22 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Categories = (props) => {
+import '../styles/css/categories.css';
+
+const Categories = ({ lectures }) => {
   return (
-    <div className="categories">
-      <ul>
-        <li>
-          <h4>Hälsa</h4>
-        </li>
-        <li>
-          <h4>Svenska</h4>
-        </li>
-        <li>
-          <h4>SO</h4>
-        </li>
-        <li>
-          <h4>Arbetsfråga</h4>
-        </li>
-        <li>
-          <h4>utbildning</h4>
-        </li>
-        <li>
-          <h4>Annat</h4>
-        </li>
-      </ul>
+    <div className="px-2">
+      <div className="categories-container">
+        {lectures.map((lecture) => (
+          <Link
+            className="categories-item"
+            key={lecture.id}
+            style={{ background: lecture.color }}
+            to={'/lecture/' + lecture.id}>
+            {lecture.name}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

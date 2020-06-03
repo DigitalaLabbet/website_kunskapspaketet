@@ -1,56 +1,48 @@
 import React, { Component } from 'react';
 
 import Categories from '../components/categories';
-import Mobile from '../components/navbar_mb';
+import Navbar from '../components/navbar';
 import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.logout = this.logout.bind(this);
-    this.state = {
-      user: null,
-    };
-  }
-
-  logout() {
-    this.props.firebase.logout();
-  }
-
   render() {
-    const profile = this.props.profile;
+    const { profile } = this.props;
+    const { lectures } = this.props;
+
     return (
-      <div className="container-fluid public-container">
-        <div className="welcome">
-          <h6 className="text-white pb-5 pt-4">Välkommen {profile.name ? profile.name : profile.email}</h6>
-          <button onClick={this.logout} className="btn btn-danger">
-            Logga ut
-          </button>
-        </div>
-        <Categories />
-        <div className="row instructions">
-          <div className="col-md-10 mx-auto pb-5 content">
-            <h5>instruktioner om hur eleverna kan använda kategorierna</h5>
-            <hr />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id recusandae commodi dolorem aperiam quibusdam,
-              itaque temporibus nobis, praesentium, corrupti officiis debitis unde voluptate quaerat veritatis. Sed
-              officiis nihil ipsum vitae!
-            </p>
+      <div>
+        {lectures && lectures.length > 0 && (
+          <div className="container-fluid public-container">
+            <div className="welcome">
+              <h6 className="text-white text-center py-3">Välkommen {profile.name ? profile.name : profile.email}</h6>
+            </div>
+            <Categories lectures={lectures} />
+            <div className="row m-0 mt-4 px-2">
+              <div className="col-md-10 mx-auto px-0 pb-5">
+                <h5>instruktioner om hur eleverna kan använda kategorierna</h5>
+                <hr className="my-2" />
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Id recusandae commodi dolorem aperiam
+                  quibusdam, itaque temporibus nobis, praesentium, corrupti officiis debitis unde voluptate quaerat
+                  veritatis. Sed officiis nihil ipsum vitae!
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-        <Mobile />
+        )}
+        <Navbar role={profile.role} />
       </div>
     );
   }
 }
 const enhance = compose(
   firebaseConnect(),
-  firestoreConnect(),
+  firestoreConnect(() => ['lectures']),
   connect((state) => ({
     profile: state.firebase.profile,
+    lectures: state.firestore.ordered.lectures,
   }))
 );
 

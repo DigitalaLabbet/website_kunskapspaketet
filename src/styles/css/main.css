@@ -1,30 +1,28 @@
 .container-fluid {
-    width: 100%;
-
+  width: 100%;
 }
 
 .container-fluid .banner {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.container-fluid .banner .banner-content h5,
-p {
-    text-align: center;
+.container-fluid .banner .banner-content h5 {
+  text-align: center;
 }
 
 .container-fluid .banner .banner-image {
-    max-width: 500px;
-    height: 400px;
+  max-width: 500px;
+  height: 400px;
 }
 
 .container-fluid .banner .banner-image img {
-    max-width: 100%;
-    height: 100%;
+  max-width: 100%;
+  height: 100%;
 }
 
 /*-------------*/
@@ -32,189 +30,198 @@ p {
 /*-------------*/
 
 .login {
-    max-width: 700px;
-    height: 100%;
-    margin: 75px auto;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    -webkit-box-shadow: 3px 7px 5px 0px rgba(176, 176, 176, 1);
-    -moz-box-shadow: 3px 7px 5px 0px rgba(176, 176, 176, 1);
-    box-shadow: 3px 7px 5px 0px rgba(176, 176, 176, 1);
+  max-width: 700px;
+  height: 100%;
+  margin: 75px auto;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 7px 5px 0px rgba(176, 176, 176, 1);
+  -moz-box-shadow: 3px 7px 5px 0px rgba(176, 176, 176, 1);
+  box-shadow: 3px 7px 5px 0px rgba(176, 176, 176, 1);
 }
 
 .login-form {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    margin: 0 auto;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .login-form form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form form input {
+  width: 100%;
+  margin: 10px 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+.login-form form .btn {
+  color: rgb(253, 253, 253);
+  width: 150px;
+}
+
+@media only screen and (max-width: 500px) {
+  /*-------------*/
+  /*    main     */
+  /*-------------*/
+
+  .main-container {
+    width: 100%;
+    height: auto;
+    background-image: url('../images/header_wrapper_mobile.png');
+    background-size: 500px;
+    background-repeat: no-repeat;
+    padding: 0;
+  }
+
+  .banner {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding-top: 125px;
+  }
+
+  .banner .banner-content {
+    max-width: 400px;
+    height: 125px;
+    padding: 20px;
     margin: 0 auto;
+  }
+
+  .banner .banner-content h5 {
+    color: rgb(233, 233, 233);
+    text-align: center;
+  }
+
+  .banner .banner-content p {
+    color: rgb(233, 233, 233);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .banner .banner-image {
+    display: none;
+  }
+
+  /*-------------*/
+  /*    login     */
+  /*-------------*/
+
+  .login {
+    height: 100%;
+    margin: 0;
+    margin-top: 100px;
+    border: none;
+    box-shadow: none;
+  }
+
+  .login-form {
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+    padding: 0;
+  }
+
+  .login-form form {
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+  }
 
-.login-form form input {
-    width: 100%;
+  .login-form form input {
+    max-width: 300px;
     margin: 10px 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
+  }
 }
 
-.login-form form .btn {
-    color: rgb(253, 253, 253);
-    width: 150px;
+/*--------------------*/
+/*    lecture list     */
+/*---------------------*/
+
+.lecture_list {
+  width: 100%;
+  height: auto;
 }
 
+.lecture_list ul {
+  max-width: 800px;
+  height: auto;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lecture_list ul li {
+  background-color: #569be5;
+  width: 100%;
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+  padding-top: 35px;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
 
 @media only screen and (max-width: 500px) {
-    /*-------------*/
-    /*    main     */
-    /*-------------*/
+  .lecture_list ul {
+    max-width: 800px;
+    height: auto;
+    margin: 0;
+    padding: 100px 10px;
+    list-style: none;
+    margin: 0 auto;
 
-    .main-container{
-        width: 100%;
-        height: auto;
-        background-image: url('../images/header_wrapper_mobile.png');
-        background-size: 500px;
-        background-repeat: no-repeat;
-        padding: 0;
-    }
-
-    .banner {
-        width: 100%;
-        height: auto;
-        margin: 0;
-        padding-top: 125px;
-    }
-
-    .banner .banner-content {
-        max-width: 400px;
-        height: 125px;
-        padding: 20px;
-        margin: 0 auto;
-    }
-
-    .banner .banner-content h5 {
-        color: rgb(233, 233, 233);
-        text-align: center;
-    }
-
-    .banner .banner-content p {
-        color: rgb(233, 233, 233);
-        font-size: 12px;
-        text-align: center;
-    }
-
-    .banner .banner-image {
-        display: none;
-    }
-
-    /*-------------*/
-    /*    login     */
-    /*-------------*/
-
-    .login {
-        height: 100%;
-        margin: 0;
-        margin-top: 100px;
-        border: none;
-        box-shadow: none;
-    }
-
-    .login-form {
-        width: 100%;
-        height: 200px;
-        margin-top: 50px;
-        padding: 0;
-    }
-
-    .login-form form {
-        padding-top: 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .login-form form input {
-        max-width: 300px;
-        margin: 10px 5px;
-    }
-
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-    /*--------------------*/
-    /*    lecture list     */
-    /*---------------------*/
+/*--------------------*/
+/*    lecture        */
+/*---------------------*/
 
-    .lecture_list {
-        width: 100%;
-        height: auto;
-    }
+.public-container .lecture {
+  width: 100%;
+  height: auto;
+  padding-bottom: 100px;
+}
+.public-container .lecture .theory {
+  margin: 0;
+}
 
-    .lecture_list ul {
-        max-width: 800px;
-        height: auto;
-        margin: 0;
-        padding: 10px;
-        list-style: none;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.public-container .lecture .theory .content {
+  padding: 0;
+}
 
-    .lecture_list ul li{
-        background-color: #569BE5;
-        width: 100%;
-        height: 100px;
-        margin: 10px;
-        text-align: center;
-        padding-top: 35px;
-        font-size: 25px;
-        font-family: 'Montserrat', sans-serif;
-        color: white;
-        font-weight: 800;
-        cursor: pointer;
-    }
-
-    @media only screen and (max-width: 500px) {
-        .lecture_list ul {
-            max-width: 800px;
-            height: auto;
-            margin: 0;
-            padding: 100px 10px;
-            list-style: none;
-            margin: 0 auto;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-        }
-    }
-
-    
-    /*--------------------*/
-    /*    lecture        */
-    /*---------------------*/
-
-    .public-container .lecture {
-       width: 100%;
-       height: auto;
-       padding-bottom: 100px;
-    }
-    .public-container .lecture .theory{
-        margin: 0;
-     }
-
-     .public-container .lecture .theory .content{
-        padding: 0;
-     }
+/*
+    Notify
+*/
+.Toastify__toast-container {
+  padding: 5px 5px 0;
+}
+.Toastify__toast {
+  min-height: 40px;
+  border-radius: 2px;
+}
+.Toastify__toast:not(:first-child) {
+  margin-top: 5px;
+}

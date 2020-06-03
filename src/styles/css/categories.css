@@ -1,0 +1,26 @@
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.categories-item {
+  text-align: center;
+  overflow: hidden;
+  height: 80px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.categories-item:active,
+.categories-item:hover {
+  transform: scale(1.05);
+  color: #ffffff;
+  text-decoration: none;
+}

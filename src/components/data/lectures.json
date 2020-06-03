@@ -1,0 +1,667 @@
+[
+  {
+    "documentId": "sprakframjande-insatser",
+    "color": "#ed8936",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Språkfrämjande insatser",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Språkfrämjande insatser quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Vad kan Du lära Dig när du besöker digitalaspåret.se?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Information om bostäder",
+              "Studera och träna svenska",
+              "Olika språkövningar",
+              "Hur kontaktar du myndigheter, t ex Arbetsförmedlingen"
+            ],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "På Lingio.se kan Du lära Dig svenska på följande sätt:",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["En kombination genom spel och språkinlärning", "Korsord", "Tävlingar", "Övningar"],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "På hejsvenska.se hittar Du information om de politiska partierna i Sverige. På vilken nivå finns denna information?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Hejsvenska 1", "Hejsvenska 2", "Hejsvenska 3", "Hejsvenska 4"],
+            "correctAnswer": "3",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "documentId": "arbetsmarknad",
+    "color": "#ecc94b",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Arbetsmarknad",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Arbetsmarknad quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Vilken är den viktigaste frågan man ska vara förberedd på under en intervju? ",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Berätta lite om dig själv",
+              "Hur jobbar du under stress",
+              "Vad lockade dig att söka den här tjänsten",
+              "Är det något du vill tillägga"
+            ],
+            "correctAnswer": "3",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+
+          {
+            "question": "Hur kan Du få hjälp med att hitta ett yrke som passar Dig?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Via Försäkringskassan", "Via Yrkesguiden", "Via Skatteverket", "Via Skolverket"],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+
+          {
+            "question": "Vilket verktyg på arbetsförmedlingen.se kan Du använda för kärriärvägledning? ",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["\"Jobbverktyg\"", "\"Arbetsverktyg\"", "\"Jobbvalet\"", "\"Mitt jobb-Jag\""],
+            "correctAnswer": "4",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+
+          {
+            "question": "Vad menas med att validera din kompetens?  ",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Att Du beskriver och bedömer Dina erfarenheter och vad Du kan",
+              "Skriva ett personligt brev ",
+              "Skriva CV",
+              "Skriva en ansökan"
+            ],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+
+          {
+            "question": "När Du skriver ett personligt brev ska du försöka hålla Dig till följande längd på brevet: ",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Max 3 sidor", "Max 1 sida", "Max 2 sidor", "Max 4 sidor"],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "documentId": "studier",
+    "color": "#c49e33",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Studier",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Studier quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Inom vilken myndighet kan du söka lån och bidrag för att kunna studera i Sverige?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Skatteverket", "CSN", "Försäkringskassan", "Migrationsverket"],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vad heter Universitetet som finns i Växjö?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Växjö universitet",
+              "Universitetet i sjöarnas stad",
+              "Högskolan i Växjö",
+              "Linnéuniversitetet "
+            ],
+            "correctAnswer": "4",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vad kan Du läsa för kurser på en Folkhögskola? ",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Kurser på grundläggande nivå och gymnasial nivå",
+              "Universitetets kurser",
+              "KY-utbildningar",
+              "YH-utbildningar"
+            ],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vart kan Du hitta information om hur Du kan komplettera en utbildning från ett annat land? ",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Jobba.se", "Studera.nu", "Läsa.se ", "Plugga.nu"],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Om Du har varit arbetslös en längre tid och vill läsa in en gymnasieutbildning kan du ha möjlighet till ett bidrag som heter: ",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Lån via CSN", "Studiestartsstöd", "Sjukpenning", "Lön"],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "documentId": "halsa",
+    "color": "#48bb78",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Hälsa",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Hälsa quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Om du blir sjukskriven av någon anledning från ditt arbete, vilken myndighet ska du vända dig till för att söka ersättning?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Arbetsförmedlingen ", "Skatteverket", "Försäkringskassan", "Migrationsverket"],
+            "correctAnswer": "3",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Om Du är i behov av rådgivning om vård, vart vänder du dig då",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Vårdcentral", "1177. se", "Försäkringskassan3", "Arbetsförmedlingen"],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vid behov av tandvård behöver du kontakta:",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Folktandvården", "Vårdcentralen", "Försäkringskassan", "Socialtjänst"],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vilken modell kan Du använda dig av för att äta mer hälsosamt?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Matmodellen", "Hälsosammodellen", "Tallriksmodellen", "Friskmodellen"],
+            "correctAnswer": "3",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vart kan du hitta information om hälsa på lättsvenska?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Försäkringskassan", "Socialtjänsten", "Arbetsförmedlingen", "1177.se"],
+            "correctAnswer": "4",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "documentId": "covid-19",
+    "color": "#f56565",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Covid-19",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Covid-19 quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Vilken myndighet ansvarar för smittskyddsberedskap i Sverige som tex för viruset covid-19?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Arbetsförmedlingen", "Försäkringskassan", "Folkhälsomyndigheten", "Länsstyrelsen"],
+            "correctAnswer": "3",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vad ska du tänka på om du börjar känna dig sjuk, till exempel får torrhosta, feber, andningsbesvär, halsont, huvudvärk, illamående samt muskel- och ledvärk, även lindriga besvär. Flera alternativ kan vara rätt!",
+            "questionType": "text",
+            "answerSelectionType": "multiple",
+            "answers": [
+              "Vid milda besvär går det bra att fortsätta studera, arbeta praktisera som vanligt",
+              "Stanna hemma vid minsta symptom",
+              "Vid tillfrisknande stanna hemma ytterligare 48 timmar",
+              "Vid milda besvär går det bra att till exempel handla"
+            ],
+            "correctAnswer": [2, 3],
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vad är viktigt att tänka på för att minska risken att bli smittad eller smitta andra? Flera alternativ kan vara rätt!",
+            "questionType": "text",
+            "answerSelectionType": "multiple",
+            "answers": [
+              "Tvätta händerna med tvål och vatten ofta och minst 20 sekunder",
+              "Hålla avstånd från andra människor.",
+              "Nysa i armvecket samt undvika att röra ögon, näsa och mun",
+              "Hälsa med handslag eller kramar"
+            ],
+            "correctAnswer": [1, 2, 3],
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vilken organisation informerar om Covid-19 i världen?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "WHO (World Health Organization)",
+              "WWF (World Wide Fund of Nature)",
+              "WTO (World Trade Organization)",
+              "WEF (World Economy Forum)"
+            ],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vilken myndighet har på sin hemsida samlat filmklipp om Covid-19 från företrädare av olika trossamfund.",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Myndigheten för digital förvaltning",
+              "Myndigheten för stöd till trossamfund",
+              "Myndigheten för ungdoms- och Civilsamhällesfrågor",
+              "Myndigheten för Yrkeshögskolan"
+            ],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "documentId": "jamstalldhet",
+    "color": "#4299e1",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Jämställdhet",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Jämställdhet quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Vad handlar jämställdhet om?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Lika rättigheter, möjligheter och skyldigheter oavsett om du är man eller kvinna. ",
+              "Lika rättigheter, möjligheter och skyldigheter oavsett ålder.",
+              "Lika rättigheter, möjligheter och skyldigheter oavsett var du kommer ifrån.",
+              "Lika rättigheter, möjligheter och skyldigheter oavsett religion."
+            ],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vilken myndighet arbetar med att uppfylla regeringens mål om jämställdhet i Sverige",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Folkhälsomyndigheten",
+              "Myndigheten för delaktighet",
+              "Polismyndigheten",
+              "Jämställdhetsmyndigheten"
+            ],
+            "correctAnswer": "4",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vilket år fick kvinnor rösträtt i Sverige?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["1921", "1945", "1967", "1984"],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vad heter myndigheten som ansvarar för full delaktighet i samhället oavsett funktionsförmåga?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Myndigheten för arbetsmiljökunskap",
+              "Kronofogdemyndigheten",
+              "Jämställdhetsmyndigheten",
+              "Myndigheten för delaktighet"
+            ],
+            "correctAnswer": "4",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vad heter myndigheten som ser till att alla följer diskrimineringslagarna?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "DO (Diskrimineringsombudsmannen)",
+              "JK (Justitiekanslern)",
+              "JO (Justitieombudsmannen)",
+              "KO (Konsumentombudsmannen)"
+            ],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "documentId": "samhallsinformation",
+    "color": "#9f7aea",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Samhällsinformation",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Samhällsinformation quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Vad heter Sveriges huvudstad?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Göteborg", "Malmö", "Stockholm", "Örebro"],
+            "correctAnswer": "3",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Hur många människor bor det ungefär i Sverige?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Cirka 5 miljoner", "Cirka 10 miljoner", "Cirka 15 miljoner", "Cirka 20 miljoner"],
+            "correctAnswer": "2",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vilka två skolformer är obligatoriska för barn?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answerSelectionType": "multiple",
+            "answers": ["Förskolan", "Förskoleklass", "Grundskolan", "Gymnasieskolan"],
+            "correctAnswer": [2, 3],
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "documentId": "viktig-myndighetsinformation",
+    "color": "#C0C0C0",
+    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "name": "Viktig myndighetsinformation",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "quiz": [
+      {
+        "appLocale": {
+          "landingHeaderText": "<questionLength> Frågor",
+          "multipleSelectionTagText": "Flerval",
+          "nextQuestionBtn": "Nästa",
+          "pickNumberOfSelection": "Välj <numberOfSelection>",
+          "question": "Fråga",
+          "resultFilterAll": "Alla",
+          "resultFilterCorrect": "Rätt",
+          "resultFilterIncorrect": "Fel",
+          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
+          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
+          "singleSelectionTagText": "Ett val",
+          "startQuizBtn": "Starta quiz"
+        },
+        "quizId": "quizOne",
+        "quizTitle": "Viktig myndighetsinformation quiz",
+        "quizSynopsis": "",
+        "questions": [
+          {
+            "question": "Vilken hemsida ger en samlad information vid olika typer av kriser!",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Krisinformation.se", "Samhällsinformation.se", "Akutinformation.se", "Snabbinformation.se"],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vart ringer du vid en akut nödsituation?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Försäkringskassan", "Länsstyrelsen", "SOS-alarm", "Socialkontoret"],
+            "correctAnswer": "3",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Vilken myndighet har ansvar för att stödja samhällets beredskap för olyckor, kriser och civilt försvar?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": [
+              "Myndigheten för delaktighet",
+              "Kronofogdemyndigheten",
+              "Jämställdhetsmyndigheten",
+              "Myndigheten för samhällsskydd och beredskap"
+            ],
+            "correctAnswer": "4",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          },
+          {
+            "question": "Om du blir utsatt för ett brott, vilken myndighet gör du anmälan till?",
+            "questionType": "text",
+            "answerSelectionType": "single",
+            "answers": ["Polismyndigheten", "Folkhälsomyndigheten", "Länsstyrelsen", "Kronofogdemyndigheten"],
+            "correctAnswer": "1",
+            "messageForCorrectAnswer": "Rätt svar, bra jobbat.",
+            "messageForIncorrectAnswer": "Fel svar, Försök igen.",
+            "point": "10"
+          }
+        ]
+      }
+    ]
+  }
+]

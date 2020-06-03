@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import RegisterForm from '../components/RegisterForm';
 import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';

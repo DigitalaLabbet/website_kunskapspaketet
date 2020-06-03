@@ -1,14 +1,9 @@
-import React, { Component } from "react";
-import Mobile from "../components/navbar_mb";
+import React, { Component } from 'react';
+import Navbar from '../components/navbar';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
-export default class Categories_list extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: "Petter ",
-    };
-  }
-
+class CategoriesList extends Component {
   render() {
     return (
       <div className="container-fluid public-container">
@@ -34,8 +29,16 @@ export default class Categories_list extends Component {
             <li>förläsning 9</li>
           </ul>
         </div>
-        <Mobile />
+        <Navbar />
       </div>
     );
   }
 }
+
+const enhance = compose(
+  connect((state) => ({
+    profile: state.firebase.profile,
+  }))
+);
+
+export default enhance(CategoriesList);
