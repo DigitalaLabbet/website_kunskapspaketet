@@ -6,11 +6,9 @@ import '../styles/css/admin.css';
 import UserTable from '../components/userTable';
 import LectureTable from '../components/lectureTable';
 
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import RegisterForm from '../components/RegisterForm';
-import userTable from '../components/userTable';
-
 
 class Admin extends Component {
   constructor(props) {
@@ -23,9 +21,9 @@ class Admin extends Component {
       email: '',
       phoneNumber: '',
       role: '',
-      password: '',
+      password: ''
     };
-    this.createUser = this.createUser.bind(this)
+    this.createUser = this.createUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -52,55 +50,52 @@ class Admin extends Component {
   }
 
   createUser(e) {
-      e.preventDefault();
-      const profile = {
-        email: this.state.email,
-        phoneNumber: this.state.phoneNumber,
-        name: this.state.name,
-        role: 'student',
-      };
-      this.props.firebase.createUser(this.state, profile).catch((err) => {
-        console.log('doCreateUserWithEmailAndPassword - err: ', err);
-      });
+    e.preventDefault();
+    const profile = {
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      name: this.state.name,
+      role: 'student'
+    };
+    this.props.firebase.createUser(this.state, profile).catch(err => {
+      console.log('doCreateUserWithEmailAndPassword - err: ', err);
+    });
   }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-
   render() {
-    const { users , lectures} = this.state
+    const { users, lectures } = this.state;
     const { profile } = this.props;
 
-    const onDelete = id => {
-      this.props.firestore
-        .collection('users')
-        .doc(id)
-        .delete()
-        .then(() => {
-          this.props.history.push('/admin');
-        })
-        .catch(err => console.error(err));
-    };
+    // const onDelete = id => {
+    //   this.props.firestore
+    //     .collection('users')
+    //     .doc(id)
+    //     .delete()
+    //     .then(() => {
+    //       this.props.history.push('/admin');
+    //     })
+    //     .catch(err => console.error(err));
+    // };
 
-    const onDeleteLecture = id => {
-      console.log(id);
-      
-      this.props.firestore
-        .collection('lectures')
-        .doc(id)
-        .delete()
-        .then(() => {
-          this.props.history.push('/admin');
-          console.log('item deleted');
-          
-        })
-        .catch(err => console.error(err));
-    };
-    
+    // const onDeleteLecture = id => {
+    //   console.log(id);
 
-    
+    //   this.props.firestore
+    //     .collection('lectures')
+    //     .doc(id)
+    //     .delete()
+    //     .then(() => {
+    //       this.props.history.push('/admin');
+    //       console.log('item deleted');
+
+    //     })
+    //     .catch(err => console.error(err));
+    // };
+
     return (
       <div className="container admin">
         <header className="adminHeader">
@@ -127,99 +122,86 @@ class Admin extends Component {
                 </button>
               </li>
             </ul>
-
-
           </div>
         </header>
         <main>
-          <UserTable users={this.state.users} onDelete={onDelete} />
-          <LectureTable lectures={this.state.lectures} onDeleteLecture={onDeleteLecture}/>
-        </main>
-
-        <div className="modal fade" id="adduser" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="adduser">
-                  lägg till ny användare
-                </h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-     
-                <form >
-                  <div className="form-group">
-                    <label> Namn </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="name"
-                      value={this.state.name}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label> E-post </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="email"
-                      value={this.state.email}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label> telenummer </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="phoneNumber"
-                      value={this.state.phoneNumber}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label> Lösenord </label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      name="password"
-                      value={this.state.password}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label> Roll </label>
-                    <select className="form-control form-control-sm" >
-                      <option  name="role" >
-                        elev
-                      </option>
-                      <option  name="role">
-                        Lärare
-                      </option>
-                    </select>
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button"  className="btn btn-secondary" data-dismiss="modal">
-                      Stäng
-                    </button>
-                    <button onClick={this.createUser} className="btn btn-success" data-dismiss="modal">
-                      Spara
-                    </button>
-                  </div>
-                </form>
-                
+          <div className="modal fade" id="adduser" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="adduser">
+                    lägg till ny användare
+                  </h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <form>
+                    <div className="form-group">
+                      <label> Namn </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label> E-post </label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label> telenummer </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="phoneNumber"
+                        value={this.state.phoneNumber}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label> Lösenord </label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label> Roll </label>
+                      <select className="form-control form-control-sm">
+                        <option name="role">elev</option>
+                        <option name="role">Lärare</option>
+                      </select>
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                        Stäng
+                      </button>
+                      <button onClick={this.createUser} className="btn btn-success" data-dismiss="modal">
+                        Spara
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
+        </main>
         <RegisterForm />
-        <userTable  users={users}/>
+        <userTable users={users} />
         <LectureTable lectures={lectures} />
-   
       </div>
     );
   }
