@@ -7,20 +7,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Språkfrämjande insatser quiz",
         "quizSynopsis": "",
@@ -72,20 +58,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Arbetsmarknad quiz",
         "quizSynopsis": "",
@@ -166,20 +138,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Studier quiz",
         "quizSynopsis": "",
@@ -256,20 +214,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Hälsa quiz",
         "quizSynopsis": "",
@@ -336,20 +280,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Covid-19 quiz",
         "quizSynopsis": "",
@@ -436,20 +366,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Jämställdhet quiz",
         "quizSynopsis": "",
@@ -536,20 +452,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Samhällsinformation quiz",
         "quizSynopsis": "",
@@ -597,20 +499,6 @@
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "quiz": [
       {
-        "appLocale": {
-          "landingHeaderText": "<questionLength> Frågor",
-          "multipleSelectionTagText": "Flerval",
-          "nextQuestionBtn": "Nästa",
-          "pickNumberOfSelection": "Välj <numberOfSelection>",
-          "question": "Fråga",
-          "resultFilterAll": "Alla",
-          "resultFilterCorrect": "Rätt",
-          "resultFilterIncorrect": "Fel",
-          "resultPageHeaderText": "Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.",
-          "resultPagePoint": "Du fick <correctPoints> av <totalPoints> poäng.",
-          "singleSelectionTagText": "Ett val",
-          "startQuizBtn": "Starta quiz"
-        },
         "quizId": "quizOne",
         "quizTitle": "Viktig myndighetsinformation quiz",
         "quizSynopsis": "",
