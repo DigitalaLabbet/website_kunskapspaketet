@@ -1,5 +1,7 @@
 import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
+import { compose } from 'redux';
+import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 
 createTheme('solarized', {
   text: {
@@ -24,6 +26,9 @@ createTheme('solarized', {
 });
 
 const User_table = props => {
+
+  console.log();
+  
   const columns = [
     {
       name: 'Roll',
@@ -45,10 +50,11 @@ const User_table = props => {
     {
       name: 'Redigera',
       selector: 'delete',
-      cell: () => {
+      cell: (id) => {
+  
         return (
           <div>
-            <button className="btn btn-danger btn-sm"><i class="fa fa-minus-square-o" aria-hidden="true"></i></button>
+            <button onClick={props.onDelete.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
           </div>
         );
       },
@@ -60,12 +66,14 @@ const User_table = props => {
   const data = [];
 
   props.users.map((user, i) => {
+    
     data.push({
       email: user.email,
       phone: user.phoneNumber,
       name: user.name,
-      role: user.role
-    });
+      role: user.role,
+      id: user.id
+    })
   });
 
   return (
@@ -84,4 +92,11 @@ const User_table = props => {
   );
 };
 
-export default User_table;
+
+const enhance = compose(
+  firestoreConnect(),
+);
+
+
+
+export default enhance(User_table);

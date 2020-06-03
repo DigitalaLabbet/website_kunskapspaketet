@@ -46,10 +46,10 @@ const Lecture_table = props => {
     {
       name: 'Redigera',
       selector: 'delete',
-      cell: () => {
+      cell: (id) => {
         return (
           <div>
-            <button className="btn btn-danger btn-sm"><i class="fa fa-minus-square-o" aria-hidden="true"></i></button>
+            <button onClick={props.onDeleteLecture.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
           </div>
         );
       },
@@ -63,6 +63,7 @@ const Lecture_table = props => {
 
 
   lectures.map(lecture => {
+
     data.push({
       id: lecture.id,
       info: lecture.information,
