@@ -27,27 +27,7 @@ class Admin extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    this.props.firestore
-      .collection('users')
-      .get()
-      .then(snapshot => {
-        const users = snapshot.docs.map(doc => {
-          return { id: doc.id, ...doc.data() };
-        });
-        this.setState({ users });
-      });
 
-    this.props.firestore
-      .collection('lectures')
-      .get()
-      .then(snapshot => {
-        const lectures = snapshot.docs.map(doc => {
-          return { id: doc.id, ...doc.data() };
-        });
-        this.setState({ lectures });
-      });
-  }
 
   createUser(e) {
     e.preventDefault();
@@ -67,34 +47,12 @@ class Admin extends Component {
   }
 
   render() {
-    const { users, lectures } = this.state;
-    const { profile } = this.props;
+    const { profile, lectures, users} = this.props;
 
-    // const onDelete = id => {
-    //   this.props.firestore
-    //     .collection('users')
-    //     .doc(id)
-    //     .delete()
-    //     .then(() => {
-    //       this.props.history.push('/admin');
-    //     })
-    //     .catch(err => console.error(err));
-    // };
+    console.log(typeof lectures);
+    
 
-    // const onDeleteLecture = id => {
-    //   console.log(id);
 
-    //   this.props.firestore
-    //     .collection('lectures')
-    //     .doc(id)
-    //     .delete()
-    //     .then(() => {
-    //       this.props.history.push('/admin');
-    //       console.log('item deleted');
-
-    //     })
-    //     .catch(err => console.error(err));
-    // };
 
     return (
       <div className="container admin">
@@ -200,20 +158,33 @@ class Admin extends Component {
           </div>
         </main>
         <RegisterForm />
-        <userTable users={users} />
-        <LectureTable lectures={lectures} />
+        {users && <UserTable users={users} />}
+        {lectures && <LectureTable lectures={lectures} />}
+   
       </div>
     );
   }
 }
 
+// const enhance = compose(
+//   firebaseConnect(),
+
+//   firestoreConnect(),
+//   connect(state => ({
+//     profile: state.firebase.profile
+//   }))
+// );
+
+
 const enhance = compose(
   firebaseConnect(),
-
-  firestoreConnect(),
-  connect(state => ({
-    profile: state.firebase.profile
+  firestoreConnect(() => ['lectures', 'users']),
+  connect((state) => ({
+    profile: state.firebase.profile,
+    lectures: state.firestore.ordered.lectures,
+    users: state.firestore.ordered.users
   }))
 );
+
 
 export default enhance(Admin);
