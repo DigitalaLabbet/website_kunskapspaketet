@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import '../styles/css/admin.css';
 import UserTable from '../components/userTable';
 import LectureTable from '../components/lectureTable';
-import Navbar_mb from '../components/navbar_mb';
 import { connect } from 'react-redux';
+import RegisterForm from '../components/RegisterForm';
 
 class Admin extends Component {
   constructor(props) {
@@ -197,10 +197,7 @@ class Admin extends Component {
                     <button type="button"  className="btn btn-secondary" data-dismiss="modal">
                       Stäng
                     </button>
-                    <button type="reset" className="btn btn-primary">
-                      återställa
-                    </button>
-                    <button onClick={this.createUser} className="btn btn-success">
+                    <button onClick={this.createUser} className="btn btn-success" data-dismiss="modal">
                       Spara
                     </button>
                   </div>
@@ -211,7 +208,7 @@ class Admin extends Component {
           </div>
         </div>
         <RegisterForm />
-        <Navbar_mb />
+   
       </div>
     );
   }
