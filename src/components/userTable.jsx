@@ -47,21 +47,21 @@ const User_table = props => {
       name: 'telenummer',
       selector: 'phone'
     },
-    {
-      name: 'Redigera',
-      selector: 'delete',
-      cell: (id) => {
+    // {
+    //   name: 'Redigera',
+    //   selector: 'delete',
+    //   cell: (id) => {
   
-        return (
-          <div>
-            <button onClick={props.onDelete.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
-          </div>
-        );
-      },
-      gnoreRowClick: true,
-      allowOverflow: true,
-      button: true
-    }
+    //     return (
+    //       <div>
+    //         <button onClick={props.onDelete.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
+    //       </div>
+    //     );
+    //   },
+    //   gnoreRowClick: true,
+    //   allowOverflow: true,
+    //   button: true
+    // }
   ];
   const data = [];
 

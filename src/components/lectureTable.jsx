@@ -43,20 +43,20 @@ const Lecture_table = props => {
       width: '500px',
       wrap: true
     },
-    {
-      name: 'Redigera',
-      selector: 'delete',
-      cell: (id) => {
-        return (
-          <div>
-            <button onClick={props.onDeleteLecture.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
-          </div>
-        );
-      },
-      gnoreRowClick: true,
-      allowOverflow: true,
-      button: true
-    }
+    // {
+    //   name: 'Redigera',
+    //   selector: 'delete',
+    //   cell: (id) => {
+    //     return (
+    //       <div>
+    //         <button onClick={props.onDeleteLecture.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
+    //       </div>
+    //     );
+    //   },
+    //   gnoreRowClick: true,
+    //   allowOverflow: true,
+    //   button: true
+    // }
     
   ];
   const data = [];
