@@ -5,7 +5,7 @@ import '../styles/css/topbar.css';
 
 const topbar = ({ name, backLink, color, info }) => {
   return (
-    <div className="topbar mb-2" style={{ background: color }}>
+    <div className="topbar" style={{ background: color ? color : '#314f6f' }}>
       <h5 className="text-white m-0 w-100 position-relative">
         {backLink && (
           <Link to={backLink} className="position-absolute back-button">

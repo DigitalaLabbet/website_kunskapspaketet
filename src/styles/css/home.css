@@ -1,4 +1,4 @@
-.mb-navbar {
+.navbar-margin {
   margin-bottom: 60px;
 }
 
@@ -51,7 +51,7 @@
   .public-container {
     width: 100%;
     height: auto;
-    background-image: url('../images/header_wrapper_full.png');
+    background-image: url("../images/header_wrapper_full.png");
     background-size: 100% 300px;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -63,7 +63,7 @@
   .public-container {
     width: 100%;
     height: auto;
-    background-image: url('../images/header_wrapper_mobile.png');
+    background-image: url("../images/header_wrapper_mobile.png");
     background-size: 100% 300px;
     background-repeat: no-repeat;
     padding: 0;
@@ -82,10 +82,15 @@
 
   .mobile-navbar ul li {
     color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 
   .public-container .instructions {
     padding-bottom: 60px;
   }
+}
+
+/* Datatable expand style */
+.PaRyu.rdt_ExpanderRow {
+  background-color: #d1d8e4;
 }

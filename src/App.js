@@ -18,19 +18,18 @@ import Landing from './views/landing';
 import Home from './views/home';
 import Admin from './views/admin';
 import Settings from './views/settings';
-import Categories_list from './views/categoriesList';
 import Lecture from './views/lecture';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      user: null
     };
   }
 
   componentDidMount() {
-    this.props.firebase.auth().onAuthStateChanged((user) => {
+    this.props.firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
       } else {
@@ -59,7 +58,6 @@ class App extends Component {
           <HashRouter>
             <Route path="/" exact component={profile.email ? Home : Landing} />
             <Route path="/settings" component={profile.email ? Settings : Landing} />
-            <Route path="/category_list" component={profile.email ? Categories_list : Landing} />
             <Route path="/lecture/:lectureName" component={profile.email ? Lecture : Landing} />
             <Route path="/admin" component={profile.email ? Admin : Landing} />
           </HashRouter>
@@ -71,8 +69,8 @@ class App extends Component {
 const enhance = compose(
   firebaseConnect(),
   firestoreConnect(),
-  connect((state) => ({
-    profile: state.firebase.profile,
+  connect(state => ({
+    profile: state.firebase.profile
   }))
 );
 

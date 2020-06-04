@@ -12,7 +12,6 @@ class Login extends Component {
       password: '',
       msg: '',
     };
-    this.errorHandle = this.errorHandle.bind(this);
   }
 
 

@@ -17,8 +17,8 @@ class Lecture extends Component {
         {lecture && (
           <>
             <Topbar name={lecture.name} backLink="/" color={lecture.color} />
-            <div className="container mb-navbar">
-              <div className="lecture">
+            <div className="container navbar-margin">
+              <div className="lecture mt-2">
                 <iframe title="vidoe" width="100%" height="250px" src={lecture.videoUrl}></iframe>
                 <div>
                   <p>{lecture.information}</p>

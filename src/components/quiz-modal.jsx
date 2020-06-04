@@ -32,22 +32,41 @@ class quizModal extends Component {
     const { show } = this.state;
     const { quiz } = this.props;
 
+    const quizData = Object.assign({}, quiz, {
+      appLocale: {
+        landingHeaderText: '<questionLength> Frågor',
+        multipleSelectionTagText: 'Flerval',
+        nextQuestionBtn: 'Nästa',
+        pickNumberOfSelection: 'Välj <numberOfSelection>',
+        question: 'Fråga',
+        resultFilterAll: 'Alla',
+        resultFilterCorrect: 'Rätt',
+        resultFilterIncorrect: 'Fel',
+        resultPageHeaderText: 'Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.',
+        resultPagePoint: 'Du fick <correctPoints> av <totalPoints> poäng.',
+        singleSelectionTagText: 'Ett val',
+        startQuizBtn: 'Starta quiz',
+      },
+    });
+
     const onCompleteAction = (obj) => {
       console.log('complete: ', obj);
-      const { firestore, userUid, lectureId } = this.props;
+      const { firestore, userUid, lectureId, quiz } = this.props;
 
-      firestore.collection('users').doc(userUid).collection(lectureId).doc(quiz.id).set(obj);
+      const data = Object.assign({}, { ...obj, quizTitle: quiz.quizTitle });
+
+      firestore.collection('users').doc(userUid).collection(lectureId).doc(quiz.id).set(data);
     };
 
     return (
       <div className="text-center">
         <button className="btn btn-success" onClick={this.handleShow}>
-          Start quiz
+          Starta quiz
         </button>
 
-        <Modal show={show} onHide={this.handleClose}>
+        <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
           <Modal.Body>
-            <Quiz quiz={quiz} locale={this.quizLocale} onComplete={onCompleteAction} />
+            <Quiz quiz={quizData} locale={this.quizLocale} onComplete={onCompleteAction} />
           </Modal.Body>
           <Modal.Footer>
             <button className="btn btn-sm btn-danger" onClick={this.handleClose}>

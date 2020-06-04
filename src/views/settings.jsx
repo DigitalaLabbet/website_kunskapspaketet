@@ -18,9 +18,8 @@ class Settings extends Component {
       email: this.props.profile.email || '',
       role: this.props.profile.role || '',
       phoneNumber: this.props.profile.phoneNumber || '',
-      password: '',
+      password: ''
     };
-    console.log(this.props);
   }
 
   logout() {
@@ -36,13 +35,13 @@ class Settings extends Component {
     const { firebase } = this.props;
     const patchValues = {
       name: this.state.name,
-      phoneNumber: this.state.phoneNumber,
+      phoneNumber: this.state.phoneNumber
     };
 
     if (this.state.password) {
       firebase.auth().currentUser.updatePassword(this.state.password);
       this.setState({
-        password: '',
+        password: ''
       });
     }
 
@@ -56,7 +55,7 @@ class Settings extends Component {
     return (
       <div>
         <Topbar name="Settings" />
-        <div className="container-fluid">
+        <div className="container-fluid navbar-margin mt-2">
           <button onClick={this.logout} className="btn btn-danger">
             Logga ut
           </button>
@@ -131,8 +130,8 @@ class Settings extends Component {
 
 const enhance = compose(
   firebaseConnect(),
-  connect((state) => ({
-    profile: state.firebase.profile,
+  connect(state => ({
+    profile: state.firebase.profile
   }))
 );
 
