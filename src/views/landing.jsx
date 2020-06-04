@@ -6,7 +6,7 @@ export default class Main extends Component {
   constructor() {
     super();
     this.state = {
-      title: "Välkommen hos kunskappaketet ",
+      title: "Välkommen till kunskapspaketet ",
     };
   }
 
