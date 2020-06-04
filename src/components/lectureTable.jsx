@@ -1,6 +1,8 @@
 import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
 
+import ExpandableRowData from '../components/expandable-row.jsx';
+
 createTheme('solarized', {
   text: {
     primary: '#00000',
@@ -23,67 +25,53 @@ createTheme('solarized', {
   }
 });
 
-const Lecture_table = props => {
-  let lectures = props.lectures;
-  const columns = [
-    {
-      name: 'kategori',
-      selector: 'catygory',
-      sortable: true,
-      width: '150px'
-    },
-    {
-      name: 'video url',
-      selector: 'videourl',
-      width: '300px'
-    },
-    {
-      name: 'info',
-      selector: 'info',
-      width: '500px',
-      wrap: true
-    },
-    // {
-    //   name: 'Redigera',
-    //   selector: 'delete',
-    //   cell: (id) => {
-    //     return (
-    //       <div>
-    //         <button onClick={props.onDeleteLecture.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
-    //       </div>
-    //     );
-    //   },
-    //   gnoreRowClick: true,
-    //   allowOverflow: true,
-    //   button: true
-    // }
-    
-  ];
+const LectureTable = props => {
+  const { lectures } = props;
   const data = [];
 
+  const columns = [
+    {
+      name: 'Kategori',
+      selector: 'category',
+      sortable: true,
+      width: '120px'
+    },
+    {
+      name: 'Video url',
+      selector: 'videourl',
+      hide: 'sm'
+    },
+    {
+      name: 'Info',
+      selector: 'info',
+      width: '500px',
+      hide: 'sm'
+    }
+  ];
 
-  lectures.map(lecture => {
-
+  lectures.forEach(lecture => {
     data.push({
       id: lecture.id,
       info: lecture.information,
       videourl: lecture.videoUrl,
-      catygory: lecture.name
+      category: lecture.name
     });
   });
 
   return (
-    <div className="lectureTable my-5">
+    <div className="lectureTable mt-3">
       <DataTable
         title="Föreläsning"
         columns={columns}
         theme="solarized"
         data={data}
         pagination={true}
-        paginationPerPage = {5}
+        paginationPerPage={10}
+        expandableRows
+        expandableRowsComponent={<ExpandableRowData data={data.data} />}
       />
     </div>
   );
 };
 
-export default Lecture_table;
+export default LectureTable;

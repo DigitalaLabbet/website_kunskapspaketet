@@ -6,9 +6,10 @@ import '../styles/css/admin.css';
 import UserTable from '../components/userTable';
 import LectureTable from '../components/lectureTable';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import RegisterForm from '../components/RegisterForm';
+import Navbar from '../components/navbar';
+import Topbar from '../components/topbar';
 
 class Admin extends Component {
   constructor(props) {
@@ -26,8 +27,6 @@ class Admin extends Component {
     this.createUser = this.createUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
-
 
   createUser(e) {
     e.preventDefault();
@@ -47,26 +46,12 @@ class Admin extends Component {
   }
 
   render() {
-    const { profile, lectures, users} = this.props;
-
-    console.log(typeof lectures);
-    
-
-
+    const { profile, lectures, users } = this.props;
 
     return (
       <div className="container admin">
+        <Topbar name="Administration" />
         <header className="adminHeader">
-          <nav>
-            <h6>Adminstration</h6>
-            <ul>
-              <li>användare: {profile.name}</li>
-              <li>
-                <i className="fa fa-cog fa-2x" aria-hidden="true"></i>
-              </li>
-            </ul>
-          </nav>
-
           <div className="edit">
             <ul>
               <li>
@@ -158,9 +143,11 @@ class Admin extends Component {
           </div>
         </main>
         <RegisterForm />
-        {users && <UserTable users={users} />}
-        {lectures && <LectureTable lectures={lectures} />}
-   
+        <div className="navbar-margin">
+          {users && <UserTable users={users} />}
+          {lectures && <LectureTable lectures={lectures} />}
+        </div>
+        <Navbar role={profile.role} />
       </div>
     );
   }
@@ -175,16 +162,14 @@ class Admin extends Component {
 //   }))
 // );
 
-
 const enhance = compose(
   firebaseConnect(),
   firestoreConnect(() => ['lectures', 'users']),
-  connect((state) => ({
+  connect(state => ({
     profile: state.firebase.profile,
     lectures: state.firestore.ordered.lectures,
     users: state.firestore.ordered.users
   }))
 );
-
 
 export default enhance(Admin);

@@ -1,7 +1,7 @@
 import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
-import { compose } from 'redux';
-import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
+
+import ExpandableRowData from '../components/expandable-row.jsx';
 
 createTheme('solarized', {
   text: {
@@ -25,78 +25,77 @@ createTheme('solarized', {
   }
 });
 
-const User_table = props => {
+const UserTable = props => {
+  const { users } = props;
+  const data = [];
 
-  console.log();
-  
   const columns = [
     {
       name: 'Roll',
-      selector: 'role'
+      selector: 'role',
+      sortable: true,
+      width: '100px',
+      style: {
+        color: '#ffffff'
+      },
+      conditionalCellStyles: [
+        {
+          when: row => row.role === 'teacher',
+          style: {
+            backgroundColor: '#4299e1'
+          }
+        },
+        {
+          when: row => row.role === 'student',
+          style: {
+            backgroundColor: '#48bb78'
+          }
+        }
+      ]
     },
     {
       name: 'Namn',
       selector: 'name',
-      sortable: true
+      sortable: true,
+      hide: 'sm'
     },
     {
       name: 'E-post',
-      selector: 'email'
+      selector: 'email',
+      sortable: true
     },
     {
-      name: 'telenummer',
-      selector: 'phone'
-    },
-    // {
-    //   name: 'Redigera',
-    //   selector: 'delete',
-    //   cell: (id) => {
-  
-    //     return (
-    //       <div>
-    //         <button onClick={props.onDelete.bind(this, id.id)} className="btn btn-danger btn-sm " id="deleteUser"><i className="fa fa-minus-square-o" aria-hidden="true"></i></button>
-    //       </div>
-    //     );
-    //   },
-    //   gnoreRowClick: true,
-    //   allowOverflow: true,
-    //   button: true
-    // }
+      name: 'Telenummer',
+      selector: 'phone',
+      sortable: true,
+      hide: 'sm'
+    }
   ];
-  const data = [];
 
-  props.users.map((user, i) => {
-    
+  users.forEach(user => {
     data.push({
       email: user.email,
       phone: user.phoneNumber,
       name: user.name,
       role: user.role,
       id: user.id
-    })
+    });
   });
 
   return (
-    <div className="userTable">
+    <div className="userTable mt-3">
       <DataTable
         title="Användare"
-        fixedHeaderScrollHeight="100%"
         columns={columns}
         theme="solarized"
         data={data}
-        Clicked
         pagination={true}
         paginationPerPage={10}
+        expandableRows
+        expandableRowsComponent={<ExpandableRowData data={data.data} />}
       />
     </div>
   );
 };
 
-
-const enhance = compose(
-  firestoreConnect(),
-);
-
-
-
-export default enhance(User_table);
+export default UserTable;
