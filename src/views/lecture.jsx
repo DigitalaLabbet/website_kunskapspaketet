@@ -19,11 +19,11 @@ class Lecture extends Component {
             <Topbar name={lecture.name} backLink="/" color={lecture.color} />
             <div className="container navbar-margin">
               <div className="lecture mt-2">
-                <iframe title="vidoe" width="100%" height="250px" src={lecture.videoUrl}></iframe>
+                <iframe title="vidoe" width="100%" height="200px" src={lecture.videoUrl}></iframe>
                 <div>
                   <p>{lecture.information}</p>
                 </div>
-                {quizzes && quizzes.map((quiz) => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
+                {quizzes && quizzes.map(quiz => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
               </div>
             </div>
           </>
@@ -35,24 +35,25 @@ class Lecture extends Component {
 }
 
 const enhance = compose(
-  firestoreConnect((props) => [
+  firestoreConnect(props => [
     {
-      collection: 'lectures',
-      doc: props.match.params.lectureName.toLowerCase(),
-      storeAs: 'lecture',
+      collection: 'lectures'
     },
     {
       collection: 'lectures',
       doc: props.match.params.lectureName.toLowerCase(),
       subcollections: [{ collection: 'quiz' }],
-      storeAs: 'quizzes',
-    },
+      storeAs: 'quizzes'
+    }
   ]),
-  connect((state) => ({
-    profile: state.firebase.profile,
-    lecture: state.firestore.ordered.lecture && state.firestore.ordered.lecture[0],
-    quizzes: state.firestore.ordered.quizzes,
-  }))
+  connect((state, prop) => {
+    const lectureName = prop.match.params.lectureName.toLowerCase();
+    return {
+      profile: state.firebase.profile,
+      lecture: state.firestore.ordered.lectures && state.firestore.ordered.lectures.find(x => x.id === lectureName),
+      quizzes: state.firestore.ordered.quizzes
+    };
+  })
 );
 
 export default enhance(Lecture);
