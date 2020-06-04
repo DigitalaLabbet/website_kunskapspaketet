@@ -92,5 +92,5 @@
 
 /* Datatable expand style */
 .rdt_ExpanderRow {
-  background-color: #d1d8e4;
+  background-color: #d1d8e4 !important;
 }
