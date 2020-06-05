@@ -479,7 +479,6 @@
           {
             "question": "Vilka två skolformer är obligatoriska för barn?",
             "questionType": "text",
-            "answerSelectionType": "single",
             "answerSelectionType": "multiple",
             "answers": ["Förskolan", "Förskoleklass", "Grundskolan", "Gymnasieskolan"],
             "correctAnswer": [2, 3],

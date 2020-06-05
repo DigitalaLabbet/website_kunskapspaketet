@@ -13,8 +13,7 @@ class quizModal extends Component {
     super(props);
 
     this.state = {
-      show: false,
-      activeQuiz: null,
+      show: false
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -45,17 +44,30 @@ class quizModal extends Component {
         resultPageHeaderText: 'Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.',
         resultPagePoint: 'Du fick <correctPoints> av <totalPoints> poäng.',
         singleSelectionTagText: 'Ett val',
-        startQuizBtn: 'Starta quiz',
-      },
+        startQuizBtn: 'Starta quiz'
+      }
     });
 
-    const onCompleteAction = (obj) => {
+    const onCompleteAction = obj => {
       console.log('complete: ', obj);
       const { firestore, userUid, lectureId, quiz } = this.props;
 
       const data = Object.assign({}, { ...obj, quizTitle: quiz.quizTitle });
 
-      firestore.collection('users').doc(userUid).collection(lectureId).doc(quiz.id).set(data);
+      // Convert multiple answers to a map, for firebase storage
+      data.userInput = data.userInput.map(input => {
+        if (typeof input === 'object') {
+          input = Object.assign({}, input);
+        }
+        return input;
+      });
+
+      firestore
+        .collection('users')
+        .doc(userUid)
+        .collection(lectureId)
+        .doc(quiz.id)
+        .set(data);
     };
 
     return (
@@ -82,9 +94,9 @@ class quizModal extends Component {
 const enhance = compose(
   firestoreConnect(),
   firebaseConnect(),
-  connect((state) => ({
+  connect(state => ({
     profile: state.firebase.profile,
-    userUid: state.firebase.auth.uid,
+    userUid: state.firebase.auth.uid
   }))
 );
 
