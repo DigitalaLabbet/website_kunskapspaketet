@@ -85,12 +85,6 @@ class Admin extends Component {
       <div className="container admin">
         <Topbar name="Administration" />
         <header className="adminHeader">
-          <div className="w-75 mx-auto">
-            <p className="bg-warning text-center" style={{ fontSize: '13px' }}>
-              {this.state.msg}
-            </p>
-          </div>
-
           <div className="edit">
             <ul>
               <li>
@@ -104,6 +98,11 @@ class Admin extends Component {
                 </button>
               </li>
             </ul>
+          </div>
+          <div className="w-75 mx-auto">
+            <p className="bg-warning text-center" style={{ fontSize: '13px' }}>
+              {this.state.msg}
+            </p>
           </div>
         </header>
         <main>
