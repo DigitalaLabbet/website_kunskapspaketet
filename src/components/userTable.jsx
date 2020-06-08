@@ -83,16 +83,20 @@ const UserTable = props => {
       sortable: false,
       cell: row => (
         <div>
-          <CreateUser user={row} />
-          <Confirm
-            onConfirm={() => {
-              props.deleteUser(row.id);
-            }}
-            body={'Är du säker du vill radera: ' + row.email}
-            title="Radera användare"
-            confirmText="Confirm delete"
-            buttonText={<i className="fa fa-trash"></i>}
-          />
+          {row.role !== 'super_admin' && (
+            <>
+              <CreateUser user={row} />
+              <Confirm
+                onConfirm={() => {
+                  props.deleteUser(row.id);
+                }}
+                body={'Är du säker du vill radera: ' + row.email}
+                title="Radera användare"
+                confirmText="Confirm delete"
+                buttonText={<i className="fa fa-trash"></i>}
+              />
+            </>
+          )}
         </div>
       )
     }

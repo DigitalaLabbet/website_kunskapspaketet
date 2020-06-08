@@ -32,7 +32,7 @@ class Admin extends Component {
 
     return (
       <div className="container admin">
-        <Topbar name={profile.role == 'super_admin' ? 'Administration' : 'lärare Dashbord'} />
+        <Topbar name={profile.role === 'super_admin' ? 'Administration' : 'lärare Dashbord'} />
         <header className="adminHeader">
           <div className="edit">
             <ul>
@@ -59,21 +59,24 @@ class Admin extends Component {
 }
 
 const enhance = compose(
-  firebaseConnect(),
-  firestoreConnect(props => {
-    return [
-      'lectures',
-      {
-        collection: 'users',
-        where: ['teacher', '==', props.firebase.auth().currentUser.uid]
-      }
-    ];
-  }),
   connect(state => ({
     profile: state.firebase.profile,
     lectures: state.firestore.ordered.lectures,
     users: state.firestore.ordered.users
-  }))
+  })),
+  firebaseConnect(),
+  firestoreConnect(props => {
+    const { uid } = props.firebase.auth().currentUser;
+    const { role } = props.profile;
+
+    const getArr = ['lectures'];
+    if (role === 'super_admin') {
+      getArr.push('users');
+    } else {
+      getArr.push({ collection: 'users', where: ['teacher', '==', uid] });
+    }
+    return getArr;
+  })
 );
 
 export default enhance(Admin);
