@@ -16,11 +16,11 @@ const navbar = ({ role }) => {
       <NavLink exact={true} activeClassName="active" to="/" isActive={checkLectureActive}>
         <i className="fa fa-home fa-lg"></i>
       </NavLink>
-      {role === 'teacher' || role === 'super_admin' ? (
+      {(role === 'teacher' || role === 'super_admin') && (
         <NavLink exact={true} activeClassName="active" to="/admin">
           <i className="fa fa-users-cog"></i>
         </NavLink>
-      ): (null)}
+      )}
       <NavLink exact={true} activeClassName="active" to="/settings">
         <i className="fa fa-user-circle fa-lg"></i>
       </NavLink>

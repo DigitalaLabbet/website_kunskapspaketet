@@ -185,10 +185,8 @@ class Admin extends Component {
           {users && <UserTable users={users} />}
 
           {/* if the role field is super_admin the lecture table will show up */}
-          {profile.role === "super_admin" ? (
+          {profile.role === "super_admin" && (
             lectures && <LectureTable lectures={lectures} />
-          ):(
-            null
           )
           }
           
