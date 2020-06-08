@@ -80,10 +80,10 @@ class Admin extends Component {
 
   render() {
     const { profile, lectures, users } = this.props;
-
+    
     return (
       <div className="container admin">
-        <Topbar name="Administration" />
+        <Topbar name={profile.role == 'super_admin' ? ( 'Administration') :( 'lärare Dashbord')} />
         <header className="adminHeader">
           <div className="edit">
             <ul>
@@ -183,7 +183,15 @@ class Admin extends Component {
         <RegisterForm />
         <div className="navbar-margin">
           {users && <UserTable users={users} />}
-          {lectures && <LectureTable lectures={lectures} />}
+
+          {/* if the role field is super_admin the lecture table will show up */}
+          {profile.role === "super_admin" ? (
+            lectures && <LectureTable lectures={lectures} />
+          ):(
+            null
+          )
+          }
+          
         </div>
         <Navbar role={profile.role} />
       </div>

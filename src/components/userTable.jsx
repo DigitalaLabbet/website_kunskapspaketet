@@ -50,6 +50,12 @@ const UserTable = props => {
           style: {
             backgroundColor: '#48bb78'
           }
+        },
+        {
+          when: row => row.role === 'super_admin',
+          style: {
+            backgroundColor: '#EBB035'
+          }
         }
       ]
     },
