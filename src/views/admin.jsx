@@ -32,7 +32,7 @@ class Admin extends Component {
 
     return (
       <div className="container admin">
-        <Topbar name="Administration" />
+        <Topbar name={profile.role == 'super_admin' ? 'Administration' : 'lärare Dashbord'} />
         <header className="adminHeader">
           <div className="edit">
             <ul>
@@ -50,7 +50,7 @@ class Admin extends Component {
         <RegisterForm />
         <div className="navbar-margin">
           {users && <UserTable users={users} deleteUser={deleteUser} />}
-          {lectures && <LectureTable lectures={lectures} />}
+          {profile.role === 'super_admin' && lectures && <LectureTable lectures={lectures} />}
         </div>
         <Navbar role={profile.role} />
       </div>
