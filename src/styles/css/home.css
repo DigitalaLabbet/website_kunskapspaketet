@@ -91,3 +91,7 @@
 .rdt_ExpanderRow {
   background-color: #d1d8e4 !important;
 }
+
+button + button {
+  margin-left: 4px;
+}
