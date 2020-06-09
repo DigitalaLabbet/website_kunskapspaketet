@@ -99,14 +99,14 @@
       {
         "heading": "Bemanningsföretag för dig som söker jobb:",
         "items": [
-          "<a target=\"_blank\" href=\"www.adecco.se\">www.adecco.se</a>",
-          "<a target=\"_blank\" href=\"www.lernia.se\">www.lernia.se</a>",
-          "<a target=\"_blank\" href=\"www.manpower.se\">www.manpower.se</a>",
-          "<a target=\"_blank\" href=\"www.uniflex.se\">www.uniflex.se</a>",
-          "<a target=\"_blank\" href=\"www.onepartnergroup.se\">www.onepartnergroup.se</a>",
-          "<a target=\"_blank\" href=\"www.indeed.com\">www.indeed.com</a>",
-          "<a target=\"_blank\" href=\"www.topwork.se\">www.topwork.se</a>",
-          "<a target=\"_blank\" href=\"www.offentligajobb.se\">www.offentligajobb.se</a>"
+          "<a target=\"_blank\" href=\"https://www.adecco.se\">www.adecco.se</a>",
+          "<a target=\"_blank\" href=\"https://www.lernia.se\">www.lernia.se</a>",
+          "<a target=\"_blank\" href=\"https://www.manpower.se\">www.manpower.se</a>",
+          "<a target=\"_blank\" href=\"https://www.uniflex.se\">www.uniflex.se</a>",
+          "<a target=\"_blank\" href=\"https://www.onepartnergroup.se\">www.onepartnergroup.se</a>",
+          "<a target=\"_blank\" href=\"https://www.indeed.com\">www.indeed.com</a>",
+          "<a target=\"_blank\" href=\"https://www.topwork.se\">www.topwork.se</a>",
+          "<a target=\"_blank\" href=\"https://www.offentligajobb.se\">www.offentligajobb.se</a>"
         ]
       }
     ],

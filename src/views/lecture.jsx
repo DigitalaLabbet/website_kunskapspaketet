@@ -24,10 +24,10 @@ class Lecture extends Component {
             <div className="container navbar-margin">
               <div className="lecture mt-2">
                 <iframe title="vidoe" width="100%" height="200px" src={lecture.videoUrl}></iframe>
-                <p dangerouslySetInnerHTML={innerHtml(lecture.information)}></p>
+                <p className="text-14" dangerouslySetInnerHTML={innerHtml(lecture.information)}></p>
                 {lecture.links &&
                   lecture.links.map(link => (
-                    <div key={link.heading}>
+                    <div className="text-14" key={link.heading}>
                       {link.heading && <b>{link.heading}</b>}
                       <ul>
                         {link.items.map(item => (
