@@ -29,7 +29,7 @@ createTheme('solarized', {
 const LectureTable = props => {
   const { lectures } = props;
   const data = [];
-  
+
   const columns = [
     {
       name: 'Kategori',
@@ -39,9 +39,9 @@ const LectureTable = props => {
         {
           when: row => row.isVisible === false,
           style: {
-            color: 'gray',
+            color: 'gray'
           }
-        },
+        }
       ]
     },
     {
@@ -53,11 +53,10 @@ const LectureTable = props => {
         {
           when: row => row.isVisible === false,
           style: {
-            color: 'gray',
+            color: 'gray'
           }
-        },
+        }
       ]
-      
     },
     {
       name: 'Info',
@@ -68,34 +67,28 @@ const LectureTable = props => {
         {
           when: row => row.isVisible === false,
           style: {
-            color: 'gray',
+            color: 'gray'
           }
-        },
+        }
       ]
     },
 
     {
-      name: 'Redigera',
-      selector: 'edit',
-      width: '500px',
-      hide: 'sm',
-      cell: id => {
-        return (
-          <div>
-            <Link key={id.id} to={'/redigera/' + id.id}>
-              <button className="btn btn-outline-success btn-sm border-0">
-                <i className="fas fa-edit"></i>
-              </button>
-            </Link>
-            <button  className="btn btn-outline-primary border-0 btn-sm" onClick={() =>{   
-              console.log(id.id);
-              
-              props.onToggle(id.id)}}>
-              <i className="far fa-eye-slash"></i>
+      name: 'Actions',
+      sortable: false,
+      style: { padding: '0' },
+      cell: row => (
+        <div>
+          <Link key={row.id} to={'/redigera/' + row.id}>
+            <button className="btn btn-sm btn-warning text-white">
+              <i className="fas fa-edit"></i>
             </button>
-          </div>
-        );
-      }
+          </Link>
+          <button className={`btn btn-sm btn-info`} onClick={() => props.toggleLecture(row)}>
+            <i className={`far  ${row.isVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
+          </button>
+        </div>
+      )
     }
   ];
 
