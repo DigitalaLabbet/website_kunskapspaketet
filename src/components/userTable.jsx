@@ -4,6 +4,7 @@ import DataTable, { createTheme } from 'react-data-table-component';
 import ExpandableRowData from '../components/expandable-row.jsx';
 import Confirm from './modals/confirm-modal';
 import CreateUser from './modals/create-user';
+import ViewUser from './modals/view-user';
 
 createTheme('solarized', {
   text: {
@@ -36,7 +37,7 @@ const UserTable = props => {
       name: 'Roll',
       selector: 'role',
       sortable: true,
-      width: '76px',
+      width: '50px',
       style: {
         color: '#ffffff'
       },
@@ -59,7 +60,12 @@ const UserTable = props => {
             backgroundColor: '#EBB035'
           }
         }
-      ]
+      ],
+      cell: row => (
+        <div className="w-100 text-center">
+          {row.role === 'teacher' ? 'T' : row.role === 'super_admin' ? 'SA' : 'S'}
+        </div>
+      )
     },
     {
       name: 'Namn',
@@ -81,10 +87,12 @@ const UserTable = props => {
     {
       name: 'Actions',
       sortable: false,
+      style: { padding: '0' },
       cell: row => (
         <div>
           {row.role !== 'super_admin' && (
             <>
+              {row.role === 'student' && <ViewUser user={row} />}
               <CreateUser user={row} />
               <Confirm
                 onConfirm={() => {
@@ -114,8 +122,11 @@ const UserTable = props => {
 
   return (
     <div className="userTable mt-3">
+      <h5 className="m-0 p-2" style={{ background: '#eeeeee' }}>
+        Användare <CreateUser />
+      </h5>
       <DataTable
-        title="Användare"
+        noHeader={true}
         columns={columns}
         theme="solarized"
         data={data}

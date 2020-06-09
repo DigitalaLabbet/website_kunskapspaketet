@@ -53,7 +53,6 @@ class CreateUser extends Component {
         phoneNumber: this.state.phoneNumber
       };
 
-      console.log(updatedValues);
       servicesUsers
         .updateUser(user.id, updatedValues)
         .then(res => {
@@ -88,7 +87,7 @@ class CreateUser extends Component {
     return (
       <React.Fragment>
         <button
-          className={`btn ${this.props.user ? 'btn-sm btn-warning text-white' : 'btn-primary'}`}
+          className={`btn btn-sm ${this.props.user ? 'btn-warning text-white' : 'btn-primary'}`}
           onClick={this.handleShow}>
           {this.props.user ? (
             <React.Fragment>
@@ -96,7 +95,7 @@ class CreateUser extends Component {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <i className="fa fa-plus fa-lg mr-2"></i> Konto
+              <i className="fa fa-plus"></i>
             </React.Fragment>
           )}
         </button>

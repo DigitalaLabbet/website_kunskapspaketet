@@ -9,10 +9,8 @@ import { connect } from 'react-redux';
 import Navbar from '../components/navbar';
 import Topbar from '../components/topbar';
 import Notify from '../components/notify';
-import RegisterForm from '../components/RegisterForm';
 import UserTable from '../components/userTable';
 import LectureTable from '../components/lectureTable';
-import CreateUser from '../components/modals/create-user';
 
 import * as servicesUsers from '../services/users';
 
@@ -33,21 +31,6 @@ class Admin extends Component {
     return (
       <div className="container admin">
         <Topbar name={profile.role === 'super_admin' ? 'Administration' : 'lärare Dashbord'} />
-        <header className="adminHeader">
-          <div className="edit">
-            <ul>
-              <li>
-                <CreateUser />
-              </li>
-              <li>
-                <button className="btn btn-info" data-toggle="modal" data-target="#lecture">
-                  <i className="fa fa-plus fa-lg mr-2" aria-hidden="true"></i> Föreläsning
-                </button>
-              </li>
-            </ul>
-          </div>
-        </header>
-        <RegisterForm />
         <div className="navbar-margin">
           {users && <UserTable users={users} deleteUser={deleteUser} />}
           {profile.role === 'super_admin' && lectures && <LectureTable lectures={lectures} />}

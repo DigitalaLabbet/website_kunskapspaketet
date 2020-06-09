@@ -1,0 +1,166 @@
+import React, { Component } from 'react';
+
+import { Modal, Accordion, Card, Button, ListGroup } from 'react-bootstrap';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
+
+class ViewUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+      quizzes: null
+    };
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.quizzes = [];
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+
+    this.props.firestore
+      .collection('users')
+      .doc(this.props.user.id)
+      .collection('quizzes')
+      .get()
+      .then(res => {
+        const quizzes = [];
+        res.docs.forEach(doc => {
+          quizzes.push(doc.data());
+        });
+        quizzes.forEach(quiz => {
+          quiz.userInput.forEach(x => {
+            if (typeof x === 'object') {
+              x = Object.assign([], x);
+            }
+          });
+        });
+        quizzes.forEach(quiz => {
+          quiz.userInput = quiz.userInput.map(input => {
+            if (typeof input === 'object') {
+              input = Object.assign([], input);
+            }
+            return input;
+          });
+        });
+
+        this.setState({ quizzes: quizzes });
+      });
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+    // this.setState({ quizzes: null });
+  }
+
+  render() {
+    const { show, quizzes } = this.state;
+    const { user } = this.props;
+
+    const checkIfCorrect = (userAnswer, correctAnswer, answerIndex) => {
+      if (typeof correctAnswer === 'object') {
+        if (correctAnswer.includes(answerIndex)) {
+          return correctAnswer.includes(answerIndex) ? 'bg-success text-white' : 'bg-danger text-white';
+        }
+        return userAnswer.includes(answerIndex) ? 'bg-danger text-white' : '';
+      } else {
+        return parseInt(correctAnswer) === answerIndex
+          ? 'bg-success text-white'
+          : parseInt(userAnswer) === answerIndex
+          ? 'bg-danger text-white'
+          : '';
+      }
+    };
+
+    const convertDate = quizSubmitted => {
+      const date = new Date(quizSubmitted);
+      return `${date.getFullYear()}/${('0' + (date.getMonth() + 1)).slice(-2)}/${('0' + date.getDate()).slice(
+        -2
+      )} - ${date.getHours()}:${date.getMinutes()}`;
+    };
+
+    return (
+      <React.Fragment>
+        <button className="btn btn-info btn-sm" onClick={this.handleShow}>
+          <i className="fa fa-eye"></i>
+        </button>
+        <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
+          <Modal.Header>Quiz svar för {user.name ? user.name : user.email}</Modal.Header>
+          <Modal.Body>
+            <pre>{JSON.stringify(user, null, 2)}</pre>
+            {quizzes?.length > 0 ? (
+              <>
+                <Accordion>
+                  {quizzes.map((quiz, index) => (
+                    <Card key={quiz.quizTitle}>
+                      <Card.Header style={{ padding: '0' }}>
+                        <Accordion.Toggle as={Button} variant="link" eventKey={index} className="w-100 text-left">
+                          {quiz.quizTitle} - Avklarad: {convertDate(quiz.quizSubmitted)}
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey={index}>
+                        <Card.Body style={{ padding: '8px' }}>
+                          {quiz.questions.map((question, questionIndex) => (
+                            <div key={`${index}+${question.question}`}>
+                              {questionIndex === 0 && (
+                                <div>
+                                  {user.name ? user.name : user.email} fick {quiz.numberOfCorrectAnswers} av{' '}
+                                  {quiz.numberOfQuestions} frågor rätt
+                                </div>
+                              )}
+                              <br />
+                              <h6 className="text-secondary">
+                                <p>
+                                  Q{questionIndex + 1}: {question.question}
+                                </p>
+                                <span
+                                  className={`badge py-2 px-3 text-white ${
+                                    question.answerSelectionType === 'multiple' ? 'badge-warning' : 'badge-primary'
+                                  }`}>
+                                  {question.answerSelectionType === 'multiple' ? 'Flerval' : 'Ett val'}
+                                </span>
+                                <span className="badge py-2 px-3 ml-1 text-white" style={{ background: '#673AB7' }}>
+                                  Välj {question.correctAnswer.length}
+                                </span>
+                              </h6>
+                              <ListGroup as="ul">
+                                {question.answers.map((answer, answerIndex) => (
+                                  <ListGroup.Item
+                                    as="li"
+                                    key={answer}
+                                    className={`mt-1 ${checkIfCorrect(
+                                      quiz.userInput[questionIndex],
+                                      question.correctAnswer,
+                                      answerIndex + 1
+                                    )}`}>
+                                    {answer}
+                                  </ListGroup.Item>
+                                ))}
+                              </ListGroup>
+                            </div>
+                          ))}
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  ))}
+                </Accordion>
+              </>
+            ) : (
+              <h4>Har inte gjort något quiz ännu</h4>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="btn btn-secondary" onClick={this.handleClose}>
+              Stäng
+            </button>
+          </Modal.Footer>
+        </Modal>
+      </React.Fragment>
+    );
+  }
+}
+
+const enhance = compose(firestoreConnect());
+
+export default enhance(ViewUser);
