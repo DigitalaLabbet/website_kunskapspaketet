@@ -12,6 +12,10 @@ class Lecture extends Component {
   render() {
     const { profile, lecture, quizzes } = this.props;
 
+    const innerHtml = text => {
+      return { __html: text };
+    };
+
     return (
       <div>
         {lecture && (
@@ -20,9 +24,18 @@ class Lecture extends Component {
             <div className="container navbar-margin">
               <div className="lecture mt-2">
                 <iframe title="vidoe" width="100%" height="200px" src={lecture.videoUrl}></iframe>
-                <div>
-                  <p>{lecture.information}</p>
-                </div>
+                <p dangerouslySetInnerHTML={innerHtml(lecture.information)}></p>
+                {lecture.links &&
+                  lecture.links.map(link => (
+                    <div key={link.heading}>
+                      {link.heading && <b>{link.heading}</b>}
+                      <ul>
+                        {link.items.map(item => (
+                          <li key={item} dangerouslySetInnerHTML={innerHtml(item)}></li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 {quizzes && quizzes.map(quiz => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
               </div>
             </div>

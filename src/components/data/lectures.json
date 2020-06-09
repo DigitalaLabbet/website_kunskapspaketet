@@ -2,13 +2,25 @@
   {
     "documentId": "sprakframjande-insatser",
     "color": "#ed8936",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Att lära sig ett nytt språk kan vara både roligt, svårt och utmanande. Det finns olika metoder och verktyg för att förbättra inlärningen och därför kommer här lite tips till dig som vill bli bättre på svenska.",
     "name": "Språkfrämjande insatser",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Aktiviteter som bidrar till svenskinlärning:",
+        "items": [
+          "<a target=\"_blank\" href=\"https://podcasts.nu/poddar/sfi-lyssna-pa-svenska\">Lyssna på Podcast</a> – lyssna på svenska",
+          "<a target=\"_blank\" href=\"https://lingio.com/\">Lingio</a> – App för att läsa sig svenska",
+          "<a target=\"_blank\" href=\"https://www.youtube.com/watch?v=Z6lxz6s-fN4\">Film</a> - Svenska språket på arabiska",
+          "<a target=\"_blank\" href=\"https://www.digitalasparet.se/\">Digitala spåret</a> – Här kan du hitta mer tips för att lära dig svenska",
+          "<a target=\"_blank\" href=\"http://www.hejsvenska.se/\">Hejsvenska</a> – verktyg för dig som vill lära dig språket"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Språkfrämjande insatser quiz",
+        "quizTitle": "Språkfrämjande insatser",
         "quizSynopsis": "",
         "questions": [
           {
@@ -53,13 +65,53 @@
   {
     "documentId": "arbetsmarknad",
     "color": "#ecc94b",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Arbetsmarknad är den marknad där arbetsgivare och arbetstagare möts, och där arbetstagaren erbjuder arbetskraft i utbyte mot lön inom ramen för en anställning. Här finns information om svensk arbetsmarknad och även information för dig som söker jobb.",
     "name": "Arbetsmarknad",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Information om arbetsmarknad i Sverige:",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.informationsverige.se/sv/jag-har-fatt-uppehallstillstand/om-du-vill-arbeta/\">Information om arbete i Sverige</a>"
+        ]
+      },
+
+      {
+        "heading": "Information om att skriva CV och personligt brev:",
+        "items": [
+          "<a target=\"_blank\" href=\"https://arbetsformedlingen.se/download/18.19a3c18c16b1dc6b3bc1bb/1559634870614/cv-mall-kronologisk.docx\">Mall för CV</a>",
+          "<a target=\"_blank\" href=\"https://arbetsformedlingen.se/for-arbetssokande/jobbansokan/skriva-cv\">Filmer</a> – Skriv ett bra CV",
+          "<a target=\"_blank\" href=\"https://arbetsformedlingen.se/download/18.19a3c18c16b1dc6b3bc1d3/1559635707515/personligt-brev-mall.docx\">Mall för personligt brev</a>",
+          "<a target=\"_blank\" href=\"https://arbetsformedlingen.se/for-arbetssokande/jobbansokan/personligt-brev\">Film</a> – Att skriva personligt brev",
+          "<a target=\"_blank\" href=\"https://arbetsformedlingen.se/for-arbetssokande/jobbansokan/personligt-brev/personliga-egenskaper\">Tips till personliga brevet</a>",
+          "<a target=\"_blank\" href=\"https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Karriarvagledning-pa-egen-hand\">Karriärvägledning på egen hand</a> – skapa en bra grund för jobbsökandet"
+        ]
+      },
+      {
+        "heading": "Förberedelser för jobbintervjun:",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.arbetsformedlingenplay.se/podcast/forbered-dig-infor-en-anstallningsintervju-arbetsgivarens-basta-tips\">Podcast</a> – lyssna på tips inför jobbintervjun",
+          "<a target=\"_blank\" href=\"https://arbetsformedlingen.se/for-arbetssokande/jobbansokan/jobbintervjun/vanliga-intervjufragor\">Vanliga intervjufrågor</a>"
+        ]
+      },
+      {
+        "heading": "Bemanningsföretag för dig som söker jobb:",
+        "items": [
+          "<a target=\"_blank\" href=\"www.adecco.se\">www.adecco.se</a>",
+          "<a target=\"_blank\" href=\"www.lernia.se\">www.lernia.se</a>",
+          "<a target=\"_blank\" href=\"www.manpower.se\">www.manpower.se</a>",
+          "<a target=\"_blank\" href=\"www.uniflex.se\">www.uniflex.se</a>",
+          "<a target=\"_blank\" href=\"www.onepartnergroup.se\">www.onepartnergroup.se</a>",
+          "<a target=\"_blank\" href=\"www.indeed.com\">www.indeed.com</a>",
+          "<a target=\"_blank\" href=\"www.topwork.se\">www.topwork.se</a>",
+          "<a target=\"_blank\" href=\"www.offentligajobb.se\">www.offentligajobb.se</a>"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Arbetsmarknad quiz",
+        "quizTitle": "Arbetsmarknad",
         "quizSynopsis": "",
         "questions": [
           {
@@ -133,13 +185,36 @@
   {
     "documentId": "studier",
     "color": "#c49e33",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Här får du mer information om vilka möjligheter du har att studera och vilka utbildningar som finns. Att studera ger dig ökade chanser att komma ut i arbete och få möjlighet att arbeta med det du vill. Det finns stora möjligheter att studera ämnen samtidigt som du läser SFI.<br><br>Om du är för gammal för att studera på grundskolan eller i gymnasieskolan kan du istället till exempel studera på kommunal vuxenutbildning eller på folkhögskola. På grundläggande nivå studerar du ämnen motsvarande de man studerar i grundskolan. På gymnasial nivå studerar du kurser motsvarande de som finns på gymnasiet.",
     "name": "Studier",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Utbildningar på distans",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.nti.se/\">Nti</a> - Läs mer om utbildningar på distans",
+          "<a target=\"_blank\" href=\"https://www.sfiekonomi.se/\">Grunder i ekonomi</a> – för dig som vill lära sig mer om ekonomi",
+          "<a target=\"_blank\" href=\"https://www.informationsverige.se/sv/jag-har-fatt-uppehallstillstand/om-du-studerar-eller-vill-studera/\">Folkhögskolor</a>"
+        ]
+      },
+      {
+        "heading": "",
+        "items": [
+          "Visste du att Kronobergs län har ett <a target=\"_blank\" href=\"https://lnu.se/\">Universitet</a> med ett Campusområde?"
+        ]
+      },
+      {
+        "heading": "Osäker på vad du vill studera och vilket stöd du kan få",
+        "items": [
+          "För dig som vill studera vidare - <a target=\"_blank\" href=\"https://www.studera.nu/komplettera\">Läs mer om studier i Sverige</a>",
+          "CSN vid studier – <a target=\"_blank\" href=\"https://www.informationsverige.se/sv/mer-om-sverige/utbildning/bidrag-och-lan-fran-csn/\">Läs mer om vilka möjligheter du har till stöd och bidrag</a>"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Studier quiz",
+        "quizTitle": "Studier",
         "quizSynopsis": "",
         "questions": [
           {
@@ -209,13 +284,82 @@
   {
     "documentId": "halsa",
     "color": "#48bb78",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Hälsa är ett svårdefinierat begrepp eftersom det är mycket större än att bara var fri från en sjukdom. Det innefattar både ett fysiskt välbefinnande så som psykiskt och socialt. Det är viktigt att du vet var du kan vända dig med dina frågor och funderingar. Läs mer om vad hälsa är <a target=\"_blank\" href=\"https://xn--friskvrd-f0a.se/vad-ar-halsa/\">här</a>.<br><br>Du vet väl om att du vid akuta nödsituationer ringer 112?",
     "name": "Hälsa",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Hälsa för dig och familjen",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.1177.se/Kronoberg/other-languages/1177-vardguiden-pa-flera-sprak/\">1177</a> – Information på olika språk",
+          "<a target=\"_blank\" href=\"https://www.1177.se/Kronoberg/liv--halsa\">Liv och Hälsa</a> – hälsa och välmående (på svenska)",
+          "<a target=\"_blank\" href=\"https://www.forsakringskassan.se/sprak\">Försäkringskassan</a> - Information om tjänster för dig som pratar ett annat språk",
+          "<a target=\"_blank\" href=\"https://www.informationsverige.se/sv/mer-om-sverige/vard-och-halsa/\">Hälsa och vård i Sverige</a> – Information om hälsa och vård i Sverige",
+          "<a target=\"_blank\" href=\"https://www.folkhalsomyndigheten.se/publicerat-material/publikationsarkiv/b/bra-att-veta-om-vaccinationer/\">Vaccinationer i Sverige</a> – information om vaccinationer",
+          "<a target=\"_blank\" href=\"https://www.folkhalsomyndigheten.se/smittskydd-beredskap/antibiotika-och-antibiotikaresistens/antibiotika-och-resistens/patientinformation/\">Antibiotika i Sverige</a> - information om antibiotika i Sverige"
+        ]
+      },
+      {
+        "heading": "",
+        "items": [
+          "Information om hälsa på lätt svenska och andra språk hittar du <a target=\"_blank\" href=\"https://www.1177.se/sv-se-x-ll/Kronoberg/other-languages/other-languages/\">här</a>. Om du vill veta mer finns information på  <a target=\"_blank\" href=\"https://www.sosalarm.se/spraklanguages/3/\">arabiska</a>,  <a target=\"_blank\" href=\"https://www.sosalarm.se/spraklanguages/af-soomaali/\">somaliska</a> eller  <a target=\"_blank\" href=\"https://www.sosalarm.se/spraklanguages/farsi/\">farsi</a>."
+        ]
+      },
+      {
+        "heading": "Information om graviditet, förlossning, sex och samlevnad",
+        "items": [
+          "<a target=\"_blank\" href=\"http://www.hfsnatverket.se/material-pa-andra-sprak\">Gravid och förlossning</a> – Information för dig som är gravid",
+          "<a target=\"_blank\" href=\"https://www.umo.se/\">Ungdomsmottagningen</a> – information för ungdomar",
+          "<a target=\"_blank\" href=\"https://www.youmo.se/sprakvalsida/\">Youmo</a> - för dig som är under 20, finns på flera språk"
+        ]
+      },
+
+      {
+        "heading": "Filmer om hälsa",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.youtube.com/watch?v=_t5QZNRt3X8\">Film</a> – En liten film om hälsa",
+          "<a target=\"_blank\" href=\"https://www.youtube.com/watch?v=LtcUmbiaPFg\">Film</a> – Tips för att må bra",
+          "<a target=\"_blank\" href=\"https://www.rfsu.se/sex-och-relationer/for-pedagoger-och-yrkesverksamma/upos/\">Film</a> – Om sex, kropp och hälsa på olika språk",
+          "<a target=\"_blank\" href=\"https://www.youtube.com/channel/UCEZ79WHaQRrn2C7zFAPq24g\">Film</a> – Psykisk ohälsa på olika språk"
+        ]
+      },
+
+      {
+        "heading": "Information om alkohol, rökning och droger",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.slutarokalinjen.se/other-languages/\">Sluta-röka-linjen</a> - Information om rökavvänjning på flera språk.",
+          "<a target=\"_blank\" href=\"https://www.iq.se/tonarsparloren/broschyrer-pa-andra-sprak/\">Alkoholvanor</a> – information på andra språk",
+          "<a target=\"_blank\" href=\"https://www.youmo.se/tobak-alkohol-droger/droger/\">Droger</a> – information på olika språk"
+        ]
+      },
+      {
+        "heading": "Träna dina hälsokunskaper och svenska på samma gång",
+        "items": [
+          "<a target=\"_blank\" href=\"https://swedish-for-all.se/sfi-steg-learning-steps/tema-kropp-och-halsa/\">Kropp och hälsa</a>",
+          "<a target=\"_blank\" href=\"http://lanassfi.blogspot.com/p/halsa.html\">Lanas skafferi</a>",
+          "<a target=\"_blank\" href=\"https://www.digitalasparet.se/teman/halsa.htm\">Digitala spåret om kropp och hälsa</a>"
+        ]
+      },
+      {
+        "heading": "Träning är bra för hälsan",
+        "items": [
+          "<a target=\"_blank\" href=\"https://tranarpasset.com/2020/03/24/psykisk-halsa/\">Film</a> – olika ämnen med fokus på träning"
+        ]
+      },
+      {
+        "heading": "Läs mer om träning och varför träning är bra för din hälsa",
+        "items": [
+          "<a target=\"_blank\" href=\"https://utbildning.sisuidrottsbocker.se/sisu/generell/organisation/inkluderande-idrott/\">Allas rätt till idrott</a>",
+          "<a target=\"_blank\" href=\"https://utbildning.sisuidrottsbocker.se/sisu/generell/idrottspsykologi/idrottspsykologi-prestation-och-halsa/valbefinnande/\">Träning är viktigt</a>",
+          "<a target=\"_blank\" href=\"https://utbildning.sisuidrottsbocker.se/sisu/generell/idrottspsykologi/upp-upp-vi-lyfter/\">Upp Upp vi lyfter</a>",
+          "<a target=\"_blank\" href=\"https://utbildning.sisuidrottsbocker.se/sisuiu/tranare/pw/Introduktionsutbildning-for-tranare/\">Introduktionsutbildning för dig som vill bli tränare</a>"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Hälsa quiz",
+        "quizTitle": "Hälsa",
         "quizSynopsis": "",
         "questions": [
           {
@@ -275,13 +419,34 @@
   {
     "documentId": "covid-19",
     "color": "#f56565",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Corona-viruset påverkar oss alla i samhället och det är viktigt att du håller dig uppdaterad om information och riktlinjer som påverkar vår vardag.<br><br>Frågor om Corona-viruset kan du <a target=\"_blank\" href=\"https://www.sosalarm.se/trygghet/viktiga-telefonnummer/11313/\">läsa mer om här</a> eller ring 11313",
     "name": "Covid-19",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Information om Corona / Covid-19 på olika språk",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.myndighetensst.se/om-oss/nyheter/nyhetsarkiv-aktuellt/2020-04-01-trossamfundsledare-talar-om-covid-19.html\">Från trossamfunden om Corona</a>",
+          "<a target=\"_blank\" href=\"https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/skydda-dig-och-andra/informationsblad-pa-olika-sprak/informationsblad-om-det-nya-coronaviruset/\">Om Corona-viruset</a>",
+          "<a target=\"_blank\" href=\"https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/skydda-dig-och-andra/information-pa-olika-sprak/\">Skydda dig själv och andra</a>",
+          "<a target=\"_blank\" href=\"https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/skydda-dig-och-andra/informationsblad-pa-olika-sprak/informationsblad-undvik-att-bli-smittad/\">Undvik smittan och att smitta</a>",
+          "<a target=\"_blank\" href=\"https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/skydda-dig-och-andra/informationsblad-pa-olika-sprak/informationsblad-du-som-ar-70-ar-eller-aldre/\">Nära och kära över 70 år</a>",
+          "<a target=\"_blank\" href=\"https://www.youtube.com/watch?v=cbX0xwKORjk\">Film om att tvätta händerna</a>",
+          "<a target=\"_blank\" href=\"https://tellcorona.com/\">Film om Corona-viruset</a>"
+        ]
+      },
+      {
+        "heading": "Viktiga sidor som informerar om nyheter om Corona-viruset",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/skydda-dig-och-andra/informationsblad-pa-olika-sprak/informationsblad-om-det-nya-coronaviruset/\">Folkhälsomyndigheten</a> – Svensk myndighet för smittskyddsberedskap",
+          "<a target=\"_blank\" href=\"https://www.who.int/emergencies/diseases/novel-coronavirus-2019\">World Health Organisation</a> – Information om Corona i världen"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Covid-19 quiz",
+        "quizTitle": "Covid-19",
         "quizSynopsis": "",
         "questions": [
           {
@@ -361,13 +526,41 @@
   {
     "documentId": "jamstalldhet",
     "color": "#4299e1",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Jämställdhet handlar om jämlikhet mellan män och kvinnor. De ska ha lika mycket makt att påverka samhället och sina egna liv. Jämställdhet innebär att kvinnor och män ska ha samma rättigheter och skyldigheter. Människors förutsättningar påverkas av flera faktorer än kön, vilket innebär att alla i gruppen kvinnor och män inte har samma livserfarenheter eller levnadsvillkor. Läs mer om generell information kring jämställdhet <a target=\"_blank\" href=\"https://www.informationsverige.se/sv/jag-har-fatt-uppehallstillstand/samhallsorientering/boken-om-sverige/individens-rattigheter-och-skyldigheter/jamlikhet-och-manskliga-rattigheter/\">här</a>.",
     "name": "Jämställdhet",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Information om jämställdhet:",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.jamstalldhetsmyndigheten.se/lattlast/lattlast-om-svensk-jamstalldshetpolitik\">Jämställdhetsmyndigheten</a> – Sveriges myndighet för jämställdhetsfrågor",
+          "<a target=\"_blank\" href=\"https://www.regeringen.se/lattlast-information-om-regeringen-och-regeringskansliet/den-svenska-samhallsmodellen/jamstalldhet/\">Regeringen</a> – Svenska regeringen om jämställdhet",
+          "<a target=\"_blank\" href=\"https://www.youmo.se/jag/jamstalldhet/\">Youmo</a> – Jämställdhet på lätt svenska",
+          "<a target=\"_blank\" href=\"https://swedish-for-all.se/sfi-steg-learning-steps/steg-38-sfi-samhallsfragor/\">Sfa – svenska för alla</a> – Om samhällsfrågor och jämställdhet"
+        ]
+      },
+      {
+        "heading": "Här finns filmer om jämställdhet:",
+        "items": [
+          "Film: <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=9B88Z0Nfgw8\">Varför jämställdhet?</a>",
+          "Film: <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=pV1tnpFURXc\">En liten film om normer för killar och män</a>",
+          "Film: <a target=\"_blank\" href=\"https://vimeo.com/68208026\">En liten film om fördomar</a>"
+        ]
+      },
+      {
+        "heading": "Information om tillgänglighet & diskriminering:",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.mfd.se/lattlast/\">Myndigheten för delaktighet</a> - För personer med funktionsnedsättning",
+          "<a target=\"_blank\" href=\"https://www.do.se/lattlast/\">Lättläst version av DO:s hemsida</a> – Om diskriminering",
+          "<a target=\"_blank\" href=\"https://www.do.se/other-languages/\">Information på flera språk</a> – Om diskriminering",
+          "<a target=\"_blank\" href=\"https://www.1177.se/Kronoberg/liv--halsa/overgrepp-och-sexuella-trakasserier/att-bli-utsatt-for-vald-i-nara-relationer/\">1177</a> och <a target=\"_blank\" href=\"https://vaxjo.se/sidor/stod-och-omsorg/familj-och-foralder/familjefrid-kronoberg.html\">Familjefrid Kronoberg</a> – Våld i nära relationer"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Jämställdhet quiz",
+        "quizTitle": "Jämställdhet",
         "quizSynopsis": "",
         "questions": [
           {
@@ -447,13 +640,32 @@
   {
     "documentId": "samhallsinformation",
     "color": "#9f7aea",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Att komma till ett nytt samhälle kan vara både spännande och förvirrande. Kulturella skillnader kan vara stora och hur samhället fungerar kan skilja sig från det vi är vana vid. Här finns information som kan vara bra att veta om Sverige som land, om kultur och normer samt annan information som kan vara bra att känna till.",
     "name": "Samhällsinformation",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Information om Sverige och samhället",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.informationsverige.se/sv/\">Information Sverige</a> – Här finns generell information om Sverige som land",
+          "<a target=\"_blank\" href=\"http://www.hejsvenska.se/\">Leva i Sverige</a> – mer information om Sverige",
+          "<a target=\"_blank\" href=\"https://www.svtplay.se/nyheter-pa-latt-svenska\">Vad händer idag?</a> - nyheter i Sverige och världen på lätt svenska",
+          "<a target=\"_blank\" href=\"https://8sidor.se/\">Nyheter 8sidor</a> – lättlästa nyheter om kultur och sport",
+          "<a target=\"_blank\" href=\"https://www.svtplay.se/lilla-aktuellt-skola\">Kolla nyheter med barnen</a> – dagliga nyheter som du kan se med barnen ",
+          "<a target=\"_blank\" href=\"https://sverigesradio.se/radioswedenpalattsvenska\">Mer nyheter</a> – Sveriges radio har dagliga sändningar på lätt svenska "
+        ]
+      },
+      {
+        "heading": "",
+        "items": [
+          "Vet du att det finns program med översättning med ditt språk? <a target=\"_blank\" href=\"https://www.ur.se/sprakplay/\">Kolla här!</a>"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Samhällsinformation quiz",
+        "quizTitle": "Samhällsinformation",
         "quizSynopsis": "",
         "questions": [
           {
@@ -493,13 +705,26 @@
   {
     "documentId": "viktig-myndighetsinformation",
     "color": "#C0C0C0",
-    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "information": "Ibland uppstår kriser och händelser som påverkar dig, din familj och samhället i stort. Det är därför viktigt att du kan få information om vad som händer och hur det påverkar dig.",
     "name": "Viktig myndighetsinformation",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "links": [
+      {
+        "heading": "Här hittar du information som är bra att ha om det uppstår en kris",
+        "items": [
+          "<a target=\"_blank\" href=\"https://www.krisinformation.se/\">Krisinformation</a>",
+          "<a target=\"_blank\" href=\"https://www.msb.se/\">Myndigheten för samhällsskydd och beredskap</a>",
+          "<a target=\"_blank\" href=\"https://www.sosalarm.se/\">SOS-alarm</a>",
+          "<a target=\"_blank\" href=\"https://polisen.se/\">Polisen</a>",
+          "<a target=\"_blank\" href=\"https://www.regeringen.se/\">Regeringen</a>",
+          "<a target=\"_blank\" href=\"https://www.lansstyrelsen.se/kronoberg/samhalle/krisberedskap.html\">Länsstyrelsen</a>"
+        ]
+      }
+    ],
     "quiz": [
       {
         "quizId": "quizOne",
-        "quizTitle": "Viktig myndighetsinformation quiz",
+        "quizTitle": "Viktig myndighetsinformation",
         "quizSynopsis": "",
         "questions": [
           {
