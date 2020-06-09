@@ -2,6 +2,7 @@ import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
 
 import ExpandableRowData from '../components/expandable-row.jsx';
+import { Link } from 'react-router-dom';
 
 createTheme('solarized', {
   text: {
@@ -28,23 +29,73 @@ createTheme('solarized', {
 const LectureTable = props => {
   const { lectures } = props;
   const data = [];
-
+  
   const columns = [
     {
       name: 'Kategori',
       selector: 'category',
-      sortable: true
+      sortable: true,
+      conditionalCellStyles: [
+        {
+          when: row => row.isVisible === false,
+          style: {
+            color: 'gray',
+          }
+        },
+      ]
     },
     {
       name: 'Video url',
       selector: 'videourl',
-      hide: 'sm'
+      width: '300px',
+      hide: 'sm',
+      conditionalCellStyles: [
+        {
+          when: row => row.isVisible === false,
+          style: {
+            color: 'gray',
+          }
+        },
+      ]
+      
     },
     {
       name: 'Info',
       selector: 'info',
+      width: '300px',
+      hide: 'sm',
+      conditionalCellStyles: [
+        {
+          when: row => row.isVisible === false,
+          style: {
+            color: 'gray',
+          }
+        },
+      ]
+    },
+
+    {
+      name: 'Redigera',
+      selector: 'edit',
       width: '500px',
-      hide: 'sm'
+      hide: 'sm',
+      cell: id => {
+        return (
+          <div>
+            <Link key={id.id} to={'/redigera/' + id.id}>
+              <button className="btn btn-outline-success btn-sm border-0">
+                <i className="fas fa-edit"></i>
+              </button>
+            </Link>
+            <button  className="btn btn-outline-primary border-0 btn-sm" onClick={() =>{   
+              console.log(id.id);
+              
+              props.onToggle(id.id)}}>
+              <i className="far fa-eye-slash"></i>
+            </button>
+          </div>
+        );
+      }
     }
   ];
 
@@ -53,7 +104,9 @@ const LectureTable = props => {
       id: lecture.id,
       info: lecture.information,
       videourl: lecture.videoUrl,
-      category: lecture.name
+      category: lecture.name,
+      color: lecture.color,
+      isVisible: lecture.isVisible
     });
   });
 

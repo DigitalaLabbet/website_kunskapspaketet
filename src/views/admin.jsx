@@ -28,12 +28,33 @@ class Admin extends Component {
         .catch(err => servicesUsers.handleError(err));
     };
 
+    const toggleLecture = row => {
+      this.props.firebase
+        .firestore()
+        .collection('lectures')
+        .doc(row.id)
+        .update({
+          isVisible: !row.isVisible
+        })
+        .then(() => {
+          const notifyText = `${!row.isVisible ? 'Aktiverade' : 'Deaktiverade'} ${row.category}`;
+          if (!row.isVisible) {
+            Notify.success(notifyText);
+          } else {
+            Notify.warning(notifyText);
+          }
+        })
+        .catch(error => console.error('Error writing document: ', error));
+    };
+
     return (
       <div className="container admin">
-        <Topbar name={profile.role === 'super_admin' ? 'Administration' : 'lärare Dashbord'} />
+        <Topbar name={profile.role === 'super_admin' ? 'Administration' : 'Lärare'} />
         <div className="navbar-margin">
           {users && <UserTable users={users} deleteUser={deleteUser} />}
-          {profile.role === 'super_admin' && lectures && <LectureTable lectures={lectures} />}
+          {profile.role === 'super_admin' && lectures && (
+            <LectureTable lectures={lectures} toggleLecture={toggleLecture} />
+          )}
         </div>
         <Navbar role={profile.role} />
       </div>

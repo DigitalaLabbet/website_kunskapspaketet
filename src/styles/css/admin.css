@@ -99,3 +99,27 @@
 .hide {
     display: none;
 }
+
+
+/* edit page */
+.edit {
+    width: 100%;
+    height: auto;
+}
+
+.edit form {
+    max-width: 800px;
+    height: auto;
+    padding: 50px 30px;
+    margin: 100px auto;
+    background-color: #eee;
+}
+
+.edit form .form-group label{
+    text-transform: capitalize;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.isVisible {
+    background-color: blue;
+}

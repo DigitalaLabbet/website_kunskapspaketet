@@ -19,6 +19,7 @@ import Home from './views/home';
 import Admin from './views/admin';
 import Settings from './views/settings';
 import Lecture from './views/lecture';
+import Edit from './components/modify_lecture'
 
 class App extends Component {
   constructor(props) {
@@ -60,6 +61,7 @@ class App extends Component {
             <Route path="/settings" component={profile.email ? Settings : Landing} />
             <Route path="/lecture/:lectureName" component={profile.email ? Lecture : Landing} />
             <Route path="/admin" component={profile.email ? Admin : Landing} />
+            <Route path="/redigera/:id" component={(profile.role == 'super_admin') && Edit } />
           </HashRouter>
         )}
       </div>
