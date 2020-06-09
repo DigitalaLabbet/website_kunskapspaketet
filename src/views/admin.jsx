@@ -3,28 +3,31 @@ import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 import '../styles/css/admin.css';
-import UserTable from '../components/userTable';
-import LectureTable from '../components/lectureTable';
 
 import { connect } from 'react-redux';
-import RegisterForm from '../components/RegisterForm';
 
 import Navbar from '../components/navbar';
 import Topbar from '../components/topbar';
+import Notify from '../components/notify';
+import RegisterForm from '../components/RegisterForm';
+import UserTable from '../components/userTable';
+import LectureTable from '../components/lectureTable';
+import CreateUser from '../components/modals/create-user';
+
+import * as servicesUsers from '../services/users';
 
 class Admin extends Component {
-  constructor(props) {
-    super(props);
+  render() {
+    const { profile, lectures, users } = this.props;
 
-    this.state = {
-      users: [],
-      lectures: [],
-      name: '',
-      email: '',
-      phoneNumber: '',
-      role: '',
-      password: '',
-      msg: ''
+    const deleteUser = id => {
+      servicesUsers
+        .removeUser(id)
+        .then(res => {
+          console.log('res: ', res);
+          Notify.success(res.data);
+        })
+        .catch(err => servicesUsers.handleError(err));
     };
     this.createUser = this.createUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -109,9 +112,7 @@ class Admin extends Component {
           <div className="edit">
             <ul>
               <li>
-                <button className="btn btn-primary " data-toggle="modal" data-target="#adduser">
-                  <i className="fa fa-plus fa-lg mr-2" aria-hidden="true"></i> Konto
-                </button>
+                <CreateUser />
               </li>
               <li>
                 <button className="btn btn-info" data-toggle="modal" data-target="#lecture">
@@ -120,87 +121,7 @@ class Admin extends Component {
               </li>
             </ul>
           </div>
-          <div className="w-75 mx-auto">
-            <p className="bg-warning text-center" style={{ fontSize: '13px' }}>
-              {this.state.msg}
-            </p>
-          </div>
         </header>
-        <main>
-          <div className="modal fade" id="adduser" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="adduser">
-                    lägg till ny användare
-                  </h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <form>
-                    <div className="form-group">
-                      <label> Namn </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="name"
-                        value={this.state.name}
-                        onChange={this.handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> E-post </label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> telenummer </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="phoneNumber"
-                        value={this.state.phoneNumber}
-                        onChange={this.handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Lösenord </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Roll </label>
-                      <select className="form-control form-control-sm" onClick={this.handleSelectChange}>
-                        <option value="student">elev</option>
-                        <option value="teacher">Lärare</option>
-                      </select>
-                    </div>
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" data-dismiss="modal">
-                        Stäng
-                      </button>
-                      <button onClick={this.createUser} className="btn btn-success" data-dismiss="modal">
-                        Spara
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
         <RegisterForm />
         <div className="navbar-margin">
           {users && <UserTable users={users} />}
@@ -217,13 +138,24 @@ class Admin extends Component {
 }
 
 const enhance = compose(
-  firebaseConnect(),
-  firestoreConnect(() => ['lectures', 'users']),
   connect(state => ({
     profile: state.firebase.profile,
     lectures: state.firestore.ordered.lectures,
     users: state.firestore.ordered.users
-  }))
+  })),
+  firebaseConnect(),
+  firestoreConnect(props => {
+    const { uid } = props.firebase.auth().currentUser;
+    const { role } = props.profile;
+
+    const getArr = ['lectures'];
+    if (role === 'super_admin') {
+      getArr.push('users');
+    } else {
+      getArr.push({ collection: 'users', where: ['teacher', '==', uid] });
+    }
+    return getArr;
+  })
 );
 
 export default enhance(Admin);

@@ -2,6 +2,8 @@ import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
 
 import ExpandableRowData from '../components/expandable-row.jsx';
+import Confirm from './modals/confirm-modal';
+import CreateUser from './modals/create-user';
 
 createTheme('solarized', {
   text: {
@@ -34,7 +36,7 @@ const UserTable = props => {
       name: 'Roll',
       selector: 'role',
       sortable: true,
-      width: '100px',
+      width: '76px',
       style: {
         color: '#ffffff'
       },
@@ -72,16 +74,38 @@ const UserTable = props => {
     },
     {
       name: 'Telenummer',
-      selector: 'phone',
+      selector: 'phoneNumber',
       sortable: true,
       hide: 'sm'
+    },
+    {
+      name: 'Actions',
+      sortable: false,
+      cell: row => (
+        <div>
+          {row.role !== 'super_admin' && (
+            <>
+              <CreateUser user={row} />
+              <Confirm
+                onConfirm={() => {
+                  props.deleteUser(row.id);
+                }}
+                body={'Är du säker du vill radera: ' + row.email}
+                title="Radera användare"
+                confirmText="Confirm delete"
+                buttonText={<i className="fa fa-trash"></i>}
+              />
+            </>
+          )}
+        </div>
+      )
     }
   ];
 
   users.forEach(user => {
     data.push({
       email: user.email,
-      phone: user.phoneNumber,
+      phoneNumber: user.phoneNumber,
       name: user.name,
       role: user.role,
       id: user.id
