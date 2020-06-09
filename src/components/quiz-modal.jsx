@@ -62,11 +62,13 @@ class quizModal extends Component {
         return input;
       });
 
+      data.quizSubmitted = new Date().toISOString();
+
       firestore
         .collection('users')
         .doc(userUid)
-        .collection(lectureId)
-        .doc(quiz.id)
+        .collection('quizzes')
+        .doc(lectureId)
         .set(data);
     };
 
