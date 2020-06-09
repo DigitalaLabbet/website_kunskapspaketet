@@ -30,6 +30,7 @@ class Admin extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.errorHandle = this.errorHandle.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.toggleLecture = this.toggleLecture.bind(this);
   }
 
   createUser(e) {
@@ -50,6 +51,26 @@ class Admin extends Component {
       this.setState({ msg: 'E-post och lösenord måste deklareras' });
     }
   }
+
+  toggleLecture = id => {
+    const { isVisible } = this.state;
+    this.setState({ isVisible: !this.state.isVisible });
+    console.log(isVisible);
+    
+    if (isVisible != undefined) {
+      this.props.firebase
+        .firestore()
+        .collection('lectures')
+        .doc(id)
+        .update({
+          isVisible: isVisible
+        })
+        .then(() => {
+          this.props.history.push('/admin');
+        })
+        .catch(error => console.error('Error writing document: ', error));
+    }
+  };
 
   errorHandle(err) {
     if (err === 'auth/wrong-password') {
@@ -80,10 +101,10 @@ class Admin extends Component {
 
   render() {
     const { profile, lectures, users } = this.props;
-    
+
     return (
       <div className="container admin">
-        <Topbar name={profile.role == 'super_admin' ? ( 'Administration') :( 'lärare Dashbord')} />
+        <Topbar name={profile.role == 'super_admin' ? 'Administration' : 'lärare Dashbord'} />
         <header className="adminHeader">
           <div className="edit">
             <ul>
@@ -185,11 +206,9 @@ class Admin extends Component {
           {users && <UserTable users={users} />}
 
           {/* if the role field is super_admin the lecture table will show up */}
-          {profile.role === "super_admin" && (
-            lectures && <LectureTable lectures={lectures} />
-          )
-          }
-          
+          {profile.role === 'super_admin' && lectures && (
+            <LectureTable lectures={lectures} onToggle={this.toggleLecture} isVisible={this.state.isVisible} />
+          )}
         </div>
         <Navbar role={profile.role} />
       </div>

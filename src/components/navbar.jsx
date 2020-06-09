@@ -9,8 +9,6 @@ const checkLectureActive = (match, location) => {
 };
 
 const navbar = ({ role }) => {
-  console.log(role);
-  
   return (
     <div className="mobile-navbar">
       <NavLink exact={true} activeClassName="active" to="/" isActive={checkLectureActive}>

@@ -39,10 +39,13 @@ class Home extends Component {
 }
 const enhance = compose(
   firebaseConnect(),
-  firestoreConnect(() => ['lectures']),
-  connect((state) => ({
+  firestoreConnect(() => [{ 
+    collection: 'lectures',
+    where: ['isVisible', '==', true]
+  }]),
+  connect(state => ({
     profile: state.firebase.profile,
-    lectures: state.firestore.ordered.lectures,
+    lectures: state.firestore.ordered.lectures
   }))
 );
 
