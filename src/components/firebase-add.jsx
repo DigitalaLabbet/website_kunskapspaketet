@@ -18,11 +18,11 @@ class FirebaseAdd extends Component {
         name: lecture.name,
         color: lecture.color,
         information: lecture.information,
-        videoUrl: lecture.videoUrl
+        videoUrl: lecture.videoUrl,
+        isVisible: lecture.isVisible,
+        links: lecture.links
       };
-      if (lecture.links) {
-        doc.links = lecture.links;
-      }
+
       const quizzes = lecture.quiz;
       console.log('doc: ', doc);
       console.log('quizzes: ', quizzes);

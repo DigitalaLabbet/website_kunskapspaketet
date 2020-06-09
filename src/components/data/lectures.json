@@ -5,6 +5,7 @@
     "information": "Att lära sig ett nytt språk kan vara både roligt, svårt och utmanande. Det finns olika metoder och verktyg för att förbättra inlärningen och därför kommer här lite tips till dig som vill bli bättre på svenska.",
     "name": "Språkfrämjande insatser",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Aktiviteter som bidrar till svenskinlärning:",
@@ -68,6 +69,7 @@
     "information": "Arbetsmarknad är den marknad där arbetsgivare och arbetstagare möts, och där arbetstagaren erbjuder arbetskraft i utbyte mot lön inom ramen för en anställning. Här finns information om svensk arbetsmarknad och även information för dig som söker jobb.",
     "name": "Arbetsmarknad",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Information om arbetsmarknad i Sverige:",
@@ -188,6 +190,7 @@
     "information": "Här får du mer information om vilka möjligheter du har att studera och vilka utbildningar som finns. Att studera ger dig ökade chanser att komma ut i arbete och få möjlighet att arbeta med det du vill. Det finns stora möjligheter att studera ämnen samtidigt som du läser SFI.<br><br>Om du är för gammal för att studera på grundskolan eller i gymnasieskolan kan du istället till exempel studera på kommunal vuxenutbildning eller på folkhögskola. På grundläggande nivå studerar du ämnen motsvarande de man studerar i grundskolan. På gymnasial nivå studerar du kurser motsvarande de som finns på gymnasiet.",
     "name": "Studier",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Utbildningar på distans",
@@ -287,6 +290,7 @@
     "information": "Hälsa är ett svårdefinierat begrepp eftersom det är mycket större än att bara var fri från en sjukdom. Det innefattar både ett fysiskt välbefinnande så som psykiskt och socialt. Det är viktigt att du vet var du kan vända dig med dina frågor och funderingar. Läs mer om vad hälsa är <a target=\"_blank\" href=\"https://xn--friskvrd-f0a.se/vad-ar-halsa/\">här</a>.<br><br>Du vet väl om att du vid akuta nödsituationer ringer 112?",
     "name": "Hälsa",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Hälsa för dig och familjen",
@@ -422,6 +426,7 @@
     "information": "Corona-viruset påverkar oss alla i samhället och det är viktigt att du håller dig uppdaterad om information och riktlinjer som påverkar vår vardag.<br><br>Frågor om Corona-viruset kan du <a target=\"_blank\" href=\"https://www.sosalarm.se/trygghet/viktiga-telefonnummer/11313/\">läsa mer om här</a> eller ring 11313",
     "name": "Covid-19",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Information om Corona / Covid-19 på olika språk",
@@ -529,6 +534,7 @@
     "information": "Jämställdhet handlar om jämlikhet mellan män och kvinnor. De ska ha lika mycket makt att påverka samhället och sina egna liv. Jämställdhet innebär att kvinnor och män ska ha samma rättigheter och skyldigheter. Människors förutsättningar påverkas av flera faktorer än kön, vilket innebär att alla i gruppen kvinnor och män inte har samma livserfarenheter eller levnadsvillkor. Läs mer om generell information kring jämställdhet <a target=\"_blank\" href=\"https://www.informationsverige.se/sv/jag-har-fatt-uppehallstillstand/samhallsorientering/boken-om-sverige/individens-rattigheter-och-skyldigheter/jamlikhet-och-manskliga-rattigheter/\">här</a>.",
     "name": "Jämställdhet",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Information om jämställdhet:",
@@ -643,6 +649,7 @@
     "information": "Att komma till ett nytt samhälle kan vara både spännande och förvirrande. Kulturella skillnader kan vara stora och hur samhället fungerar kan skilja sig från det vi är vana vid. Här finns information som kan vara bra att veta om Sverige som land, om kultur och normer samt annan information som kan vara bra att känna till.",
     "name": "Samhällsinformation",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Information om Sverige och samhället",
@@ -708,6 +715,7 @@
     "information": "Ibland uppstår kriser och händelser som påverkar dig, din familj och samhället i stort. Det är därför viktigt att du kan få information om vad som händer och hur det påverkar dig.",
     "name": "Viktig myndighetsinformation",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "isVisible": true,
     "links": [
       {
         "heading": "Här hittar du information som är bra att ha om det uppstår en kris",
