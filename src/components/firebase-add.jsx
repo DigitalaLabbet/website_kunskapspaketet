@@ -13,13 +13,16 @@ class FirebaseAdd extends Component {
   addLectures() {
     const { firestore } = this.props;
 
-    lectures.forEach((lecture) => {
+    lectures.forEach(lecture => {
       const doc = {
         name: lecture.name,
         color: lecture.color,
         information: lecture.information,
-        videoUrl: lecture.videoUrl,
+        videoUrl: lecture.videoUrl
       };
+      if (lecture.links) {
+        doc.links = lecture.links;
+      }
       const quizzes = lecture.quiz;
       console.log('doc: ', doc);
       console.log('quizzes: ', quizzes);
@@ -29,9 +32,14 @@ class FirebaseAdd extends Component {
         .doc(lecture.documentId)
         .set(doc)
         .then(() => {
-          quizzes.forEach((quiz) => {
+          quizzes.forEach(quiz => {
             console.log('quiz: ', quiz);
-            firestore.collection('lectures').doc(lecture.documentId).collection('quiz').doc(quiz.quizId).set(quiz);
+            firestore
+              .collection('lectures')
+              .doc(lecture.documentId)
+              .collection('quiz')
+              .doc(quiz.quizId)
+              .set(quiz);
           });
         });
     });
