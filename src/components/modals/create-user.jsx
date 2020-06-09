@@ -26,6 +26,10 @@ class CreateUser extends Component {
 
   handleShow() {
     this.setState({ show: true });
+    const { user } = this.props;
+    if (user) {
+      this.setState(user);
+    }
   }
 
   handleClose() {
@@ -34,13 +38,6 @@ class CreateUser extends Component {
 
   handleStateUserChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }
-
-  componentDidMount() {
-    const { user } = this.props;
-    if (user) {
-      this.setState(user);
-    }
   }
 
   save(e) {
@@ -83,13 +80,12 @@ class CreateUser extends Component {
   }
 
   render() {
-    const { show } = this.state;
+    const { show, name, email, phoneNumber, password } = this.state;
+    const { user } = this.props;
     return (
       <React.Fragment>
-        <button
-          className={`btn btn-sm ${this.props.user ? 'btn-warning text-white' : 'btn-primary'}`}
-          onClick={this.handleShow}>
-          {this.props.user ? (
+        <button className={`btn btn-sm ${user ? 'btn-warning text-white' : 'btn-primary'}`} onClick={this.handleShow}>
+          {user ? (
             <React.Fragment>
               <i className="fa fa-edit"></i>
             </React.Fragment>
@@ -101,7 +97,7 @@ class CreateUser extends Component {
         </button>
         <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
           <Modal.Header>
-            <Modal.Title>{this.props.user ? 'Editera användare' : 'Skapa användare'}</Modal.Title>
+            <Modal.Title>{user ? 'Editera användare' : 'Skapa användare'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
@@ -111,7 +107,7 @@ class CreateUser extends Component {
                   type="text"
                   className="form-control"
                   name="name"
-                  value={this.state.name}
+                  value={name}
                   onChange={this.handleStateUserChange}
                 />
               </div>
@@ -120,9 +116,9 @@ class CreateUser extends Component {
                 <input
                   type="email"
                   className="form-control"
-                  disabled={this.props.user ? true : false}
+                  disabled={user ? true : false}
                   name="email"
-                  value={this.state.email}
+                  value={email}
                   onChange={this.handleStateUserChange}
                 />
               </div>
@@ -132,7 +128,7 @@ class CreateUser extends Component {
                   type="text"
                   className="form-control"
                   name="phoneNumber"
-                  value={this.state.phoneNumber}
+                  value={phoneNumber}
                   onChange={this.handleStateUserChange}
                 />
               </div>
@@ -142,7 +138,7 @@ class CreateUser extends Component {
                   type="password"
                   className="form-control"
                   name="password"
-                  value={this.state.password}
+                  value={password}
                   onChange={this.handleStateUserChange}
                 />
               </div>

@@ -53,7 +53,7 @@ class Admin extends Component {
         <div className="navbar-margin">
           {users && <UserTable users={users} deleteUser={deleteUser} />}
           {profile.role === 'super_admin' && lectures && (
-            <LectureTable lectures={lectures} toggleLecture={toggleLecture} />
+            <LectureTable lectures={lectures} toggleLecture={toggleLecture} firestore={this.props.firestore} />
           )}
         </div>
         <Navbar role={profile.role} />

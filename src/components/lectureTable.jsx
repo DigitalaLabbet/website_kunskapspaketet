@@ -2,7 +2,7 @@ import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
 
 import ExpandableRowData from '../components/expandable-row.jsx';
-import { Link } from 'react-router-dom';
+import CreateLecture from './modals/create-lecture';
 
 createTheme('solarized', {
   text: {
@@ -33,41 +33,44 @@ const LectureTable = props => {
   const columns = [
     {
       name: 'Kategori',
-      selector: 'category',
+      selector: 'name',
       sortable: true,
+      width: '200px',
       conditionalCellStyles: [
         {
-          when: row => row.isVisible === false,
+          when: row => !row.isVisible,
           style: {
-            color: 'gray'
+            color: 'rgba(0,0,0,.18)'
           }
         }
       ]
     },
     {
       name: 'Video url',
-      selector: 'videourl',
-      width: '300px',
+      selector: 'videoUrl',
+      sortable: true,
+      width: '200px',
       hide: 'sm',
       conditionalCellStyles: [
         {
-          when: row => row.isVisible === false,
+          when: row => !row.isVisible,
           style: {
-            color: 'gray'
+            color: 'rgba(0,0,0,.18)'
           }
         }
       ]
     },
     {
-      name: 'Info',
-      selector: 'info',
+      name: 'Information',
+      selector: 'information',
+      sortable: true,
       width: '300px',
       hide: 'sm',
       conditionalCellStyles: [
         {
-          when: row => row.isVisible === false,
+          when: row => !row.isVisible,
           style: {
-            color: 'gray'
+            color: 'rgba(0,0,0,.18)'
           }
         }
       ]
@@ -79,25 +82,29 @@ const LectureTable = props => {
       style: { padding: '0' },
       cell: row => (
         <div>
-          <Link key={row.id} to={'/redigera/' + row.id}>
-            <button className="btn btn-sm btn-warning text-white">
-              <i className="fas fa-edit"></i>
-            </button>
-          </Link>
           <button className={`btn btn-sm btn-info`} onClick={() => props.toggleLecture(row)}>
-            <i className={`far  ${row.isVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
+            <i className="fa  fa-eye"></i>
           </button>
+          <CreateLecture lecture={row} firestore={props.firestore} />
         </div>
-      )
+      ),
+      conditionalCellStyles: [
+        {
+          when: row => !row.isVisible,
+          style: {
+            color: 'rgba(0,0,0,.18)'
+          }
+        }
+      ]
     }
   ];
 
   lectures.forEach(lecture => {
     data.push({
       id: lecture.id,
-      info: lecture.information,
-      videourl: lecture.videoUrl,
-      category: lecture.name,
+      information: lecture.information,
+      videoUrl: lecture.videoUrl,
+      name: lecture.name,
       color: lecture.color,
       isVisible: lecture.isVisible
     });
@@ -113,6 +120,7 @@ const LectureTable = props => {
         pagination={true}
         paginationPerPage={10}
         expandableRows
+        expandableRowDisabled={row => !row.isVisible}
         expandableRowsComponent={<ExpandableRowData data={data.data} />}
       />
     </div>

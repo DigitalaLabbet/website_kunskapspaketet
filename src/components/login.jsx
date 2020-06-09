@@ -10,11 +10,9 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      msg: '',
+      msg: ''
     };
   }
-
-
 
   login(e) {
     e.preventDefault();
@@ -51,7 +49,6 @@ class Login extends Component {
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
 
   errorHandle(err) {
     if (err === 'auth/wrong-password') {
