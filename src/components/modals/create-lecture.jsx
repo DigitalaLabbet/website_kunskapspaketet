@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
+import { Modal, Accordion, Card, Button } from 'react-bootstrap';
+
 import * as servicesUsers from '../../services/users';
 import Notify from '../notify';
-import { Modal, Accordion, Card, Button } from 'react-bootstrap';
 import Confirm from './confirm-modal';
 
 class CreateLecture extends Component {
@@ -16,7 +17,8 @@ class CreateLecture extends Component {
       info: '',
       isVisible: true,
       videoUrl: '',
-      links: null
+      links: null,
+      quizzes: []
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -26,9 +28,33 @@ class CreateLecture extends Component {
 
   handleShow() {
     this.setState({ show: true });
-    const { lecture } = this.props;
+    const { lecture, firestore } = this.props;
     if (lecture) {
       this.setState(lecture);
+
+      firestore
+        .collection('lectures')
+        .doc(lecture.id)
+        .collection('quiz')
+        .get()
+        .then(snapShot => {
+          snapShot.docs.forEach(doc => {
+            var tempQuizzes = this.state.quizzes.concat(doc.data());
+            tempQuizzes.forEach(quiz => {
+              quiz.questions.forEach(question => {
+                question.correctAnswer = Object.assign([], question.correctAnswer);
+                question.correctAnswer = question.correctAnswer.map(ca => parseInt(ca));
+                question.answers = question.answers.map((answer, index) => {
+                  return {
+                    answer: answer,
+                    isCorrect: question.correctAnswer.includes(index + 1)
+                  };
+                });
+              });
+            });
+            this.setState({ quizzes: tempQuizzes });
+          });
+        });
     }
   }
 
@@ -69,6 +95,62 @@ class CreateLecture extends Component {
     this.setState({ links: linksUpdated });
   }
 
+  quizChange(index, event) {
+    const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
+    quizzesUpdated[index][event.target.name] = event.target.value;
+    this.setState({ quizzes: quizzesUpdated });
+  }
+
+  questionChange(quizIndex, questionIndex, event) {
+    const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
+    quizzesUpdated[quizIndex].questions[questionIndex].question = event.target.value;
+    this.setState({ quizzes: quizzesUpdated });
+  }
+
+  answerChange(quizIndex, questionIndex, answerIndex, event) {
+    const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
+    if (event.target.name === 'isCorrect') {
+      quizzesUpdated[quizIndex].questions[questionIndex].answers[answerIndex].isCorrect = event.target.value !== 'true';
+    } else {
+      quizzesUpdated[quizIndex].questions[questionIndex].answers[answerIndex][event.target.name] = event.target.value;
+    }
+    this.setState({ quizzes: quizzesUpdated });
+  }
+
+  addQuizQuestion(quizIndex, event) {
+    event.preventDefault();
+    const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
+
+    quizzesUpdated[quizIndex].questions.push({
+      question: '',
+      questionType: 'text',
+      point: '10',
+      correctAnswer: 1,
+      messageForIncorrectAnswer: 'Fel svar, Försök igen.',
+      messageForCorrectAnswer: 'Rätt svar, bra jobbat.',
+      answerSelectionType: 'single',
+      answers: [
+        {
+          answer: '',
+          isCorrect: true
+        },
+        {
+          answer: '',
+          isCorrect: false
+        },
+        {
+          answer: '',
+          isCorrect: false
+        },
+        {
+          answer: '',
+          isCorrect: false
+        }
+      ]
+    });
+    this.setState({ quizzes: quizzesUpdated });
+  }
+
   save(e) {
     e.preventDefault();
     const { lecture, firestore } = this.props;
@@ -80,12 +162,38 @@ class CreateLecture extends Component {
         links: this.state.links
       };
 
-      firestore
-        .collection('lectures')
-        .doc(lecture.id)
-        .update(updateValues)
+      const quizzes = JSON.parse(JSON.stringify(this.state.quizzes));
+      quizzes.forEach(quiz => {
+        quiz.questions.forEach(question => {
+          const correctAnswers = question.answers
+            .map((answer, index) => {
+              return answer.isCorrect ? index + 1 : 0;
+            })
+            .filter(v => v > 0);
+          question.answerSelectionType = correctAnswers.length > 1 ? 'multiple' : 'single';
+          question.correctAnswer = correctAnswers.length > 1 ? correctAnswers : correctAnswers.toString();
+          question.answers = question.answers.map(answer => answer.answer);
+        });
+      });
+
+      let batch = firestore.batch();
+      quizzes.forEach(quiz => {
+        const quizId = firestore
+          .collection('lectures')
+          .doc(lecture.id)
+          .collection('quiz')
+          .doc(quiz.quizId);
+        batch.update(quizId, quiz);
+      });
+
+      const lectureBatch = firestore.collection('lectures').doc(lecture.id);
+      batch.update(lectureBatch, updateValues);
+      batch
+        .commit()
         .then(() => {
           Notify.success(`${lecture.name} har uppdaterats`);
+          this.setState({ quizzes: [] });
+          this.handleClose();
         })
         .catch(err => servicesUsers.handleError(err));
     } else {
@@ -94,7 +202,7 @@ class CreateLecture extends Component {
   }
 
   render() {
-    const { show, name, videoUrl, information, color, links } = this.state;
+    const { show, name, videoUrl, information, color, links, quizzes } = this.state;
     const { lecture } = this.props;
 
     const deleteLink = index => {
@@ -107,6 +215,12 @@ class CreateLecture extends Component {
       const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
       linksUpdated[linkIndex].items.splice(itemIndex, 1);
       this.setState({ links: linksUpdated });
+    };
+
+    const deleteQuestion = (quizIndex, answerIndex) => {
+      const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
+      quizzesUpdated[quizIndex].questions.splice(answerIndex, 1);
+      this.setState({ quizzes: quizzesUpdated });
     };
 
     return (
@@ -167,7 +281,12 @@ class CreateLecture extends Component {
               </div>
               {links && (
                 <>
-                  <h6>Stycken</h6>
+                  <h6>
+                    Stycken
+                    <button className="btn btn-success btn-sm ml-1" onClick={this.addLink.bind(this)}>
+                      <i className="fa fa-plus"></i>
+                    </button>
+                  </h6>
                   <Accordion>
                     {links.map((link, index) => (
                       <Card key={index}>
@@ -195,7 +314,7 @@ class CreateLecture extends Component {
                                     body={
                                       'Är du säker du vill radera: ' +
                                       link.heading +
-                                      ' Det här kommer att radera hela objektet'
+                                      ' det här kommer att radera hela objektet'
                                     }
                                     title="Radera länk"
                                     confirmText="Radera"
@@ -245,9 +364,128 @@ class CreateLecture extends Component {
                   </Accordion>
                 </>
               )}
-              <button className="btn btn-success btn-sm mt-1" onClick={this.addLink.bind(this)}>
-                <i className="fa fa-plus"></i>
-              </button>
+
+              {quizzes && (
+                <>
+                  <h6 className="mt-3">Quizzes</h6>
+                  <Accordion>
+                    {quizzes.map((quiz, quizIndex) => (
+                      <Card key={quizIndex}>
+                        <Card.Header className="py-1 px-2">
+                          <Accordion.Toggle as={Button} variant="link" eventKey={quizIndex} className="w-100 text-left">
+                            {quiz.quizTitle ? quiz.quizTitle : '--'}
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse className="p-2" eventKey={quizIndex}>
+                          <div>
+                            <div className="form-group d-none">
+                              <label>quizId</label>
+                              <input type="text" className="form-control" defaultValue={quiz.quizId} disabled={true} />
+                            </div>
+                            <div className="form-group">
+                              <label>Quiz namn</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                name="quizTitle"
+                                value={quiz.quizTitle}
+                                onChange={this.quizChange.bind(this, quizIndex)}
+                              />
+                            </div>
+                            <h6>
+                              Frågor
+                              <button
+                                className="btn btn-success btn-sm ml-1"
+                                onClick={this.addQuizQuestion.bind(this, quizIndex)}>
+                                <i className="fa fa-plus"></i>
+                              </button>
+                            </h6>
+                            <Accordion>
+                              {quiz.questions.map((question, questionIndex) => (
+                                <Card key={questionIndex}>
+                                  <Card.Header className="py-1 px-2">
+                                    <Accordion.Toggle
+                                      as={Button}
+                                      variant="link"
+                                      eventKey={questionIndex}
+                                      className="w-100 text-left">
+                                      {question.question ? question.question : '--'}
+                                    </Accordion.Toggle>
+                                  </Card.Header>
+                                  <Accordion.Collapse eventKey={questionIndex}>
+                                    <Card.Body className="px-3 py-2">
+                                      <div className="form-group">
+                                        <div className="input-group">
+                                          <label>Fråga</label>
+                                          <input
+                                            type="text"
+                                            className="form-control"
+                                            name="heading"
+                                            value={question.question}
+                                            onChange={this.questionChange.bind(this, quizIndex, questionIndex)}
+                                          />
+                                          <div className="input-group-append">
+                                            <Confirm
+                                              onConfirm={() => {
+                                                deleteQuestion(quizIndex, questionIndex);
+                                              }}
+                                              body={
+                                                'Är du säker du vill radera: ' +
+                                                question.question +
+                                                ' det här kommer att radera frågan'
+                                              }
+                                              title="Radera frågan"
+                                              confirmText="Radera"
+                                              buttonText={<i className="fa fa-trash"></i>}
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <h6>Svar</h6>
+                                      {question.answers.map((answer, answerIndex) => (
+                                        <div key={answerIndex} className="input-group mb-1">
+                                          <input
+                                            type="text"
+                                            className="form-control"
+                                            name="answer"
+                                            value={answer.answer}
+                                            onChange={this.answerChange.bind(
+                                              this,
+                                              quizIndex,
+                                              questionIndex,
+                                              answerIndex
+                                            )}
+                                          />
+                                          <div className="input-group-append">
+                                            <span className="input-group-text">
+                                              <input
+                                                type="checkbox"
+                                                name="isCorrect"
+                                                value={answer.isCorrect}
+                                                checked={answer.isCorrect}
+                                                onChange={this.answerChange.bind(
+                                                  this,
+                                                  quizIndex,
+                                                  questionIndex,
+                                                  answerIndex
+                                                )}
+                                              />
+                                            </span>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+                              ))}
+                            </Accordion>
+                          </div>
+                        </Accordion.Collapse>
+                      </Card>
+                    ))}
+                  </Accordion>
+                </>
+              )}
             </form>
           </Modal.Body>
           <Modal.Footer>

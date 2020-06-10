@@ -37,7 +37,7 @@ class Admin extends Component {
           isVisible: !row.isVisible
         })
         .then(() => {
-          const notifyText = `${!row.isVisible ? 'Aktiverade' : 'Deaktiverade'} ${row.category}`;
+          const notifyText = `${!row.isVisible ? 'Aktiverade' : 'Inaktiverade'} ${row.name}`;
           if (!row.isVisible) {
             Notify.success(notifyText);
           } else {
