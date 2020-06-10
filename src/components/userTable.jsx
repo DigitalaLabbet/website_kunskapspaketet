@@ -100,7 +100,7 @@ const UserTable = props => {
                 }}
                 body={'Är du säker du vill radera: ' + row.email}
                 title="Radera användare"
-                confirmText="Confirm delete"
+                confirmText="Radera"
                 buttonText={<i className="fa fa-trash"></i>}
               />
             </>
@@ -122,7 +122,7 @@ const UserTable = props => {
 
   return (
     <div className="userTable mt-3">
-      <h5 className="m-0 p-2" style={{ background: '#eeeeee' }}>
+      <h5 className="m-0 pb-0 pt-2 px-2" style={{ background: '#eeeeee' }}>
         Användare <CreateUser />
       </h5>
       <DataTable

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Modal } from 'react-bootstrap';
 
 import * as servicesUsers from '../../services/users';
 import Notify from '../notify';
+import { Modal, Accordion, Card, Button } from 'react-bootstrap';
+import Confirm from './confirm-modal';
 
 class CreateLecture extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class CreateLecture extends Component {
       color: '',
       info: '',
       isVisible: true,
-      videoUrl: ''
+      videoUrl: '',
+      links: null
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -38,6 +40,35 @@ class CreateLecture extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  headingChange(index, event) {
+    const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
+    linksUpdated[index].heading = event.target.value;
+    this.setState({ links: linksUpdated });
+  }
+
+  itemChange(linkIndex, itemIndex, event) {
+    const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
+    linksUpdated[linkIndex].items[itemIndex] = event.target.value;
+    this.setState({ links: linksUpdated });
+  }
+
+  addLink(event) {
+    event.preventDefault();
+    const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
+    linksUpdated.push({
+      heading: '',
+      items: []
+    });
+    this.setState({ links: linksUpdated });
+  }
+
+  addItem(index, event) {
+    event.preventDefault();
+    const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
+    linksUpdated[index].items.push('');
+    this.setState({ links: linksUpdated });
+  }
+
   save(e) {
     e.preventDefault();
     const { lecture, firestore } = this.props;
@@ -45,7 +76,8 @@ class CreateLecture extends Component {
       const updateValues = {
         videoUrl: this.state.videoUrl,
         information: this.state.information,
-        color: this.state.color
+        color: this.state.color,
+        links: this.state.links
       };
 
       firestore
@@ -62,8 +94,20 @@ class CreateLecture extends Component {
   }
 
   render() {
-    const { show, name, videoUrl, information, color } = this.state;
+    const { show, name, videoUrl, information, color, links } = this.state;
     const { lecture } = this.props;
+
+    const deleteLink = index => {
+      const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
+      linksUpdated.splice(index, 1);
+      this.setState({ links: linksUpdated });
+    };
+
+    const deleteItem = (linkIndex, itemIndex) => {
+      const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
+      linksUpdated[linkIndex].items.splice(itemIndex, 1);
+      this.setState({ links: linksUpdated });
+    };
 
     return (
       <React.Fragment>
@@ -121,6 +165,89 @@ class CreateLecture extends Component {
                 <label>Färg</label>
                 <input type="color" className="form-control" name="color" value={color} onChange={this.handleChange} />
               </div>
+              {links && (
+                <>
+                  <h6>Stycken</h6>
+                  <Accordion>
+                    {links.map((link, index) => (
+                      <Card key={index}>
+                        <Card.Header className="py-1 px-2">
+                          <Accordion.Toggle as={Button} variant="link" eventKey={index} className="w-100 text-left">
+                            {link.heading ? link.heading : '--'}
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey={index}>
+                          <Card.Body className="px-3 py-2">
+                            <div className="form-group">
+                              <div className="input-group">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  name="heading"
+                                  value={link.heading}
+                                  onChange={this.headingChange.bind(this, index)}
+                                />
+                                <div className="input-group-append">
+                                  <Confirm
+                                    onConfirm={() => {
+                                      deleteLink(index);
+                                    }}
+                                    body={
+                                      'Är du säker du vill radera: ' +
+                                      link.heading +
+                                      ' Det här kommer att radera hela objektet'
+                                    }
+                                    title="Radera länk"
+                                    confirmText="Radera"
+                                    buttonText={<i className="fa fa-trash"></i>}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <label>
+                                <h6>
+                                  Artiklar
+                                  <button
+                                    className="btn btn-success btn-sm ml-1"
+                                    onClick={this.addItem.bind(this, index)}>
+                                    <i className="fa fa-plus"></i>
+                                  </button>
+                                </h6>
+                              </label>
+                              {link.items.map((item, itemIndex) => (
+                                <div key={itemIndex} className="input-group mb-1">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    name="item"
+                                    value={item}
+                                    onChange={this.itemChange.bind(this, index, itemIndex)}
+                                  />
+                                  <div className="input-group-append">
+                                    <Confirm
+                                      onConfirm={() => {
+                                        deleteItem(index, itemIndex);
+                                      }}
+                                      body={'Är du säker du vill radera: ' + item}
+                                      title="Radera länk"
+                                      confirmText="Radera"
+                                      buttonText={<i className="fa fa-trash"></i>}
+                                    />
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    ))}
+                  </Accordion>
+                </>
+              )}
+              <button className="btn btn-success btn-sm mt-1" onClick={this.addLink.bind(this)}>
+                <i className="fa fa-plus"></i>
+              </button>
             </form>
           </Modal.Body>
           <Modal.Footer>

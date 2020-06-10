@@ -5,7 +5,7 @@ const ExpandableRow = data => {
     <ul className="p-0">
       {Object.keys(data.data).map(key => (
         <li key={key} className="pl-3">
-          <b>{key}: </b> {data.data[key]}
+          <b>{key}: </b> {JSON.stringify(data.data[key])}
         </li>
       ))}
     </ul>

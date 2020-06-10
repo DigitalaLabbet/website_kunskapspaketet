@@ -91,6 +91,9 @@
 .rdt_ExpanderRow {
   background-color: #d1d8e4 !important;
 }
+.rdt_TableHeadRow {
+  min-height: 36px !important;
+}
 
 button + button {
   margin-left: 2px;

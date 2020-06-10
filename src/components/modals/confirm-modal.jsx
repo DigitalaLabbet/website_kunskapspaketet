@@ -65,7 +65,7 @@ class Confirm extends Component {
         <Modal.Body>{this.props.body}</Modal.Body>
         <Modal.Footer>
           {cancelButton}
-          <Button className={this.props.confirmBSStyle} onClick={this.onConfirm}>
+          <Button variant="danger" className={this.props.confirmBSStyle} onClick={this.onConfirm}>
             {this.props.confirmText}
           </Button>
         </Modal.Footer>

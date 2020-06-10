@@ -83,7 +83,7 @@ class ViewUser extends Component {
     return (
       <React.Fragment>
         <button className="btn btn-info btn-sm" onClick={this.handleShow}>
-          <i className="fa fa-eye"></i>
+          <i className="fa fa-file-alt"></i>
         </button>
         <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
           <Modal.Header>Quiz svar för {user.name ? user.name : user.email}</Modal.Header>

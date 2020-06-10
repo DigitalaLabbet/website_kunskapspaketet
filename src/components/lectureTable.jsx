@@ -106,14 +106,18 @@ const LectureTable = props => {
       videoUrl: lecture.videoUrl,
       name: lecture.name,
       color: lecture.color,
-      isVisible: lecture.isVisible
+      isVisible: lecture.isVisible,
+      links: lecture.links
     });
   });
 
   return (
     <div className="lectureTable mt-3">
+      <h5 className="m-0 pb-0 pt-2 px-2" style={{ background: '#eeeeee' }}>
+        Föreläsningar
+      </h5>
       <DataTable
-        title="Föreläsning"
+        noHeader={true}
         columns={columns}
         theme="solarized"
         data={data}
