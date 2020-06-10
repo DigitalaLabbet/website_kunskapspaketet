@@ -314,10 +314,11 @@ class CreateLecture extends Component {
                                     body={
                                       'Är du säker du vill radera: ' +
                                       link.heading +
-                                      ' det här kommer att radera hela objektet'
+                                      ' det här kommer att radera stycket'
                                     }
-                                    title="Radera länk"
+                                    title="Radera stycke"
                                     confirmText="Radera"
+                                    cancelText="Avbryt"
                                     buttonText={<i className="fa fa-trash"></i>}
                                   />
                                 </div>
@@ -351,6 +352,7 @@ class CreateLecture extends Component {
                                       body={'Är du säker du vill radera: ' + item}
                                       title="Radera länk"
                                       confirmText="Radera"
+                                      cancelText="Avbryt"
                                       buttonText={<i className="fa fa-trash"></i>}
                                     />
                                   </div>
@@ -415,8 +417,8 @@ class CreateLecture extends Component {
                                   <Accordion.Collapse eventKey={questionIndex}>
                                     <Card.Body className="px-3 py-2">
                                       <div className="form-group">
+                                        <label>Fråga</label>
                                         <div className="input-group">
-                                          <label>Fråga</label>
                                           <input
                                             type="text"
                                             className="form-control"
@@ -436,6 +438,7 @@ class CreateLecture extends Component {
                                               }
                                               title="Radera frågan"
                                               confirmText="Radera"
+                                              cancelText="Avbryt"
                                               buttonText={<i className="fa fa-trash"></i>}
                                             />
                                           </div>

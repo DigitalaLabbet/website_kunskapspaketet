@@ -101,6 +101,7 @@ const UserTable = props => {
                 body={'Är du säker du vill radera: ' + row.email}
                 title="Radera användare"
                 confirmText="Radera"
+                cancelText="Avbryt"
                 buttonText={<i className="fa fa-trash"></i>}
               />
             </>
