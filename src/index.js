@@ -13,8 +13,6 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import thunk from 'redux-thunk';
 
-import defaultLectures from './store/reducers/default-lectures.reducer';
-
 const fbConfig = {
   apiKey: 'AIzaSyCjN4obQGSoePw-wME_yA8JVx6kIzuRCwE',
   authDomain: 'kunskapspaketet.firebaseapp.com',
@@ -39,7 +37,6 @@ firebase.firestore(); // <- needed if using firestore
 
 // Add firebase to reducers
 const rootReducer = combineReducers({
-  defaultLectures,
   firebase: firebaseReducer,
   firestore: firestoreReducer
 });
