@@ -13,6 +13,8 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import thunk from 'redux-thunk';
 
+import './i18next'
+
 import defaultLectures from './store/reducers/default-lectures.reducer';
 
 const fbConfig = {

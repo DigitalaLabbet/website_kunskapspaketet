@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 
 /* thired part packages */
 
@@ -56,7 +56,9 @@ class App extends Component {
         />
         {isLoaded(profile) && (
           <HashRouter>
+            <Suspense fallback="loading">
             <Route path="/" exact component={profile.email ? Home : Landing} />
+            </Suspense>
             <Route path="/settings" component={profile.email ? Settings : Landing} />
             <Route path="/lecture/:lectureName" component={profile.email ? Lecture : Landing} />
             <Route path="/admin" component={profile.email ? Admin : Landing} />
