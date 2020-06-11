@@ -12,20 +12,20 @@ import Notify from '../components/notify';
 import UserTable from '../components/userTable';
 import LectureTable from '../components/lectureTable';
 
-import * as servicesUsers from '../services/users';
+import * as servicesHttp from '../services/http';
 
 class Admin extends Component {
   render() {
     const { profile, lectures, users } = this.props;
 
     const deleteUser = id => {
-      servicesUsers
+      servicesHttp
         .removeUser(id)
         .then(res => {
           console.log('res: ', res);
           Notify.success(res.data);
         })
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     };
 
     const toggleLecture = row => {

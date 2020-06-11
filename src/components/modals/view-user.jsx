@@ -4,7 +4,7 @@ import { Modal, Accordion, Card, Button, ListGroup } from 'react-bootstrap';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
-import * as servicesUsers from '../../services/users';
+import * as servicesHttp from '../../services/http';
 
 class ViewUser extends Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class ViewUser extends Component {
         .doc(user.id)
         .update({ teacherCheck: false })
         .then(() => {})
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     }
   }
 
@@ -150,11 +150,11 @@ class ViewUser extends Component {
                                   <ListGroup.Item
                                     as="li"
                                     key={answer}
-                                    className={`mt-1 ${checkIfCorrect(
+                                    className={checkIfCorrect(
                                       quiz.userInput[questionIndex],
                                       question.correctAnswer,
                                       answerIndex + 1
-                                    )}`}>
+                                    )}>
                                     {answer}
                                   </ListGroup.Item>
                                 ))}

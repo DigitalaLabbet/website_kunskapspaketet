@@ -23,7 +23,7 @@ class Lecture extends Component {
             <Topbar name={lecture.name} backLink="/" color={lecture.color} />
             <div className="container navbar-margin">
               <div className="lecture mt-2">
-                <iframe title="vidoe" width="100%" height="200px" src={lecture.videoUrl}></iframe>
+                {lecture.videoUrl && <iframe title="vidoe" width="100%" height="200px" src={lecture.videoUrl}></iframe>}
                 <p className="text-14" dangerouslySetInnerHTML={innerHtml(lecture.information)}></p>
                 {lecture.links &&
                   lecture.links.map(link => (

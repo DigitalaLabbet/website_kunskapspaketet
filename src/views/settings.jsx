@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 
 import Topbar from '../components/topbar';
 import Navbar from '../components/navbar';
+import Notify from '../components/notify';
+import * as servicesHttp from '../services/http';
 
 class Settings extends Component {
   constructor(props) {
@@ -45,82 +47,92 @@ class Settings extends Component {
       });
     }
 
-    if (patchValues) {
-      firebase.updateProfile(patchValues);
-    }
+    firebase
+      .updateProfile(patchValues)
+      .then(() => {
+        Notify.success('Uppdaterade användaren');
+      })
+      .catch(err => servicesHttp.handleError(err));
   }
 
   render() {
     const profile = this.props.profile;
     return (
       <div>
-        <Topbar name="Settings" />
+        <Topbar name="Inställningar" />
         <div className="container-fluid navbar-margin mt-2">
-          <button onClick={this.logout} className="btn btn-danger">
-            Logga ut
-          </button>
-          <form>
+          <div className="col-12 col-lg-6 offset-lg-3 p-0">
             <div>
-              <label htmlFor="name">Name</label>
-              <input
-                id="name"
-                className="form-control"
-                name="name"
-                type="text"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
+              <hr />
+              <form>
+                <div>
+                  <label htmlFor="name">Name</label>
+                  <input
+                    id="name"
+                    className="form-control"
+                    name="name"
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    className="form-control"
+                    type="text"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    disabled
+                  />
+                </div>
+                <div>
+                  <label htmlFor="role">Role</label>
+                  <input
+                    id="role"
+                    className="form-control"
+                    type="text"
+                    name="role"
+                    value={this.state.role}
+                    onChange={this.handleChange}
+                    disabled
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phoneNumber">PhoneNumber</label>
+                  <input
+                    id="phoneNumber"
+                    className="form-control"
+                    type="phone"
+                    name="phoneNumber"
+                    value={this.state.phoneNumber}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">Ändra lösenord</label>
+                  <input
+                    id="password"
+                    className="form-control"
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <button type="submit" onClick={this.update} className="btn btn-success mt-2 w-100">
+                  Spara
+                </button>
+              </form>
+              <hr />
+              <p className="cursor-pointer" onClick={this.logout}>
+                Logga ut
+              </p>
+              <hr />
             </div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                className="form-control"
-                type="text"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-                disabled
-              />
-            </div>
-            <div>
-              <label htmlFor="role">Role</label>
-              <input
-                id="role"
-                className="form-control"
-                type="text"
-                name="role"
-                value={this.state.role}
-                onChange={this.handleChange}
-                disabled
-              />
-            </div>
-            <div>
-              <label htmlFor="phoneNumber">PhoneNumber</label>
-              <input
-                id="phoneNumber"
-                className="form-control"
-                type="text"
-                name="phoneNumber"
-                value={this.state.phoneNumber}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                className="form-control"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <button type="submit" onClick={this.update} className="btn btn-primary">
-              Update
-            </button>
-          </form>
+          </div>
         </div>
         <Navbar role={profile.role} />
       </div>

@@ -102,3 +102,7 @@ button + button {
 .text-14 {
   font-size: 0.8rem;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
