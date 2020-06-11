@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect, firebaseConnect } from 'react-redux-firebase';
 import Quiz from 'react-quiz-component';
+import * as servicesUsers from '../services/users';
 
 import '../styles/css/quiz-modal.css';
 
@@ -64,12 +65,23 @@ class quizModal extends Component {
 
       data.quizSubmitted = new Date().toISOString();
 
-      firestore
+      let batch = firestore.batch();
+
+      const teacherCheck = firestore.collection('users').doc(userUid);
+      batch.update(teacherCheck, { teacherCheck: true });
+
+      const quizzesData = firestore
         .collection('users')
         .doc(userUid)
         .collection('quizzes')
-        .doc(lectureId)
-        .set(data);
+        .doc(lectureId);
+
+      batch.set(quizzesData, data);
+
+      batch
+        .commit()
+        .then(() => {})
+        .catch(err => servicesUsers.handleError(err));
     };
 
     return (

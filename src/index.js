@@ -22,13 +22,13 @@ const fbConfig = {
   projectId: 'kunskapspaketet',
   storageBucket: 'kunskapspaketet.appspot.com',
   messagingSenderId: '1011354741666',
-  appId: '1:1011354741666:web:fe999e52c5d62fedb420fb',
+  appId: '1:1011354741666:web:fe999e52c5d62fedb420fb'
 };
 
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: 'users',
-  useFirestoreForProfile: true,
+  useFirestoreForProfile: true
 };
 
 // Initialize firebase instance
@@ -41,7 +41,7 @@ firebase.firestore(); // <- needed if using firestore
 const rootReducer = combineReducers({
   defaultLectures,
   firebase: firebaseReducer,
-  firestore: firestoreReducer,
+  firestore: firestoreReducer
 });
 
 // Create store with reducers and initial state
@@ -53,7 +53,7 @@ const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance,
+  createFirestoreInstance
 };
 
 ReactDOM.render(

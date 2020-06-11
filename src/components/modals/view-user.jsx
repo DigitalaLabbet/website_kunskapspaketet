@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Modal, Accordion, Card, Button, ListGroup } from 'react-bootstrap';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import * as servicesUsers from '../../services/users';
 
 class ViewUser extends Component {
   constructor(props) {
@@ -13,13 +15,12 @@ class ViewUser extends Component {
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.quizzes = [];
   }
 
   handleShow() {
     this.setState({ show: true });
-
-    this.props.firestore
+    const { firestore } = this.props;
+    firestore
       .collection('users')
       .doc(this.props.user.id)
       .collection('quizzes')
@@ -51,7 +52,17 @@ class ViewUser extends Component {
 
   handleClose() {
     this.setState({ show: false });
-    // this.setState({ quizzes: null });
+    const { firestore } = this.props;
+    const { userUid } = this.props;
+    const { user } = this.props;
+    if (user.teacherCheck && user.teacher === userUid) {
+      firestore
+        .collection('users')
+        .doc(user.id)
+        .update({ teacherCheck: false })
+        .then(() => {})
+        .catch(err => servicesUsers.handleError(err));
+    }
   }
 
   render() {
@@ -77,13 +88,22 @@ class ViewUser extends Component {
       const date = new Date(quizSubmitted);
       return `${date.getFullYear()}/${('0' + (date.getMonth() + 1)).slice(-2)}/${('0' + date.getDate()).slice(
         -2
-      )} - ${date.getHours()}:${date.getMinutes()}`;
+      )} ${date.getHours()}:${date.getMinutes()}`;
     };
 
     return (
       <React.Fragment>
         <button className="btn btn-info btn-sm" onClick={this.handleShow}>
-          <i className="fa fa-file-alt"></i>
+          <span
+            className="fa-stack"
+            style={{ fontSize: '0.875rem', height: '1rem', lineHeight: '1rem', width: '1.5rem' }}>
+            <i className="fa fa-file-alt fa-stack-1x"></i>
+            {user.teacherCheck && (
+              <i
+                className="fa fa-bell fa-stack-1x text-danger"
+                style={{ left: 'auto', right: '-5px', top: '-5px' }}></i>
+            )}
+          </span>
         </button>
         <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
           <Modal.Header>Quiz svar för {user.name ? user.name : user.email}</Modal.Header>
@@ -96,7 +116,8 @@ class ViewUser extends Component {
                     <Card key={quiz.quizTitle}>
                       <Card.Header style={{ padding: '0' }}>
                         <Accordion.Toggle as={Button} variant="link" eventKey={index} className="w-100 text-left">
-                          {quiz.quizTitle} - Avklarad: {convertDate(quiz.quizSubmitted)}
+                          {quiz.quizTitle} - {convertDate(quiz.quizSubmitted)} - {quiz.numberOfCorrectAnswers} av{' '}
+                          {quiz.numberOfQuestions} rätt
                         </Accordion.Toggle>
                       </Card.Header>
                       <Accordion.Collapse eventKey={index}>
@@ -161,6 +182,11 @@ class ViewUser extends Component {
   }
 }
 
-const enhance = compose(firestoreConnect());
+const enhance = compose(
+  firestoreConnect(),
+  connect(state => ({
+    userUid: state.firebase.auth.uid
+  }))
+);
 
 export default enhance(ViewUser);

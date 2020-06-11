@@ -117,7 +117,9 @@ const UserTable = props => {
       phoneNumber: user.phoneNumber,
       name: user.name,
       role: user.role,
-      id: user.id
+      id: user.id,
+      teacherCheck: user.teacherCheck,
+      teacher: user.teacher
     });
   });
 
