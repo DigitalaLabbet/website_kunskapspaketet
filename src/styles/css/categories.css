@@ -2,13 +2,16 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 10px;
-  column-gap: 10px;
+  column-gap: 1px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .categories-item {
   text-align: center;
   overflow: hidden;
   height: 80px;
+  max-width: 650px;
   color: #ffffff;
   font-weight: bold;
   font-size: 1rem;
