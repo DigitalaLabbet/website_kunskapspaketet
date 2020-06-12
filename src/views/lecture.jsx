@@ -35,7 +35,7 @@ class Lecture extends Component {
                 {lecture.links &&
                   lecture.links.map(link => (
                     <div className="text-14" key={link.heading}>
-                      {link.heading && <b>{link.heading}</b>}
+                      {link.heading && <b dangerouslySetInnerHTML={innerHtml(link.heading)}></b>}
                       <ul>
                         {link.items.map(item => (
                           <li key={item} dangerouslySetInnerHTML={innerHtml(item)}></li>

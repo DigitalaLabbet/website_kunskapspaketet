@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import '../styles/css/admin.css';
 
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Navbar from '../components/navbar';
 import Topbar from '../components/topbar';
@@ -15,6 +16,12 @@ import LectureTable from '../components/lectureTable';
 import * as servicesUsers from '../services/users';
 
 class Admin extends Component {
+  componentDidMount() {
+    const { role } = this.props.profile;
+    if (role === 'student') {
+      this.props.history.push('/404');
+    }
+  }
   render() {
     const { profile, lectures, users } = this.props;
 
@@ -80,7 +87,8 @@ const enhance = compose(
       getArr.push({ collection: 'users', where: ['teacher', '==', uid] });
     }
     return getArr;
-  })
+  }),
+  withRouter
 );
 
 export default enhance(Admin);
