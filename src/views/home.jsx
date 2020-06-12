@@ -14,7 +14,9 @@ class Home extends Component {
     const possibleLanguages = [
       { short: 'ar', long: 'Arabiska' },
       { short: 'en', long: 'Engelska' },
-      { short: 'sv', long: 'Svenska' }
+      { short: 'sv', long: 'Svenska' },
+      { short: 'so', long: 'Somaliska' },
+      { short: 'ur', long: 'Urdu' }
     ];
     let selectedLanguage = this.props.i18n.language;
     const changeLanguage = lng => {
@@ -31,9 +33,14 @@ class Home extends Component {
             <h6 className="text-white text-center py-3">Välkommen {profile.name ? profile.name : profile.email}</h6>
           </div>
           {lectures && lectures.length > 0 && <Categories lectures={lectures} />}
-          <div className="row m-0 mt-4 px-2">
-            <div className="translate_btn">
-              <select value={selectedLanguage} onChange={e => changeLanguage(e.target.value)}>
+          <div className="row m-0 my-4 px-2 py-3">
+
+            <div className="translate_bt col-md-10 mx-auto my-5 d-flex flex-column">
+              <label style={{fontSize: '18px', fontWeight: "600"}}>Översätta : </label>
+              <select
+                className="custom-select w-25"
+                value={selectedLanguage}
+                onChange={e => changeLanguage(e.target.value)}>
                 {possibleLanguages.map(lang => (
                   <option key={lang.short} value={lang.short}>
                     {lang.long}
@@ -41,9 +48,11 @@ class Home extends Component {
                 ))}
               </select>
             </div>
-            <div className="col-md-10 mx-auto px-0 pb-5">
+
+            <div className="col-md-10 mx-auto pb-5 ">
               <h5>{t('title')}</h5>
               <hr className="my-2" />
+              <p>{t('description')}</p>
             </div>
           </div>
         </div>

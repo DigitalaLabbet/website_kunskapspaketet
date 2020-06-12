@@ -1,7 +1,4 @@
 {
-    "title": "Welcome to react using react-i18next",
-    "description": {
-      "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-      "part2": "Switch language between english and german using buttons above."
-    }
+  "title": "Welcome to kunskapspaketet",
+  "description": "To learn more, choose one of the topics at the top of the page. Watch the video and the resources below the video. To make sure that you got the information in the video correctly,do the test ."
 }

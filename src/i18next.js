@@ -7,6 +7,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslation from './statics/locales/en/translation.json';
 import arTranslation from './statics/locales/ar/translation.json';
 import svTranslation from './statics/locales/sv/translation.json';
+import soTranslation from './statics/locales/so/translation.json';
+import urTranslation from './statics/locales/ur/translation.json';
 
 // the translations
 // (tip move them in a JSON file and import them)
@@ -15,9 +17,11 @@ const resources = {
     translation: enTranslation
   },
   ar: { translation: arTranslation },
-  sv: { translation: svTranslation }
+  sv: { translation: svTranslation },
+  so: { translation: soTranslation },
+  ur: { translation: urTranslation },
 };
-console.log('res: ', resources);
+
 i18n
   // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
   // learn more: https://github.com/i18next/i18next-http-backend
@@ -31,8 +35,8 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    lng: 'en',
-    fallbackLng: 'en',
+    lng: 'sv',
+    fallbackLng: 'sv',
     keySeparator: false,
     saveMissing: true,
     debug: true,
