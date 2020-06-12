@@ -14,7 +14,7 @@ class Lecture extends Component {
     const { profile, lecture, quizzes } = this.props;
 
     const innerHtml = text => {
-      return { __html: text };
+      return { __html: text ? text : '--' };
     };
 
     return (
@@ -22,32 +22,35 @@ class Lecture extends Component {
         {lecture && (
           <>
             <Topbar name={lecture.name} backLink="/" color={lecture.color} />
-            <Accordion>
-              <div className="container navbar-margin">
-                <div className="lecture mt-2">
-                  <iframe title="vidoe" width="100%" height="200px" src={lecture.videoUrl}></iframe>
-                  <p className="text-14" dangerouslySetInnerHTML={innerHtml(lecture.information)}></p>
+            <div className="container navbar-margin">
+              <div className="lecture mt-2">
+                <iframe title="vidoe" width="100%" height="200px" src={lecture.videoUrl}></iframe>
+                <p className="text-14" dangerouslySetInnerHTML={innerHtml(lecture.information)}></p>
+                <Accordion>
                   {lecture.links &&
                     lecture.links.map((link, index) => (
                       <Card key={index}>
-                        <Card.Header className="py-1 px-2">
-                          <Accordion.Toggle as={Button} variant="link" eventKey={index} className="w-100 text-left">
-                            {link.heading}
-                          </Accordion.Toggle>
-                        </Card.Header>
+                        <Accordion.Toggle
+                          as={Card.Header}
+                          variant="link"
+                          eventKey={index}
+                          className="w-100 text-left px-3 py-2"
+                          dangerouslySetInnerHTML={innerHtml(link.heading)}></Accordion.Toggle>
                         <Accordion.Collapse eventKey={index}>
                           <Card.Body className="px-3 py-2">
-                          {link.items.map(item => (
-                            <li key={item} dangerouslySetInnerHTML={innerHtml(item)}></li>
-                          ))}
+                            <ul className="p-0" style={{ listStyle: 'none' }}>
+                              {link.items.map(item => (
+                                <li key={item} dangerouslySetInnerHTML={innerHtml(item)}></li>
+                              ))}
+                            </ul>
                           </Card.Body>
                         </Accordion.Collapse>
                       </Card>
                     ))}
-                  {quizzes && quizzes.map(quiz => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
-                </div>
+                </Accordion>
+                {quizzes && quizzes.map(quiz => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
               </div>
-            </Accordion>
+            </div>
           </>
         )}
         <Navbar role={profile.role} />
