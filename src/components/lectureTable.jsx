@@ -79,7 +79,6 @@ const LectureTable = props => {
     {
       name: 'Actions',
       sortable: false,
-      style: { padding: '0' },
       cell: row => (
         <div>
           <button className={`btn btn-sm btn-info`} onClick={() => props.toggleLecture(row)}>
