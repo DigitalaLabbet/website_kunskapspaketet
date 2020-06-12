@@ -93,10 +93,23 @@ class ViewUser extends Component {
 
     return (
       <React.Fragment>
-        <button className="btn btn-info btn-sm" onClick={this.handleShow}>
+        <button
+          className="btn btn-info btn-sm"
+          style={{
+            width: '33.75px',
+            height: '31px',
+            position: 'relative'
+          }}
+          onClick={this.handleShow}>
           <span
             className="fa-stack"
-            style={{ fontSize: '0.875rem', height: '1rem', lineHeight: '1rem', width: '1.5rem' }}>
+            style={{
+              top: '0',
+              left: '0',
+              width: '33.75px',
+              height: '31px',
+              position: 'absolute'
+            }}>
             <i className="fa fa-file-alt fa-stack-1x"></i>
             {user.teacherCheck && (
               <i
