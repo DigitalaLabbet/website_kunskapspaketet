@@ -7,8 +7,15 @@ import { compose } from 'redux';
 import Topbar from '../components/topbar';
 import Navbar from '../components/navbar';
 import QuizModal from '../components/quiz-modal';
+import { withRouter } from 'react-router-dom';
 
 class Lecture extends Component {
+  componentDidMount() {
+    const { lecture } = this.props;
+    if (!lecture) {
+      this.props.history.push('/');
+    }
+  }
   render() {
     const { profile, lecture, quizzes } = this.props;
 
@@ -66,7 +73,8 @@ const enhance = compose(
       lecture: state.firestore.ordered.lectures && state.firestore.ordered.lectures.find(x => x.id === lectureName),
       quizzes: state.firestore.ordered.quizzes
     };
-  })
+  }),
+  withRouter
 );
 
 export default enhance(Lecture);
