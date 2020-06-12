@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Modal, Accordion, Card } from 'react-bootstrap';
 
-import * as servicesUsers from '../../services/users';
+import * as servicesHttp from '../../services/http';
 import Notify from '../notify';
 import Confirm from './confirm-modal';
 
@@ -225,7 +225,7 @@ class CreateLecture extends Component {
           }
           this.handleClose();
         })
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     } else {
       console.log('Create new category will be here');
     }

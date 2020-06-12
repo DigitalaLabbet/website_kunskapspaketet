@@ -6,7 +6,8 @@ import { firebaseConnect } from 'react-redux-firebase';
 
 import Notify from '../notify';
 
-import * as servicesUsers from '../../services/users';
+import * as servicesHttp from '../../services/http';
+import { connect } from 'react-redux';
 
 class CreateUser extends Component {
   constructor(props) {
@@ -50,32 +51,32 @@ class CreateUser extends Component {
         phoneNumber: this.state.phoneNumber
       };
 
-      servicesUsers
+      servicesHttp
         .updateUser(user.id, updatedValues)
         .then(res => {
           console.log('res : ', res);
           Notify.success(`Eleven har uppdaterats: ${this.state.email}`);
           this.handleClose();
         })
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     } else {
-      const { uid } = this.props.firebase.auth().currentUser;
+      const { userUid, userRole } = this.props;
       const newUser = {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        teacher: uid,
-        role: 'student',
+        teacher: userUid,
+        role: userRole === 'super_admin' ? 'teacher' : 'student',
         phoneNumber: this.state.phoneNumber
       };
-      servicesUsers
+      servicesHttp
         .createUser(newUser)
         .then(res => {
           console.log('res : ', res);
           Notify.success(`Eleven har skapats: ${this.state.email}`);
           this.handleClose();
         })
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     }
   }
 
@@ -158,6 +159,12 @@ class CreateUser extends Component {
   }
 }
 
-const enhance = compose(firebaseConnect());
+const enhance = compose(
+  firebaseConnect(),
+  connect(state => ({
+    userUid: state.firebase.auth.uid,
+    userRole: state.firebase.profile.role
+  }))
+);
 
 export default enhance(CreateUser);
