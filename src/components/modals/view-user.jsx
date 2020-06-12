@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Modal, Accordion, Card, Button, ListGroup } from 'react-bootstrap';
+import { Modal, Accordion, Card, ListGroup } from 'react-bootstrap';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
@@ -127,12 +127,14 @@ class ViewUser extends Component {
                 <Accordion>
                   {quizzes.map((quiz, index) => (
                     <Card key={quiz.quizTitle}>
-                      <Card.Header style={{ padding: '0' }}>
-                        <Accordion.Toggle as={Button} variant="link" eventKey={index} className="w-100 text-left">
-                          {quiz.quizTitle} - {convertDate(quiz.quizSubmitted)} - {quiz.numberOfCorrectAnswers} av{' '}
-                          {quiz.numberOfQuestions} rätt
-                        </Accordion.Toggle>
-                      </Card.Header>
+                      <Accordion.Toggle
+                        as={Card.Header}
+                        className="w-100 text-left px-3 py-2"
+                        variant="link"
+                        eventKey={index}>
+                        {quiz.quizTitle} - {convertDate(quiz.quizSubmitted)} - {quiz.numberOfCorrectAnswers} av{' '}
+                        {quiz.numberOfQuestions} rätt
+                      </Accordion.Toggle>
                       <Accordion.Collapse eventKey={index}>
                         <Card.Body style={{ padding: '8px' }}>
                           {quiz.questions.map((question, questionIndex) => (

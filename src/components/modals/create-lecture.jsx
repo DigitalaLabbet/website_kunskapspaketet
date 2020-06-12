@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Modal, Accordion, Card, Button } from 'react-bootstrap';
+import { Modal, Accordion, Card } from 'react-bootstrap';
 
 import * as servicesUsers from '../../services/users';
 import Notify from '../notify';
@@ -333,15 +333,13 @@ class CreateLecture extends Component {
                   <Accordion>
                     {links.map((link, index) => (
                       <Card key={index}>
-                        <Card.Header className="py-1 px-2">
-                          <Accordion.Toggle
-                            as={Button}
-                            variant="link"
-                            eventKey={index}
-                            className="w-100 text-left overflow-ellipsis overflow-hidden space-nowrap">
-                            {link.heading ? link.heading : '--'}
-                          </Accordion.Toggle>
-                        </Card.Header>
+                        <Accordion.Toggle
+                          as={Card.Header}
+                          className="w-100 text-left px-3 py-2"
+                          variant="link"
+                          eventKey={index}>
+                          {link.heading ? link.heading : '--'}
+                        </Accordion.Toggle>
                         <Accordion.Collapse eventKey={index}>
                           <Card.Body className="px-3 py-2">
                             <div className="form-group">
@@ -420,11 +418,13 @@ class CreateLecture extends Component {
                   <Accordion>
                     {quizzes.map((quiz, quizIndex) => (
                       <Card key={quizIndex}>
-                        <Card.Header className="py-1 px-2">
-                          <Accordion.Toggle as={Button} variant="link" eventKey={quizIndex} className="w-100 text-left">
-                            {quiz.quizTitle ? quiz.quizTitle : '--'}
-                          </Accordion.Toggle>
-                        </Card.Header>
+                        <Accordion.Toggle
+                          as={Card.Header}
+                          className="w-100 text-left px-3 py-2"
+                          variant="link"
+                          eventKey={quizIndex}>
+                          {quiz.quizTitle ? quiz.quizTitle : '--'}
+                        </Accordion.Toggle>
                         <Accordion.Collapse className="p-2" eventKey={quizIndex}>
                           <div>
                             <div className="form-group d-none">
@@ -452,15 +452,13 @@ class CreateLecture extends Component {
                             <Accordion>
                               {quiz.questions.map((question, questionIndex) => (
                                 <Card key={questionIndex}>
-                                  <Card.Header className="py-1 px-2">
-                                    <Accordion.Toggle
-                                      as={Button}
-                                      variant="link"
-                                      eventKey={questionIndex}
-                                      className="w-100 text-left">
-                                      {question.question ? question.question : '--'}
-                                    </Accordion.Toggle>
-                                  </Card.Header>
+                                  <Accordion.Toggle
+                                    as={Card.Header}
+                                    className="w-100 text-left px-3 py-2"
+                                    variant="link"
+                                    eventKey={questionIndex}>
+                                    {question.question ? question.question : '--'}
+                                  </Accordion.Toggle>
                                   <Accordion.Collapse eventKey={questionIndex}>
                                     <Card.Body className="px-3 py-2">
                                       <div className="form-group">

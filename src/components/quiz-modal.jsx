@@ -86,7 +86,7 @@ class quizModal extends Component {
 
     return (
       <div className="text-center">
-        <button className="btn btn-success" onClick={this.handleShow}>
+        <button className="btn btn-success quiz-btn" onClick={this.handleShow}>
           Starta quiz
         </button>
 
