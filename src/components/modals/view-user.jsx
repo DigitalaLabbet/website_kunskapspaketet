@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import { Modal, Accordion, Card, Button, ListGroup } from 'react-bootstrap';
+import { Modal, Accordion, Card, ListGroup } from 'react-bootstrap';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
-import * as servicesUsers from '../../services/users';
+import * as servicesHttp from '../../services/http';
 
 class ViewUser extends Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class ViewUser extends Component {
         .doc(user.id)
         .update({ teacherCheck: false })
         .then(() => {})
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     }
   }
 
@@ -93,10 +93,23 @@ class ViewUser extends Component {
 
     return (
       <React.Fragment>
-        <button className="btn btn-info btn-sm" onClick={this.handleShow}>
+        <button
+          className="btn btn-info btn-sm"
+          style={{
+            width: '33.75px',
+            height: '31px',
+            position: 'relative'
+          }}
+          onClick={this.handleShow}>
           <span
             className="fa-stack"
-            style={{ fontSize: '0.875rem', height: '1rem', lineHeight: '1rem', width: '1.5rem' }}>
+            style={{
+              top: '0',
+              left: '0',
+              width: '33.75px',
+              height: '31px',
+              position: 'absolute'
+            }}>
             <i className="fa fa-file-alt fa-stack-1x"></i>
             {user.teacherCheck && (
               <i
@@ -114,12 +127,14 @@ class ViewUser extends Component {
                 <Accordion>
                   {quizzes.map((quiz, index) => (
                     <Card key={quiz.quizTitle}>
-                      <Card.Header style={{ padding: '0' }}>
-                        <Accordion.Toggle as={Button} variant="link" eventKey={index} className="w-100 text-left">
-                          {quiz.quizTitle} - {convertDate(quiz.quizSubmitted)} - {quiz.numberOfCorrectAnswers} av{' '}
-                          {quiz.numberOfQuestions} rätt
-                        </Accordion.Toggle>
-                      </Card.Header>
+                      <Accordion.Toggle
+                        as={Card.Header}
+                        className="w-100 text-left px-3 py-2"
+                        variant="link"
+                        eventKey={index}>
+                        {quiz.quizTitle} - {convertDate(quiz.quizSubmitted)} - {quiz.numberOfCorrectAnswers} av{' '}
+                        {quiz.numberOfQuestions} rätt
+                      </Accordion.Toggle>
                       <Accordion.Collapse eventKey={index}>
                         <Card.Body style={{ padding: '8px' }}>
                           {quiz.questions.map((question, questionIndex) => (
@@ -150,11 +165,11 @@ class ViewUser extends Component {
                                   <ListGroup.Item
                                     as="li"
                                     key={answer}
-                                    className={`mt-1 ${checkIfCorrect(
+                                    className={checkIfCorrect(
                                       quiz.userInput[questionIndex],
                                       question.correctAnswer,
                                       answerIndex + 1
-                                    )}`}>
+                                    )}>
                                     {answer}
                                   </ListGroup.Item>
                                 ))}

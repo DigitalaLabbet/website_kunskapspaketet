@@ -41,7 +41,6 @@ firebase.firestore(); // <- needed if using firestore
 
 // Add firebase to reducers
 const rootReducer = combineReducers({
-  defaultLectures,
   firebase: firebaseReducer,
   firestore: firestoreReducer
 });

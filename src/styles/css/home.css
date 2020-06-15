@@ -48,7 +48,7 @@
   .public-container {
     width: 100%;
     height: auto;
-    background-image: url("../images/header_wrapper_full.png");
+    background-image: url('../images/header_wrapper_full.png');
     background-size: 100% 300px;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -60,7 +60,7 @@
   .public-container {
     width: 100%;
     height: auto;
-    background-image: url("../images/header_wrapper_mobile.png");
+    background-image: url('../images/header_wrapper_mobile.png');
     background-size: 100% 300px;
     background-repeat: no-repeat;
     padding: 0;
@@ -79,7 +79,7 @@
 
   .mobile-navbar ul li {
     color: white;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .public-container .instructions {
@@ -101,4 +101,16 @@ button + button {
 
 .text-14 {
   font-size: 0.8rem;
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.space-nowrap {
+  white-space: nowrap;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

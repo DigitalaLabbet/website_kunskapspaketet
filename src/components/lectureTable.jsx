@@ -81,8 +81,15 @@ const LectureTable = props => {
       sortable: false,
       cell: row => (
         <div>
-          <button className={`btn btn-sm btn-info`} onClick={() => props.toggleLecture(row)}>
-            <i className="fa  fa-eye"></i>
+          <button
+            className={`btn btn-sm btn-info`}
+            style={{
+              width: '33.75px',
+              height: '31px',
+              position: 'relative'
+            }}
+            onClick={() => props.toggleLecture(row)}>
+            <i className={`fa ${row.isVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
           </button>
           <CreateLecture lecture={row} firestore={props.firestore} />
         </div>

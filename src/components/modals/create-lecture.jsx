@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-import { Modal, Accordion, Card, Button } from 'react-bootstrap';
+import { Modal, Accordion, Card } from 'react-bootstrap';
 
-import * as servicesUsers from '../../services/users';
+import * as servicesHttp from '../../services/http';
 import Notify from '../notify';
 import Confirm from './confirm-modal';
 
 class CreateLecture extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,10 +29,14 @@ class CreateLecture extends Component {
   }
 
   handleShow() {
-    this.setState({ show: true });
+    if (this._isMounted) {
+      this.setState({ show: true });
+    }
     const { lecture, firestore } = this.props;
     if (lecture) {
-      this.setState(lecture);
+      if (this._isMounted) {
+        this.setState(lecture);
+      }
 
       firestore
         .collection('lectures')
@@ -52,30 +58,40 @@ class CreateLecture extends Component {
                 });
               });
             });
-            this.setState({ quizzes: tempQuizzes });
+            if (this._isMounted) {
+              this.setState({ quizzes: tempQuizzes });
+            }
           });
         });
     }
   }
 
   handleClose() {
-    this.setState({ show: false });
+    if (this._isMounted) {
+      this.setState({ show: false });
+    }
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    if (this._isMounted) {
+      this.setState({ [e.target.name]: e.target.value });
+    }
   }
 
   headingChange(index, event) {
     const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
     linksUpdated[index].heading = event.target.value;
-    this.setState({ links: linksUpdated });
+    if (this._isMounted) {
+      this.setState({ links: linksUpdated });
+    }
   }
 
   itemChange(linkIndex, itemIndex, event) {
     const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
     linksUpdated[linkIndex].items[itemIndex] = event.target.value;
-    this.setState({ links: linksUpdated });
+    if (this._isMounted) {
+      this.setState({ links: linksUpdated });
+    }
   }
 
   addLink(event) {
@@ -85,26 +101,34 @@ class CreateLecture extends Component {
       heading: '',
       items: []
     });
-    this.setState({ links: linksUpdated });
+    if (this._isMounted) {
+      this.setState({ links: linksUpdated });
+    }
   }
 
   addItem(index, event) {
     event.preventDefault();
     const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
     linksUpdated[index].items.push('');
-    this.setState({ links: linksUpdated });
+    if (this._isMounted) {
+      this.setState({ links: linksUpdated });
+    }
   }
 
   quizChange(index, event) {
     const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
     quizzesUpdated[index][event.target.name] = event.target.value;
-    this.setState({ quizzes: quizzesUpdated });
+    if (this._isMounted) {
+      this.setState({ quizzes: quizzesUpdated });
+    }
   }
 
   questionChange(quizIndex, questionIndex, event) {
     const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
     quizzesUpdated[quizIndex].questions[questionIndex].question = event.target.value;
-    this.setState({ quizzes: quizzesUpdated });
+    if (this._isMounted) {
+      this.setState({ quizzes: quizzesUpdated });
+    }
   }
 
   answerChange(quizIndex, questionIndex, answerIndex, event) {
@@ -114,7 +138,9 @@ class CreateLecture extends Component {
     } else {
       quizzesUpdated[quizIndex].questions[questionIndex].answers[answerIndex][event.target.name] = event.target.value;
     }
-    this.setState({ quizzes: quizzesUpdated });
+    if (this._isMounted) {
+      this.setState({ quizzes: quizzesUpdated });
+    }
   }
 
   addQuizQuestion(quizIndex, event) {
@@ -148,7 +174,9 @@ class CreateLecture extends Component {
         }
       ]
     });
-    this.setState({ quizzes: quizzesUpdated });
+    if (this._isMounted) {
+      this.setState({ quizzes: quizzesUpdated });
+    }
   }
 
   save(e) {
@@ -192,13 +220,22 @@ class CreateLecture extends Component {
         .commit()
         .then(() => {
           Notify.success(`${lecture.name} har uppdaterats`);
-          this.setState({ quizzes: [] });
+          if (this._isMounted) {
+            this.setState({ quizzes: [] });
+          }
           this.handleClose();
         })
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     } else {
       console.log('Create new category will be here');
     }
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
@@ -208,19 +245,25 @@ class CreateLecture extends Component {
     const deleteLink = index => {
       const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
       linksUpdated.splice(index, 1);
-      this.setState({ links: linksUpdated });
+      if (this._isMounted) {
+        this.setState({ links: linksUpdated });
+      }
     };
 
     const deleteItem = (linkIndex, itemIndex) => {
       const linksUpdated = JSON.parse(JSON.stringify(this.state.links));
       linksUpdated[linkIndex].items.splice(itemIndex, 1);
-      this.setState({ links: linksUpdated });
+      if (this._isMounted) {
+        this.setState({ links: linksUpdated });
+      }
     };
 
     const deleteQuestion = (quizIndex, answerIndex) => {
       const quizzesUpdated = JSON.parse(JSON.stringify(this.state.quizzes));
       quizzesUpdated[quizIndex].questions.splice(answerIndex, 1);
-      this.setState({ quizzes: quizzesUpdated });
+      if (this._isMounted) {
+        this.setState({ quizzes: quizzesUpdated });
+      }
     };
 
     return (
@@ -290,11 +333,13 @@ class CreateLecture extends Component {
                   <Accordion>
                     {links.map((link, index) => (
                       <Card key={index}>
-                        <Card.Header className="py-1 px-2">
-                          <Accordion.Toggle as={Button} variant="link" eventKey={index} className="w-100 text-left">
-                            {link.heading ? link.heading : '--'}
-                          </Accordion.Toggle>
-                        </Card.Header>
+                        <Accordion.Toggle
+                          as={Card.Header}
+                          className="w-100 text-left px-3 py-2"
+                          variant="link"
+                          eventKey={index}>
+                          {link.heading ? link.heading : '--'}
+                        </Accordion.Toggle>
                         <Accordion.Collapse eventKey={index}>
                           <Card.Body className="px-3 py-2">
                             <div className="form-group">
@@ -373,11 +418,13 @@ class CreateLecture extends Component {
                   <Accordion>
                     {quizzes.map((quiz, quizIndex) => (
                       <Card key={quizIndex}>
-                        <Card.Header className="py-1 px-2">
-                          <Accordion.Toggle as={Button} variant="link" eventKey={quizIndex} className="w-100 text-left">
-                            {quiz.quizTitle ? quiz.quizTitle : '--'}
-                          </Accordion.Toggle>
-                        </Card.Header>
+                        <Accordion.Toggle
+                          as={Card.Header}
+                          className="w-100 text-left px-3 py-2"
+                          variant="link"
+                          eventKey={quizIndex}>
+                          {quiz.quizTitle ? quiz.quizTitle : '--'}
+                        </Accordion.Toggle>
                         <Accordion.Collapse className="p-2" eventKey={quizIndex}>
                           <div>
                             <div className="form-group d-none">
@@ -405,15 +452,13 @@ class CreateLecture extends Component {
                             <Accordion>
                               {quiz.questions.map((question, questionIndex) => (
                                 <Card key={questionIndex}>
-                                  <Card.Header className="py-1 px-2">
-                                    <Accordion.Toggle
-                                      as={Button}
-                                      variant="link"
-                                      eventKey={questionIndex}
-                                      className="w-100 text-left">
-                                      {question.question ? question.question : '--'}
-                                    </Accordion.Toggle>
-                                  </Card.Header>
+                                  <Accordion.Toggle
+                                    as={Card.Header}
+                                    className="w-100 text-left px-3 py-2"
+                                    variant="link"
+                                    eventKey={questionIndex}>
+                                    {question.question ? question.question : '--'}
+                                  </Accordion.Toggle>
                                   <Accordion.Collapse eventKey={questionIndex}>
                                     <Card.Body className="px-3 py-2">
                                       <div className="form-group">

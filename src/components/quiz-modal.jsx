@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect, firebaseConnect } from 'react-redux-firebase';
 import Quiz from 'react-quiz-component';
-import * as servicesUsers from '../services/users';
+import * as servicesHttp from '../services/http';
 
 import '../styles/css/quiz-modal.css';
 
@@ -43,7 +43,7 @@ class quizModal extends Component {
         resultFilterCorrect: 'Rätt',
         resultFilterIncorrect: 'Fel',
         resultPageHeaderText: 'Du har avslutat quizzen. Du fick <correctIndexLength> av <questionLength> frågor rätt.',
-        resultPagePoint: 'Du fick <correctPoints> av <totalPoints> poäng.',
+        resultPagePoint: '',
         singleSelectionTagText: 'Ett val',
         startQuizBtn: 'Starta quiz'
       }
@@ -81,12 +81,12 @@ class quizModal extends Component {
       batch
         .commit()
         .then(() => {})
-        .catch(err => servicesUsers.handleError(err));
+        .catch(err => servicesHttp.handleError(err));
     };
 
     return (
       <div className="text-center">
-        <button className="btn btn-success" onClick={this.handleShow}>
+        <button className="btn btn-success quiz-btn" onClick={this.handleShow}>
           Starta quiz
         </button>
 
