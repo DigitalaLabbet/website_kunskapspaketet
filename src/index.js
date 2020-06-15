@@ -15,7 +15,7 @@ import thunk from 'redux-thunk';
 
 import './i18next';
 
-import defaultLectures from './store/reducers/default-lectures.reducer';
+
 
 const fbConfig = {
   apiKey: 'AIzaSyCjN4obQGSoePw-wME_yA8JVx6kIzuRCwE',

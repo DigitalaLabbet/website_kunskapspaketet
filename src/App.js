@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 
 /* thired part packages */
 
-import { Route, HashRouter, Switch } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 
 import { isLoaded, firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
@@ -19,7 +19,6 @@ import Home from './views/home';
 import Admin from './views/admin';
 import Settings from './views/settings';
 import Lecture from './views/lecture';
-import NoMatch from './views/no-match';
 
 class App extends Component {
   constructor(props) {
