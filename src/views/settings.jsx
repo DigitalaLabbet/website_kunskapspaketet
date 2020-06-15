@@ -67,8 +67,10 @@ class Settings extends Component {
             <div>
               <hr />
               <form>
-                <div>
-                  <label htmlFor="name">Name</label>
+                <div className="mb-3">
+                  <label className="mb-0" htmlFor="name">
+                    Name
+                  </label>
                   <input
                     id="name"
                     className="form-control"
@@ -78,8 +80,10 @@ class Settings extends Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                <div>
-                  <label htmlFor="email">Email</label>
+                <div className="mb-3">
+                  <label className="mb-0" htmlFor="email">
+                    Email
+                  </label>
                   <input
                     id="email"
                     className="form-control"
@@ -90,8 +94,10 @@ class Settings extends Component {
                     disabled
                   />
                 </div>
-                <div>
-                  <label htmlFor="role">Role</label>
+                <div className="mb-3">
+                  <label className="mb-0" htmlFor="role">
+                    Role
+                  </label>
                   <input
                     id="role"
                     className="form-control"
@@ -102,8 +108,10 @@ class Settings extends Component {
                     disabled
                   />
                 </div>
-                <div>
-                  <label htmlFor="phoneNumber">PhoneNumber</label>
+                <div className="mb-3">
+                  <label className="mb-0" htmlFor="phoneNumber">
+                    PhoneNumber
+                  </label>
                   <input
                     id="phoneNumber"
                     className="form-control"
@@ -113,8 +121,10 @@ class Settings extends Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                <div>
-                  <label htmlFor="password">Ändra lösenord</label>
+                <div className="mb-3">
+                  <label className="mb-0" htmlFor="password">
+                    Ändra lösenord
+                  </label>
                   <input
                     id="password"
                     className="form-control"

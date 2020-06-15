@@ -33,12 +33,11 @@ class Home extends Component {
             <h6 className="text-white text-center py-3">Välkommen {profile.name ? profile.name : profile.email}</h6>
           </div>
           {lectures && lectures.length > 0 && <Categories lectures={lectures} />}
-          <div className="row m-0 my-4 px-2 py-3">
-
-            <div className="translate_bt col-md-10 mx-auto my-5 d-flex flex-column">
-              <label style={{fontSize: '18px', fontWeight: "600"}}>Översätta : </label>
+          <div className="row m-0 px-2 py-3">
+            <div className="translate_bt col-12 col-lg-9 mx-auto my-3 d-flex flex-column">
               <select
-                className="custom-select w-25"
+                className="form-control"
+                style={{ maxWidth: '320px' }}
                 value={selectedLanguage}
                 onChange={e => changeLanguage(e.target.value)}>
                 {possibleLanguages.map(lang => (
@@ -49,7 +48,7 @@ class Home extends Component {
               </select>
             </div>
 
-            <div className="col-md-10 mx-auto pb-5 ">
+            <div className="col-12 col-lg-9 mx-auto pb-5 ">
               <h5>{t('title')}</h5>
               <hr className="my-2" />
               <p>{t('description')}</p>

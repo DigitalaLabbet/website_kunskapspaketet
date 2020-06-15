@@ -45,6 +45,9 @@ class Confirm extends Component {
   }
 
   render() {
+    const innerHtml = text => {
+      return { __html: text ? text : '--' };
+    };
     var cancelButton = this.props.showCancelButton ? (
       <Button className="default" onClick={this.onClose}>
         {this.props.cancelText}
@@ -62,7 +65,7 @@ class Confirm extends Component {
         <Modal.Header>
           <Modal.Title>{this.props.title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{this.props.body}</Modal.Body>
+        <Modal.Body dangerouslySetInnerHTML={innerHtml(this.props.body)}></Modal.Body>
         <Modal.Footer>
           {cancelButton}
           <Button variant="danger" className={this.props.confirmBSStyle} onClick={this.onConfirm}>
