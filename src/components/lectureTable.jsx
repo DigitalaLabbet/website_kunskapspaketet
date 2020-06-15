@@ -79,6 +79,7 @@ const LectureTable = props => {
     {
       name: 'Actions',
       sortable: false,
+      width: '102px',
       cell: row => (
         <div>
           <button
