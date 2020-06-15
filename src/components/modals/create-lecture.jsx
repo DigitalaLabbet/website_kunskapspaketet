@@ -380,29 +380,31 @@ class CreateLecture extends Component {
                                   </button>
                                 </h6>
                               </label>
-                              {link.items.map((item, itemIndex) => (
-                                <div key={itemIndex} className="input-group mb-1">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    name="item"
-                                    value={item}
-                                    onChange={this.itemChange.bind(this, index, itemIndex)}
-                                  />
-                                  <div className="input-group-append">
-                                    <Confirm
-                                      onConfirm={() => {
-                                        deleteItem(index, itemIndex);
-                                      }}
-                                      body={'Är du säker du vill radera: ' + item}
-                                      title="Radera länk"
-                                      confirmText="Radera"
-                                      cancelText="Avbryt"
-                                      buttonText={<i className="fa fa-trash"></i>}
+                              <div className="lecture-input-container">
+                                {link.items.map((item, itemIndex) => (
+                                  <div key={itemIndex} className="input-group">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name="item"
+                                      value={item}
+                                      onChange={this.itemChange.bind(this, index, itemIndex)}
                                     />
+                                    <div className="input-group-append">
+                                      <Confirm
+                                        onConfirm={() => {
+                                          deleteItem(index, itemIndex);
+                                        }}
+                                        body={'Är du säker du vill radera: ' + item}
+                                        title="Radera länk"
+                                        confirmText="Radera"
+                                        cancelText="Avbryt"
+                                        buttonText={<i className="fa fa-trash"></i>}
+                                      />
+                                    </div>
                                   </div>
-                                </div>
-                              ))}
+                                ))}
+                              </div>
                             </div>
                           </Card.Body>
                         </Accordion.Collapse>
@@ -490,38 +492,40 @@ class CreateLecture extends Component {
                                         </div>
                                       </div>
                                       <h6>Svar</h6>
-                                      {question.answers.map((answer, answerIndex) => (
-                                        <div key={answerIndex} className="input-group mb-1">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            name="answer"
-                                            value={answer.answer}
-                                            onChange={this.answerChange.bind(
-                                              this,
-                                              quizIndex,
-                                              questionIndex,
-                                              answerIndex
-                                            )}
-                                          />
-                                          <div className="input-group-append">
-                                            <span className="input-group-text">
-                                              <input
-                                                type="checkbox"
-                                                name="isCorrect"
-                                                value={answer.isCorrect}
-                                                checked={answer.isCorrect}
-                                                onChange={this.answerChange.bind(
-                                                  this,
-                                                  quizIndex,
-                                                  questionIndex,
-                                                  answerIndex
-                                                )}
-                                              />
-                                            </span>
+                                      <div className="lecture-input-container">
+                                        {question.answers.map((answer, answerIndex) => (
+                                          <div key={answerIndex} className="input-group">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              name="answer"
+                                              value={answer.answer}
+                                              onChange={this.answerChange.bind(
+                                                this,
+                                                quizIndex,
+                                                questionIndex,
+                                                answerIndex
+                                              )}
+                                            />
+                                            <div className="input-group-append">
+                                              <span className="input-group-text">
+                                                <input
+                                                  type="checkbox"
+                                                  name="isCorrect"
+                                                  value={answer.isCorrect}
+                                                  checked={answer.isCorrect}
+                                                  onChange={this.answerChange.bind(
+                                                    this,
+                                                    quizIndex,
+                                                    questionIndex,
+                                                    answerIndex
+                                                  )}
+                                                />
+                                              </span>
+                                            </div>
                                           </div>
-                                        </div>
-                                      ))}
+                                        ))}
+                                      </div>
                                     </Card.Body>
                                   </Accordion.Collapse>
                                 </Card>

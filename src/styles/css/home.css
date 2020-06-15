@@ -114,3 +114,31 @@ button + button {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.lecture-input-container .input-group:first-child input {
+  border-bottom-left-radius: 0;
+}
+
+.lecture-input-container .input-group:first-child button,
+.lecture-input-container .input-group:first-child span.input-group-text {
+  border-bottom-right-radius: 0;
+}
+
+.lecture-input-container .input-group:not(:first-child) input {
+  border-radius: 0;
+  border-top: 0;
+}
+
+.lecture-input-container .input-group:not(:first-child) button,
+.lecture-input-container .input-group:not(:first-child) span.input-group-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.lecture-input-container .input-group:last-child input {
+  border-bottom-left-radius: 0.25rem;
+}
+.lecture-input-container .input-group:last-child button,
+.lecture-input-container .input-group:last-child span.input-group-text {
+  border-bottom-right-radius: 0.25rem;
+}

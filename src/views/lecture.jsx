@@ -14,7 +14,7 @@ class Lecture extends Component {
   componentDidMount() {
     const { lecture } = this.props;
     if (!lecture) {
-      this.props.history.push('/');
+      this.props.history.push('/404');
     }
   }
   render() {
