@@ -17,7 +17,8 @@ class CreateUser extends Component {
       name: '',
       email: '',
       phoneNumber: '',
-      password: ''
+      password: '',
+      role: ''
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -48,7 +49,7 @@ class CreateUser extends Component {
       const updatedValues = {
         name: this.state.name,
         password: this.state.password,
-        phoneNumber: this.state.phoneNumber
+        phoneNumber: this.state.phoneNumber,
       };
 
       servicesHttp
@@ -66,7 +67,7 @@ class CreateUser extends Component {
         email: this.state.email,
         password: this.state.password,
         teacher: userUid,
-        role: userRole === 'super_admin' ? 'teacher' : 'student',
+        role: userRole === 'super_admin' && this.state.role,
         phoneNumber: this.state.phoneNumber
       };
       servicesHttp
@@ -81,8 +82,11 @@ class CreateUser extends Component {
   }
 
   render() {
-    const { show, name, email, phoneNumber, password } = this.state;
-    const { user } = this.props;
+    const { show, name, email, phoneNumber, password} = this.state;
+    const { user, userRole} = this.props;
+    console.log(this.state.role);
+    
+    
     return (
       <React.Fragment>
         <button className={`btn btn-sm ${user ? 'btn-warning text-white' : 'btn-primary'}`} onClick={this.handleShow}>
@@ -143,6 +147,13 @@ class CreateUser extends Component {
                   onChange={this.handleStateUserChange}
                 />
               </div>
+              { userRole === 'super_admin' &&
+                <select className="form-control form-control-sm" name="role" onChange={this.handleStateUserChange}>
+                  <option >välj ...</option>
+                  <option value="teacher">Lärare</option>
+                  <option value="student">student</option>
+                </select>
+              }
             </form>
           </Modal.Body>
           <Modal.Footer>
