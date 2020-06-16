@@ -18,7 +18,8 @@ class CreateUser extends Component {
       email: '',
       phoneNumber: '',
       password: '',
-      role: ''
+      role: 'student',
+      teacher: ''
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -49,7 +50,7 @@ class CreateUser extends Component {
       const updatedValues = {
         name: this.state.name,
         password: this.state.password,
-        phoneNumber: this.state.phoneNumber,
+        phoneNumber: this.state.phoneNumber
       };
 
       servicesHttp
@@ -66,8 +67,13 @@ class CreateUser extends Component {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        teacher: userUid,
-        role: userRole === 'super_admin' && this.state.role,
+        teacher:
+          userRole === 'super_admin' && this.state.role === 'student'
+            ? this.state.teacher
+            : userRole === 'admin'
+            ? userUid
+            : null,
+        role: this.state.role,
         phoneNumber: this.state.phoneNumber
       };
       servicesHttp
@@ -82,11 +88,8 @@ class CreateUser extends Component {
   }
 
   render() {
-    const { show, name, email, phoneNumber, password} = this.state;
-    const { user, userRole} = this.props;
-    console.log(this.state.role);
-    
-    
+    const { show, name, email, phoneNumber, password } = this.state;
+    const { user, userRole, users } = this.props;
     return (
       <React.Fragment>
         <button className={`btn btn-sm ${user ? 'btn-warning text-white' : 'btn-primary'}`} onClick={this.handleShow}>
@@ -147,13 +150,36 @@ class CreateUser extends Component {
                   onChange={this.handleStateUserChange}
                 />
               </div>
-              { userRole === 'super_admin' &&
+              {userRole === 'super_admin' && (
+                <div className="form-group">
+                <label>role :</label>
                 <select className="form-control form-control-sm" name="role" onChange={this.handleStateUserChange}>
-                  <option >välj ...</option>
+                  <option>välj ...</option>
                   <option value="teacher">Lärare</option>
                   <option value="student">student</option>
                 </select>
-              }
+                </div>
+              )}
+
+              {this.state.role === 'student' && (
+                <div className="form-group">
+                  <label>Lärare :</label>
+                  <select
+                    className="form-control form-control-sm"
+                    name="teacher"
+                    onChange={this.handleStateUserChange}>
+                    <option>välj ...</option>
+                    {users.map(
+                      user =>
+                        user.role === 'teacher' && (
+                          <option key={user.id} value={user.id}>
+                            {user.name}
+                          </option>
+                        )
+                    )}
+                  </select>
+                </div>
+              )}
             </form>
           </Modal.Body>
           <Modal.Footer>
@@ -174,7 +200,8 @@ const enhance = compose(
   firebaseConnect(),
   connect(state => ({
     userUid: state.firebase.auth.uid,
-    userRole: state.firebase.profile.role
+    userRole: state.firebase.profile.role,
+    users: state.firestore.ordered.users
   }))
 );
 
