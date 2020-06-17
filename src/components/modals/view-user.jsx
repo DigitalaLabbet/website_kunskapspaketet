@@ -118,7 +118,7 @@ class ViewUser extends Component {
             )}
           </span>
         </button>
-        <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
+        <Modal show={show} backdrop="static" onHide={this.handleClose}>
           <Modal.Header>Quiz svar för {user.name ? user.name : user.email}</Modal.Header>
           <Modal.Body>
             <pre>{JSON.stringify(user, null, 2)}</pre>

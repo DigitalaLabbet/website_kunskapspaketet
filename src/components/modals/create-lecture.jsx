@@ -281,7 +281,7 @@ class CreateLecture extends Component {
             </React.Fragment>
           )}
         </button>
-        <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
+        <Modal show={show} backdrop="static" onHide={this.handleClose}>
           <Modal.Header>
             <Modal.Title>{lecture ? 'Editera föreläsning' : 'Skapa föreläsning'}</Modal.Title>
           </Modal.Header>

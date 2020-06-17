@@ -90,7 +90,7 @@ class quizModal extends Component {
           Starta quiz
         </button>
 
-        <Modal show={show} backdrop="static" keyboard={false} onHide={this.handleClose}>
+        <Modal show={show} backdrop="static" onHide={this.handleClose}>
           <Modal.Body>
             <Quiz quiz={quizData} locale={this.quizLocale} onComplete={onCompleteAction} />
           </Modal.Body>

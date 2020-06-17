@@ -101,9 +101,9 @@ class Login extends Component {
               />
             </div>
             <div className="w-100 d-flex flex-row justify-content-around  mx-auto my-3">
-              <button onClick={this.signup} className="btn btn-success btn-sm" name="values">
+              {/*<button onClick={this.signup} className="btn btn-success btn-sm" name="values">
                 Registrera
-              </button>
+              </button>*/}
               <button type="submit" onClick={this.login} className="btn btn-primary btn-sm" name="values">
                 Logga in
               </button>
