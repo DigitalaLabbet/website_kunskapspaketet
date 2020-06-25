@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -8,6 +9,7 @@ import Categories from '../components/categories';
 import Navbar from '../components/navbar';
 import { withTranslation } from 'react-i18next';
 import i18n from '../i18next';
+import Logo from '../components/logo'
 
 class Home extends Component {
   render() {
@@ -32,6 +34,8 @@ class Home extends Component {
             <h6 className="text-white text-center py-3">Välkommen {profile.name ? profile.name : profile.email}</h6>
           </div>
           {lectures && lectures.length > 0 && <Categories lectures={lectures} />}
+
+          <Logo />
           <div className="row m-0 px-2 py-3">
             <div className="translate_bt col-12 col-lg-9 mx-auto my-3 d-flex flex-column">
               <select
