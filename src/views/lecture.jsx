@@ -12,10 +12,13 @@ import { withRouter } from 'react-router-dom';
 
 class Lecture extends Component {
   componentDidMount() {
-    const { lecture } = this.props;
-    if (!lecture) {
-      this.props.history.push('/404');
-    }
+    // Temp fix until i figure out something better.
+    setTimeout(() => {
+      const { lecture } = this.props;
+      if (!lecture) {
+        this.props.history.push('/404');
+      }
+    }, 1000);
   }
   render() {
     const { profile, lecture, quizzes } = this.props;
@@ -58,9 +61,9 @@ class Lecture extends Component {
                 {quizzes && quizzes.map(quiz => <QuizModal key={quiz.quizId} quiz={quiz} lectureId={lecture.id} />)}
               </div>
             </div>
+            <Navbar role={profile.role} />
           </>
         )}
-        <Navbar role={profile.role} />
       </div>
     );
   }
@@ -78,8 +81,8 @@ const enhance = compose(
       storeAs: 'quizzes'
     }
   ]),
-  connect((state, prop) => {
-    const lectureName = prop.match.params.lectureName.toLowerCase();
+  connect((state, props) => {
+    const lectureName = props.match.params.lectureName.toLowerCase();
     return {
       profile: state.firebase.profile,
       lecture: state.firestore.ordered.lectures && state.firestore.ordered.lectures.find(x => x.id === lectureName),
