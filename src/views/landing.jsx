@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../components/login';
 import banner_img from '../styles/images/fullscreen_mode.png';
+import Logo from '../components/logo'
 
 export default class Main extends Component {
   constructor() {
@@ -23,7 +24,7 @@ export default class Main extends Component {
             <img src={banner_img} alt="" />
           </div>
         </div>
-
+        <Logo />
         <Login />
       </div>
     );
