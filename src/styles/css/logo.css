@@ -8,24 +8,27 @@
 }
 
 .logo .logo-images img {
-    width: 200px;
+    width: 225px;
     height: auto;
 }
 
 .logo .logo-images img:nth-child(2) {
-    max-width: 130px;
+    max-width: 160px;
     height: auto;
 }
 
 
 @media only screen and (max-width: 600px) {
     .logo .logo-images img {
-        width: 125px;
+        width: 150px;
         height: auto;
     }
     .logo .logo-images img:nth-child(2) {
-        max-width: 75px;
+        max-width: 100px;
         height: auto;
+    }
+    .logoLanding {
+        margin-top: 150px;
     }
 }
 @media only screen and (max-width: 380px) {
@@ -38,3 +41,4 @@
         height: auto;
     }
 }
+

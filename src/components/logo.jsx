@@ -10,9 +10,9 @@ render(){
     return (
           <div className="logo">
               <div className="logo-images">
-                  <img className="m-2" src={img_kronoberg} alt=""/>
-                  <img className="m-2" src={img_euro} alt="" />
-                  <img className="m-2" src={img_etabl} alt="" />
+                  <img className="p-1" src={img_kronoberg} alt=""/>
+                  <img className="p-1" src={img_euro} alt="" />
+                  <img className="p-1" src={img_etabl} alt="" />
               </div>
           </div>
     );

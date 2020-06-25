@@ -24,8 +24,12 @@ export default class Main extends Component {
             <img src={banner_img} alt="" />
           </div>
         </div>
-        <Logo />
+       
         <Login />
+        <div className="logoLanding">
+           <Logo />
+        </div>
+        
       </div>
     );
   }
