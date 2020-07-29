@@ -8,7 +8,7 @@ import * as servicesHttp from '../../services/http';
 import { connect } from 'react-redux';
 import Notify from '../notify';
 
-class CreateUser extends Component {
+class CreateLanguage extends Component {
   _isMounted = false;
 
   constructor(props) {
@@ -189,4 +189,4 @@ const enhance = compose(
   connect(state => ({}))
 );
 
-export default enhance(CreateUser);
+export default enhance(CreateLanguage);

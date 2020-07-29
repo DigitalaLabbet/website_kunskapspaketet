@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -9,7 +8,7 @@ import Categories from '../components/categories';
 import Navbar from '../components/navbar';
 import { withTranslation } from 'react-i18next';
 import i18n from '../i18next';
-import Logo from '../components/logo'
+import Logo from '../components/logo';
 
 class Home extends Component {
   render() {

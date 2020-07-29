@@ -9,8 +9,8 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: 'Svenska',
-    fallbackLng: 'Svenska'
+    lng: localStorage.getItem('i18nextLng') || 'Svenska',
+    fallbackLng: localStorage.getItem('i18nextLng') || 'Svenska'
   });
 
 export default i18n;
