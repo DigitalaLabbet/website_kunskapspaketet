@@ -11,7 +11,7 @@ import { Accordion, Card } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
 class Lecture extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     const { lecture } = this.props;
     if (!lecture) {
       this.props.history.push('/404');
