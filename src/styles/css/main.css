@@ -225,3 +225,20 @@
 .Toastify__toast:not(:first-child) {
   margin-top: 5px;
 }
+
+/*--------------------*/
+/*    form            */
+/*--------------------*/
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+}
+
+.form-footer>:not(:last-child) {
+  margin-right: 0.25rem;
+}
+
+.form-footer>:not(:first-child) {
+  margin-left: 0.25rem;
+}
