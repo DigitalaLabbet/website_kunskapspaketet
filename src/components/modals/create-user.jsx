@@ -57,6 +57,8 @@ class CreateUser extends Component {
 
   save(e) {
     e.preventDefault();
+    let submitBtn = document.getElementById('submit-btn');
+    
     const { user } = this.props;
     if (user) {
       const { name, email, password, phoneNumber } = this.state;
@@ -66,15 +68,19 @@ class CreateUser extends Component {
         phoneNumber: phoneNumber
       };
 
-      servicesHttp
+      if (this.validatePassword(password)) {
+        submitBtn.disabled = true;
+        servicesHttp
         .updateUser(user.id, updatedValues)
         .then(res => {
           console.log('res : ', res);
           Notify.success(`Användaren har uppdaterats: ${email}`);
           this.resetState();
           this.handleClose();
+          submitBtn.disabled = false;
         })
         .catch(err => servicesHttp.handleError(err));
+      }
     } else {
       const { userUid, userRole } = this.props;
       const { name, email, password, role, teacher, phoneNumber } = this.state;
@@ -86,16 +92,47 @@ class CreateUser extends Component {
         role: role,
         phoneNumber: phoneNumber
       };
-      servicesHttp
+
+      if (this.validatePassword(password)) {
+        submitBtn.disabled = true;
+        servicesHttp
         .createUser(newUser)
         .then(res => {
           console.log('res : ', res);
           Notify.success(`Användaren har skapats: ${email}`);
           this.resetState();
           this.handleClose();
+          submitBtn.disabled = false;
         })
         .catch(err => servicesHttp.handleError(err));
+      } 
     }
+
+  }
+
+  validatePassword(newPassword) {
+    if (newPassword.length < 8) {
+      const msg = "Lösenordet måste innehålla minst 8 tecken";
+      Notify.error(msg);
+      return false;
+    }
+    if (!newPassword.match('^(?=.*[a-z])')) {
+      const msg = "Lösenordet måste innehålla minst en liten bokstav";
+      Notify.error(msg);
+      return false;
+    }
+    if (!newPassword.match('^(?=.*[A-Z])')) {
+      const msg = "Lösenordet måste innehålla minst en stor bokstav";
+      Notify.error(msg);
+      return false;
+    }
+    // eslint-disable-next-line no-useless-escape
+    if (!newPassword.match('^(?=.*[!"#$%&\'()*+,./:;<=>?@[\\\]^_`{|}~\-])')) {
+      const msg = "Lösenordet måste innehålla minst ett specialtecken";
+      Notify.error(msg);
+      return false;
+    }
+    return true;
   }
 
   render() {
@@ -119,7 +156,7 @@ class CreateUser extends Component {
             <Modal.Title>{user ? 'Editera användare' : 'Skapa användare'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
+            <form onSubmit={this.save}>
               <div className="form-group">
                 <label>Namn</label>
                 <input
@@ -128,6 +165,7 @@ class CreateUser extends Component {
                   name="name"
                   value={name}
                   onChange={this.handleStateUserChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -137,6 +175,7 @@ class CreateUser extends Component {
                   className="form-control"
                   disabled={user ? true : false}
                   name="email"
+                  required
                   value={email}
                   onChange={this.handleStateUserChange}
                 />
@@ -147,6 +186,7 @@ class CreateUser extends Component {
                   type="text"
                   className="form-control"
                   name="phoneNumber"
+                  pattern="^[+]*[0-9]*[-\s\./0-9]*$"
                   value={phoneNumber}
                   onChange={this.handleStateUserChange}
                 />
@@ -182,8 +222,9 @@ class CreateUser extends Component {
                         className="form-control form-control-sm"
                         name="teacher"
                         value={teacher}
-                        onChange={this.handleStateUserChange}>
-                        <option value="default" disabled>
+                        onChange={this.handleStateUserChange}
+                        required>
+                        <option value="">
                           Välj
                         </option>
                         {teachers.map(teacher => (
@@ -196,16 +237,15 @@ class CreateUser extends Component {
                   )}
                 </>
               )}
+            
+              <div className="form-footer">
+                <button type="reset" className="btn btn-secondary" onClick={this.handleClose}>
+                    Stäng
+                </button>
+                <input type="submit" id="submit-btn" className="btn btn-success" value="Spara"/>
+              </div>    
             </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <button className="btn btn-secondary" onClick={this.handleClose}>
-              Stäng
-            </button>
-            <button className="btn btn-success" onClick={this.save}>
-              Spara
-            </button>
-          </Modal.Footer>
+            </Modal.Body>
         </Modal>
       </React.Fragment>
     );
