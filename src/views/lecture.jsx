@@ -11,15 +11,14 @@ import { Accordion, Card } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
 class Lecture extends Component {
-  componentDidMount() {
-    // Temp fix until i figure out something better.
-    setTimeout(() => {
-      const { lecture } = this.props;
-      if (!lecture) {
-        this.props.history.push('/404');
-      }
-    }, 1000);
+  
+  componentDidUpdate() {
+    const { lecture } = this.props;
+    if (!lecture) {
+      this.props.history.push('/404');
+    }
   }
+    
   render() {
     const { profile, lecture, quizzes } = this.props;
 
