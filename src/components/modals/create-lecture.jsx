@@ -181,6 +181,8 @@ class CreateLecture extends Component {
 
   save(e) {
     e.preventDefault();
+    let submitBtn = document.getElementById('submit-btn');
+    submitBtn.disabled = true;
     const { lecture, firestore } = this.props;
     if (lecture) {
       const updateValues = {
@@ -286,7 +288,7 @@ class CreateLecture extends Component {
             <Modal.Title>{lecture ? 'Editera föreläsning' : 'Skapa föreläsning'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
+            <form onSubmit={this.save}>
               <div className="form-group">
                 <label>Namn</label>
                 <input
@@ -468,6 +470,7 @@ class CreateLecture extends Component {
                                         <div className="input-group">
                                           <input
                                             type="text"
+                                            required
                                             className="form-control"
                                             name="heading"
                                             value={question.question}
@@ -499,6 +502,7 @@ class CreateLecture extends Component {
                                               type="text"
                                               className="form-control"
                                               name="answer"
+                                              required
                                               value={answer.answer}
                                               onChange={this.answerChange.bind(
                                                 this,
@@ -538,16 +542,15 @@ class CreateLecture extends Component {
                   </Accordion>
                 </>
               )}
+              <div className="form-footer">
+                <button type="reset" className="btn btn-secondary" onClick={this.handleClose}>
+                  Stäng
+                </button>
+                <input type="submit" id="submit-btn" className="btn btn-success" value="Spara" />
+                  
+              </div>
             </form>
           </Modal.Body>
-          <Modal.Footer>
-            <button className="btn btn-secondary" onClick={this.handleClose}>
-              Stäng
-            </button>
-            <button className="btn btn-success" onClick={this.save}>
-              Spara
-            </button>
-          </Modal.Footer>
         </Modal>
       </React.Fragment>
     );

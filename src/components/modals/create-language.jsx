@@ -144,7 +144,7 @@ class CreateLanguage extends Component {
             <Modal.Title>{language ? 'Editera språk' : 'Skapa språk'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
+            <form onSubmit={this.save}>
               <div className="form-group">
                 <label>Namn</label>
                 <input
@@ -153,6 +153,7 @@ class CreateLanguage extends Component {
                   name="name"
                   value={name}
                   onChange={this.handleStateFormChange}
+                  required
                 />
               </div>
               <h5 className="mt-4">Nycklar</h5>
@@ -165,19 +166,18 @@ class CreateLanguage extends Component {
                     name={key}
                     value={keys[key]}
                     onChange={this.handleKeysChange.bind(this)}
+                    required
                   />
                 </div>
               ))}
+                <div className="form-footer">
+                  <button type="reset" className="btn btn-secondary" onClick={this.handleClose}>
+                    Stäng
+                  </button>
+                  <input type="submit" className="btn btn-success" value="Spara" />
+                </div>
             </form>
           </Modal.Body>
-          <Modal.Footer>
-            <button className="btn btn-secondary" onClick={this.handleClose}>
-              Stäng
-            </button>
-            <button className="btn btn-success" onClick={this.save}>
-              Spara
-            </button>
-          </Modal.Footer>
         </Modal>
       </React.Fragment>
     );
