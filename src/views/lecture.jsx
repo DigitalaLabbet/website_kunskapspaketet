@@ -15,8 +15,9 @@ class Lecture extends Component {
   componentDidUpdate() {
     const { lecture } = this.props;
     if (!lecture) {
-     this.props.history.push('/404');
-   }
+      this.props.history.push('/404');
+    }
+  }
     
   render() {
     const { profile, lecture, quizzes } = this.props;
