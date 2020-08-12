@@ -13,14 +13,20 @@ class CreateLecture extends Component {
     super(props);
     this.state = {
       show: false,
-      id: '',
-      category: '',
-      color: '',
-      info: '',
+      name: '',
+      color: '#000000',
+      information: ' ',
       isVisible: true,
       videoUrl: '',
-      links: null,
-      quizzes: []
+      links: [],
+      quizzes: [
+        {
+          questions: [],
+          quizId: 'quizOne',
+          quizSynopsis: '',
+          quizTitle: ''
+        }
+      ]
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -229,7 +235,57 @@ class CreateLecture extends Component {
         })
         .catch(err => servicesHttp.handleError(err));
     } else {
-      console.log('Create new category will be here');
+      const lecture = {
+        color: this.state.color,
+        information: this.state.information,
+        name: this.state.name,
+        videoUrl: this.state.videoUrl,
+        links: this.state.links,
+        isVisible: true
+      };
+      const quiz = this.state.quizzes[0];
+
+      quiz.questions.forEach(question => {
+        const correctAnswers = question.answers
+          .map((answer, index) => {
+            return answer.isCorrect ? index + 1 : 0;
+          })
+          .filter(v => v > 0);
+        question.answerSelectionType = correctAnswers.length > 1 ? 'multiple' : 'single';
+        question.correctAnswer = correctAnswers.length > 1 ? correctAnswers : correctAnswers.toString();
+        question.answers = question.answers.map(answer => answer.answer);
+      });
+
+      const docId = lecture.name
+        .toLowerCase()
+        .replace(/\s/g, '-')
+        .replace(/å/g, 'a')
+        .replace(/ä/g, 'a')
+        .replace(/ö/g, 'o');
+
+      firestore
+        .collection('lectures')
+        .doc(docId)
+        .set(lecture)
+        .then(res => {
+          const quizDocId = quiz.quizTitle
+            .toLowerCase()
+            .replace(/\s/g, '-')
+            .replace(/å/g, 'a')
+            .replace(/ä/g, 'a')
+            .replace(/ö/g, 'o');
+
+          firestore
+            .collection('lectures')
+            .doc(docId)
+            .collection('quiz')
+            .doc(quizDocId)
+            .set(quiz)
+            .then(() => {
+              Notify.success(`${lecture.name} har skapats`);
+              this.handleClose();
+            });
+        });
     }
   }
 
@@ -283,7 +339,7 @@ class CreateLecture extends Component {
             </React.Fragment>
           )}
         </button>
-        <Modal show={show} backdrop="static" onHide={this.handleClose}>
+        <Modal show={show} backdrop="static" onHide={this.handleClose} size="lg">
           <Modal.Header>
             <Modal.Title>{lecture ? 'Editera föreläsning' : 'Skapa föreläsning'}</Modal.Title>
           </Modal.Header>
@@ -439,6 +495,7 @@ class CreateLecture extends Component {
                               <label>Quiz namn</label>
                               <input
                                 type="text"
+                                required
                                 className="form-control"
                                 name="quizTitle"
                                 value={quiz.quizTitle}
@@ -547,7 +604,6 @@ class CreateLecture extends Component {
                   Stäng
                 </button>
                 <input type="submit" id="submit-btn" className="btn btn-success" value="Spara" />
-                  
               </div>
             </form>
           </Modal.Body>
