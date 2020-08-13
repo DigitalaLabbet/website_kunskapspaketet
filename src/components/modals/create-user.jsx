@@ -58,7 +58,7 @@ class CreateUser extends Component {
   save(e) {
     e.preventDefault();
     let submitBtn = document.getElementById('submit-btn');
-    
+
     const { user } = this.props;
     if (user) {
       const { name, email, password, phoneNumber } = this.state;
@@ -71,15 +71,15 @@ class CreateUser extends Component {
       if (this.validatePassword(password)) {
         submitBtn.disabled = true;
         servicesHttp
-        .updateUser(user.id, updatedValues)
-        .then(res => {
-          console.log('res : ', res);
-          Notify.success(`Användaren har uppdaterats: ${email}`);
-          this.resetState();
-          this.handleClose();
-          submitBtn.disabled = false;
-        })
-        .catch(err => servicesHttp.handleError(err));
+          .updateUser(user.id, updatedValues)
+          .then(res => {
+            console.log('res : ', res);
+            Notify.success(`Användaren har uppdaterats: ${email}`);
+            this.resetState();
+            this.handleClose();
+            submitBtn.disabled = false;
+          })
+          .catch(err => servicesHttp.handleError(err));
       }
     } else {
       const { userUid, userRole } = this.props;
@@ -96,39 +96,37 @@ class CreateUser extends Component {
       if (this.validatePassword(password)) {
         submitBtn.disabled = true;
         servicesHttp
-        .createUser(newUser)
-        .then(res => {
-          console.log('res : ', res);
-          Notify.success(`Användaren har skapats: ${email}`);
-          this.resetState();
-          this.handleClose();
-          submitBtn.disabled = false;
-        })
-        .catch(err => servicesHttp.handleError(err));
-      } 
+          .createUser(newUser)
+          .then(res => {
+            Notify.success(`Användaren har skapats: ${email}`);
+            this.resetState();
+            this.handleClose();
+            submitBtn.disabled = false;
+          })
+          .catch(err => servicesHttp.handleError(err));
+      }
     }
-
   }
 
   validatePassword(newPassword) {
     if (newPassword.length < 8) {
-      const msg = "Lösenordet måste innehålla minst 8 tecken";
+      const msg = 'Lösenordet måste innehålla minst 8 tecken';
       Notify.error(msg);
       return false;
     }
     if (!newPassword.match('^(?=.*[a-z])')) {
-      const msg = "Lösenordet måste innehålla minst en liten bokstav";
+      const msg = 'Lösenordet måste innehålla minst en liten bokstav';
       Notify.error(msg);
       return false;
     }
     if (!newPassword.match('^(?=.*[A-Z])')) {
-      const msg = "Lösenordet måste innehålla minst en stor bokstav";
+      const msg = 'Lösenordet måste innehålla minst en stor bokstav';
       Notify.error(msg);
       return false;
     }
     // eslint-disable-next-line no-useless-escape
-    if (!newPassword.match('^(?=.*[!"#$%&\'()*+,./:;<=>?@[\\\]^_`{|}~\-])')) {
-      const msg = "Lösenordet måste innehålla minst ett specialtecken";
+    if (!newPassword.match('^(?=.*[!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~-])')) {
+      const msg = 'Lösenordet måste innehålla minst ett specialtecken';
       Notify.error(msg);
       return false;
     }
@@ -151,7 +149,7 @@ class CreateUser extends Component {
             </React.Fragment>
           )}
         </button>
-        <Modal show={show} backdrop="static" onHide={this.handleClose}>
+        <Modal show={show} backdrop="static" onHide={this.handleClose} size="lg">
           <Modal.Header>
             <Modal.Title>{user ? 'Editera användare' : 'Skapa användare'}</Modal.Title>
           </Modal.Header>
@@ -224,9 +222,7 @@ class CreateUser extends Component {
                         value={teacher}
                         onChange={this.handleStateUserChange}
                         required>
-                        <option value="">
-                          Välj
-                        </option>
+                        <option value="">Välj</option>
                         {teachers.map(teacher => (
                           <option key={teacher.id} value={teacher.id}>
                             {teacher.name}({teacher.email})
@@ -237,15 +233,15 @@ class CreateUser extends Component {
                   )}
                 </>
               )}
-            
+
               <div className="form-footer">
                 <button type="reset" className="btn btn-secondary" onClick={this.handleClose}>
-                    Stäng
+                  Stäng
                 </button>
-                <input type="submit" id="submit-btn" className="btn btn-success" value="Spara"/>
-              </div>    
+                <input type="submit" id="submit-btn" className="btn btn-success" value="Spara" />
+              </div>
             </form>
-            </Modal.Body>
+          </Modal.Body>
         </Modal>
       </React.Fragment>
     );

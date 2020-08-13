@@ -17,7 +17,7 @@ class CreateLanguage extends Component {
       show: false,
       name: '',
       isEdit: false,
-      keys: { welcomeTitle: '', description: '' }
+      keys: { welcomeTitle: '', description: '', home: '', admin: '', settings: '' }
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -63,7 +63,7 @@ class CreateLanguage extends Component {
     this.setState({ show: false });
     this.setState({ name: '' });
     this.setState({ isEdit: false });
-    this.setState({ keys: { welcomeTitle: '', description: '' } });
+    this.setState({ keys: { welcomeTitle: '', description: '', home: '', admin: '', settings: '' } });
   }
 
   save(e) {
@@ -139,7 +139,7 @@ class CreateLanguage extends Component {
             </React.Fragment>
           )}
         </button>
-        <Modal show={show} backdrop="static" onHide={this.handleClose}>
+        <Modal show={show} backdrop="static" onHide={this.handleClose} size="lg">
           <Modal.Header>
             <Modal.Title>{language ? 'Editera språk' : 'Skapa språk'}</Modal.Title>
           </Modal.Header>
@@ -170,12 +170,12 @@ class CreateLanguage extends Component {
                   />
                 </div>
               ))}
-                <div className="form-footer">
-                  <button type="reset" className="btn btn-secondary" onClick={this.handleClose}>
-                    Stäng
-                  </button>
-                  <input type="submit" className="btn btn-success" value="Spara" />
-                </div>
+              <div className="form-footer">
+                <button type="reset" className="btn btn-secondary" onClick={this.handleClose}>
+                  Stäng
+                </button>
+                <input type="submit" className="btn btn-success" value="Spara" />
+              </div>
             </form>
           </Modal.Body>
         </Modal>

@@ -75,7 +75,6 @@ const LectureTable = props => {
         }
       ]
     },
-
     {
       name: 'Actions',
       sortable: false,
@@ -121,7 +120,7 @@ const LectureTable = props => {
   return (
     <div className="lectureTable mt-3">
       <h5 className="m-0 pb-0 pt-2 px-2" style={{ background: '#eeeeee' }}>
-        Föreläsningar
+        Föreläsningar <CreateLecture firestore={props.firestore} />
       </h5>
       <DataTable
         noHeader={true}
