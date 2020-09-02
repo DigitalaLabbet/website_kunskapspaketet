@@ -40,6 +40,7 @@ class CreateLecture extends Component {
     }
     const { lecture, firestore } = this.props;
     if (lecture) {
+      this.setState({quizzes: []})
       if (this._isMounted) {
         this.setState(lecture);
       }
@@ -52,6 +53,7 @@ class CreateLecture extends Component {
         .then(snapShot => {
           snapShot.docs.forEach(doc => {
             var tempQuizzes = this.state.quizzes.concat(doc.data());
+            console.log(doc.data())
             tempQuizzes.forEach(quiz => {
               quiz.questions.forEach(question => {
                 question.correctAnswer = Object.assign([], question.correctAnswer);
